@@ -1,6 +1,6 @@
 events:
   game_ended: 34
-  game_started: 112
+  game_started: 118
 player:
   score:
     average: 89.29411764705883
@@ -30,10 +30,10 @@ shots:
   shot_target_ml_low: 16
   shot_target_mm_low: 20
   shot_target_mr_low: 21
-  shot_target_tl: 39
+  shot_target_tl: 41
   shot_target_tr: 36
 switches:
-  s_ball_on_plunger: 261
+  s_ball_on_plunger: 267
   s_captive_l: 5
   s_captive_r: 18
   s_captive_t: 80
@@ -68,7 +68,7 @@ switches:
   s_target_mm_low: 20
   s_target_mr_high: 16
   s_target_mr_low: 21
-  s_target_on_bump_tl: 39
+  s_target_on_bump_tl: 41
   s_target_on_bump_tr: 36
   s_tilt: 19
   s_trough: 225

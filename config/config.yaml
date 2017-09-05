@@ -137,11 +137,13 @@ slides:
         blur: 0.01
 
   testSlide:
+  - type: text
+    font_size: 15
+    text: "FAN"
   - type: ellipse
-    width: 16
-    height: 8
-    color: orange
-  #- type: text
+    width: 32
+    height: 18
+    color: darkgreen
 
 
 slide_player:
