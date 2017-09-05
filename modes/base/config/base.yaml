@@ -1,0 +1,43 @@
+#config_version=5
+
+mode:
+  start_events: ball_starting
+  priority: 100
+  #code: base.Base
+
+#-----------------------------------------------------
+# Basic scoring (no special stuff, just simple hits)
+# We use tags on the Switch devices to group the stuff
+#-----------------------------------------------------
+scoring:
+  # All 4 jet bumpers
+  sw_jetBumper:
+    score: 1
+  # Left and right in and outlane
+  sw_lane:
+    score: 10
+  # All yellow targets (strong shots)
+  sw_target:
+    score: 5
+  # RUBBER bands on top part
+  sw_rubber:
+    score: 1
+  # CAPTIVE Holes
+  sw_captive:
+    score: 5
+  # The 4 red rollover switches at the bottom
+  sw_rollover:
+    score: 50
+  sg_rollovers_default_lit_complete:
+    score: 500
+
+sound_player:
+  shot_rollover_tl: elec_wood
+  shot_rollover_tr: perc_snap2
+  sg_rollovers_default_unlit_hit: blipPool
+  sg_rollovers_default_lit_hit: elec_twip
+  sg_rollovers_default_lit_complete: bass_woodsy_c
+  shot_target_ml_low: elec_fuzz_tom
+  sw_jetBumper: drumTomPool
+  sw_rubber: bdPool
+  sw_target: drumCymbalPool

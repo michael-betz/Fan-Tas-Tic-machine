@@ -1,0 +1,15 @@
+# show_version=5
+- time: 0
+  lights:
+    l_jet_bump_t: orange-f5s
+- time: +2
+  lights:
+    l_jet_bump_tl: orange-f5s
+    l_jet_bump_tr: orange-f5s
+- time: +2
+  lights:
+    l_jet_bump_low: orange-f5s
+- time: +2
+  lights:
+    t_jet_bump: off-f5s
+- time: +21

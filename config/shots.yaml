@@ -1,0 +1,185 @@
+#config_version=5
+
+#------------------------------------------------------------------------
+# Default shots (when no special mode overrides this)
+#------------------------------------------------------------------------
+shot_profiles:
+    rainbow:
+      loop: True
+      show: rainbow
+      states:
+        - name: off
+        - name: red
+        - name: green
+        - name: blue
+        - name: yellow
+        - name: purple
+        - name: white
+    flash:
+      states:
+        - name: off
+        - name: hit
+          show: flash
+    grad:
+      show: grad
+      states:
+        - name: 0
+        - name: 1
+        - name: 2
+        - name: 3
+        - name: 4
+          show: flash
+shows:
+    rainbow:
+      - lights:
+          (lights): off
+      - lights:
+          (lights): red
+      - lights:
+          (lights): green
+      - lights:
+          (lights): blue
+      - lights:
+          (lights): yellow
+      - lights:
+          (lights): purple
+      - lights:
+          (lights): white
+    grad:
+      - lights:
+          (lights): 000000
+      - lights:
+          (lights): 111111
+      - lights:
+          (lights): 888888
+      - lights:
+          (lights): FFFFFF
+    rolloverShow:
+      - time: 0
+        lights:
+          l_rollover_lr: FFFFFF
+          l_rollover_ll: FFFFFF
+          l_rollover_mr: FFFFFF
+          l_rollover_ml: FFFFFF
+      - time: +0.1s
+        lights:
+          l_rollover_lr: 000000
+          l_rollover_ll: 000000
+          l_rollover_mr: 000000
+          l_rollover_ml: 000000
+      - time: +0.1s
+
+shots:
+  #---------------------------
+  # Rollovers
+  #---------------------------
+  shot_rollover_tl:
+    switch: s_rollover_tl
+    show_tokens:
+      lights: l_rollover_tl
+  shot_rollover_tr:
+    switch: s_rollover_tr
+    show_tokens:
+      lights: l_rollover_tr
+  shot_rollover_ml:
+    switch: s_rollover_ml
+    show_tokens:
+      lights: l_rollover_ml
+  shot_rollover_mr:
+    switch: s_rollover_mr
+    show_tokens:
+      lights: l_rollover_mr
+  shot_rollover_ll:
+    switch: s_rollover_ll
+    show_tokens:
+      lights: l_rollover_ll
+  shot_rollover_lr:
+    switch: s_rollover_lr
+    show_tokens:
+      lights: l_rollover_lr
+
+  #---------------------------
+  # Targets
+  #---------------------------
+  shot_target_tr:
+    switch: s_target_on_bump_tr
+    show_tokens:
+      lights: l_targ_ur
+    profile: grad
+  shot_target_tl:
+    switch: s_target_on_bump_tl
+    show_tokens:
+      lights: l_targ_ul
+  #---------------------------
+  # Targets
+  #---------------------------
+    profile: grad
+  shot_target_ml_low:
+    switch: s_target_ml_low
+    show_tokens:
+      lights: l_target_ml
+    profile: grad
+  shot_target_mm_low:
+    switch: s_target_mm_low
+    show_tokens:
+      lights: l_target_mm
+    profile: rainbow
+  shot_target_mr_low:
+    switch: s_target_mr_low
+    show_tokens:
+      lights: l_target_mr
+    profile: grad
+
+#---------------------------
+# Jet-Bunmpers
+#---------------------------
+  shot_jb_low:
+    switch: s_jet_bump_low
+    show_tokens:
+      lights: l_jet_bump_low
+    profile: rainbow
+  shot_jb_t:
+    switch: s_jet_bump_t
+    show_tokens:
+      lights: l_jet_bump_t
+    profile: grad
+  shot_jb_tl:
+    switch: s_jet_bump_tl
+    show_tokens:
+      lights: l_jet_bump_tl
+    profile: grad
+  shot_jb_tr:
+    switch: s_jet_bump_tr
+    show_tokens:
+      lights: l_jet_bump_tr
+    profile: grad
+
+shot_groups:
+  sg_rollovers:
+    shots: shot_rollover_ll, shot_rollover_lr, shot_rollover_mr, shot_rollover_ml
+    rotate_left_events:  s_flipper_left_1_active
+    rotate_right_events: s_flipper_right_active
+    reset_events:
+      sg_rollovers_default_lit_complete: 3s
+
+show_player:
+ sg_rollovers_default_lit_complete:
+   rolloverShow:
+     loops: 15
+
+slides:
+  slide_rollOverComplete:
+    - type: text
+      text: "!WaltZ!"
+      x: 50
+      animations:
+        show_slide:
+          - property: x
+            value: -100
+            relative: True
+            duration: 2.0s
+
+slide_player:
+  sg_rollovers_default_lit_complete: 
+    slide_rollOverComplete:
+      expire: 2.0s

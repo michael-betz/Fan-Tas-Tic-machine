@@ -1,0 +1,8 @@
+# show_version=5
+- time: 0
+  lights:
+    t_filter_red: off-f0.3s
+- time: +20
+  lights:
+    t_filter_red: FF0000-f0.3s
+- time: +2

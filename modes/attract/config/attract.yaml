@@ -1,0 +1,25 @@
+#config_version=5
+
+show_player:
+  mode_attract_started:
+    middleTarget:
+      loops: -1
+    startLED:
+      loops: -1
+    sideLeds:
+      loops: -1
+    redStuff:
+      loops: -1
+    jets:
+      loops: -1
+  mode_attract_stopped:
+    middleTarget:
+      action: stop
+    startLED:
+      action: stop
+    sideLeds:
+      action: stop
+    redStuff:
+      action: stop
+    jets:
+      action: stop

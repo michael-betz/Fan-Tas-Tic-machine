@@ -1,0 +1,154 @@
+#config_version=5
+config:
+- hardware.yaml
+- shots.yaml
+- sound.yaml
+- keyboard.yaml
+
+modes:
+  - base
+
+hardware:
+  platform: fantastic
+#  rgb_dmd: rpi_dmd
+
+fantastic:
+  debug: True
+  port: /dev/ttyACM0
+  led_clock_0: 3200000  #WS2812 High speed mode
+  led_clock_1: 1700000  #WS2811 Low speed mode
+  led_clock_2: 3200000  #WS2812 High speed mode
+
+#-------------------
+# ** Only 1 (so far) **
+#-------------------
+playfields:
+  playfield:
+    default_source_device: bd_plunger
+    tags: default  
+
+#-------------------
+# ** Autofire coils **
+#-------------------
+autofire_coils:
+  af_jet_bump_low:
+    coil:   c_jet_bump_low
+    switch: s_jet_bump_low
+  af_jet_bump_tl:
+    coil:   c_jet_bump_tl
+    switch: s_jet_bump_tl
+  af_jet_bump_tr:
+    coil:   c_jet_bump_tr
+    switch: s_jet_bump_tr
+  af_jet_bump_t:
+    coil:   c_jet_bump_t
+    switch: s_jet_bump_t
+  af_outlane_l_kickback:
+    coil:   c_outlane_l_kickback
+    switch: s_outlane_l
+  af_outlane_r_gate:
+    coil:   c_outlane_r_gate
+    switch: s_outlane_r
+
+#-------------------
+# ** Ball Devices **
+#-------------------
+ball_devices:
+  bd_trough:
+    ball_switches: s_trough
+    entrance_count_delay: 300ms
+    eject_coil: c_trough_eject
+    eject_targets: bd_plunger
+    tags: trough, home, drain
+    debug: True
+  bd_plunger:
+    ball_switches: s_ball_on_plunger
+    entrance_count_delay: 300ms
+    eject_timeouts: 3s
+    tags: ball_add_live
+    mechanical_eject: True
+  bd_captive_l:
+    ball_switches: s_captive_l
+    eject_coil: c_captive_l
+    entrance_count_delay: 100ms
+    eject_timeouts: 1s
+  bd_captive_t:
+    ball_switches: s_captive_t
+    eject_coil: c_captive_t
+    entrance_count_delay: 100ms
+    eject_timeouts: 1s
+  bd_captive_r:
+    ball_switches: s_captive_r
+    eject_coil: c_captive_r
+    entrance_count_delay: 100ms
+    eject_timeouts: 1s
+
+flippers:
+  left_flipper:
+    main_coil: c_flipper_left
+    activation_switch: s_flipper_left_1
+  right_flipper:
+    main_coil: c_flipper_right
+    activation_switch: s_flipper_right
+
+
+#-------------------------------------------------------
+# Multimedia stuff
+#-------------------------------------------------------
+
+window:
+  width: 400
+  height: 400
+  title: Fan-Tas-Tic Pinball
+  resizable: false
+  fullscreen: false
+  borderless: false
+  exit_on_escape: false
+  source_display: wndScreen
+
+displays:
+  wndScreen:
+    width:  320
+    height:  320
+  wndDmd:
+    width: 32
+    height: 32
+    default: True
+
+rgb_dmds:
+  my_dmd:
+     brightness: 1.0
+     platform: rpi_dmd
+     source_display: wndDmd    
+
+#rpi_dmd:
+#  console_log: full     
+  
+slides:
+  wndScreenSlide:
+  - type: display
+    width: 320
+    height: 320
+    source_display: wndDmd
+    effects:
+      - type: color_dmd
+        dots_x: 32
+        dots_y: 32
+        blur: 0.01
+
+  testSlide:
+  - type: ellipse
+    width: 16
+    height: 8
+    color: orange
+  #- type: text
+
+
+slide_player:
+  mc_ready:
+    wndScreenSlide:
+      target: wndScreen
+  init_done: 
+    testSlide:
+      target: wndDmd
+

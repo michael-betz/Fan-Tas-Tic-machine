@@ -1,0 +1,74 @@
+events:
+  game_ended: 34
+  game_started: 112
+player:
+  score:
+    average: 89.29411764705883
+    top:
+    - 643
+    - 384
+    - 293
+    - 257
+    - 217
+    - 193
+    - 185
+    - 153
+    - 91
+    - 80
+    total: 34
+shots:
+  shot_jb_low: 219
+  shot_jb_t: 149
+  shot_jb_tl: 142
+  shot_jb_tr: 92
+  shot_rollover_ll: 42
+  shot_rollover_lr: 95
+  shot_rollover_ml: 37
+  shot_rollover_mr: 51
+  shot_rollover_tl: 28
+  shot_rollover_tr: 31
+  shot_target_ml_low: 16
+  shot_target_mm_low: 20
+  shot_target_mr_low: 21
+  shot_target_tl: 39
+  shot_target_tr: 36
+switches:
+  s_ball_on_plunger: 261
+  s_captive_l: 5
+  s_captive_r: 18
+  s_captive_t: 80
+  s_flipper_eos_l: 120
+  s_flipper_eos_r: 78
+  s_flipper_left_1: 151
+  s_flipper_left_2: 132
+  s_flipper_right: 92
+  s_jet_bump_low: 219
+  s_jet_bump_t: 149
+  s_jet_bump_tl: 142
+  s_jet_bump_tr: 92
+  s_lane_tl: 16
+  s_lane_tr: 27
+  s_outlane_l: 9
+  s_outlane_r: 18
+  s_rollover_ll: 42
+  s_rollover_lr: 95
+  s_rollover_ml: 37
+  s_rollover_mr: 51
+  s_rollover_tl: 28
+  s_rollover_tr: 31
+  s_rubber_l: 57
+  s_rubber_targ_l: 24
+  s_rubber_targ_r: 41
+  s_rubber_tl: 21
+  s_rubber_tr: 26
+  s_start: 14
+  s_target_ml_high: 11
+  s_target_ml_low: 16
+  s_target_mm_high: 15
+  s_target_mm_low: 20
+  s_target_mr_high: 16
+  s_target_mr_low: 21
+  s_target_on_bump_tl: 39
+  s_target_on_bump_tr: 36
+  s_tilt: 19
+  s_trough: 225

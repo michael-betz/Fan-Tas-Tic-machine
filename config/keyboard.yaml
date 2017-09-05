@@ -1,0 +1,19 @@
+#config_version=5
+
+virtual_platform_start_active_switches: s_trough
+
+keyboard:
+    z:
+        switch: s_flipper_left_1
+    .:
+        switch: s_flipper_right
+    s:
+        switch: s_start
+    t:
+        switch: s_trough
+        toggle: True
+    p:
+        switch: s_ball_on_plunger
+        toggle: True
+    b:
+        switch: s_jet_bump_t

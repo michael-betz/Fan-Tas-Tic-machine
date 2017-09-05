@@ -1,0 +1,385 @@
+#config_version=5
+hardware:
+  platform: fantastic
+#-----------------
+# ** SWITCHES **
+#-----------------
+switches:
+  #-----------------
+  # User interface
+  #-----------------
+  s_flipper_left_1:
+    number: 0x4C
+    type: NC
+  s_flipper_left_2:
+    number: 0x4D
+    type: NC
+  s_start:
+    number: 0x4E
+    type: NC
+    tags: start
+  s_flipper_right:
+    number: 0x4F
+    type: NC
+  s_tilt:
+    number: 0x4B
+    type: NC
+    debounce: quick
+  #-----------------
+  # Playfield / misc.
+  #-----------------
+  s_flipper_eos_l:
+    number: 0x1B
+  s_flipper_eos_r:
+    number: 0x18
+  s_ball_on_plunger:
+    number: 0x20
+    type: NC
+  s_trough:
+    number: 0x30
+    type: NC
+  s_outlane_l:
+    number: 0x28
+    type: NC
+    tags: playfield_active, lane
+  s_outlane_r:
+    number: 0x17
+    type: NC
+    tags: playfield_active, lane
+  s_lane_tl:
+    number: 0x08
+    type: NC
+    tags: playfield_active, lane
+  s_lane_tr:
+    number: 0x15
+    type: NC
+    tags: playfield_active, lane
+  #-----------------
+  # Targets
+  #-----------------
+  # Yellow plastic
+  s_target_on_bump_tr:
+    number: 0x01
+    type: NC
+    tags: playfield_active, target
+  s_target_on_bump_tl:
+    number: 0x07
+    type: NC
+    tags: playfield_active, target
+  s_target_ml_low:
+    number: 0x0C
+    type: NC
+    tags: playfield_active, target
+  s_target_ml_high:
+    number: 0x0D
+    type: NC
+  s_target_mm_low:
+    number: 0x0E
+    type: NC
+    tags: playfield_active, target
+  s_target_mm_high:
+    number: 0x0F
+    type: NC
+  s_target_mr_low:
+    number: 0x10
+    type: NC
+    tags: playfield_active, target
+  s_target_mr_high:
+    number: 0x11
+    type: NC
+  # Rubber bands
+  s_rubber_tl:
+    number: 0x09
+    type: NC
+    tags: playfield_active, rubber
+  s_rubber_l:
+    number: 0x0A
+    type: NC
+    tags: playfield_active, rubber
+  s_rubber_targ_r:
+    number: 0x12
+    type: NC
+    tags: playfield_active, rubber
+  s_rubber_targ_l:
+    number: 0x1F
+    type: NC
+    tags: playfield_active, rubber
+  s_rubber_tr:
+    number: 0x14
+    type: NC
+    tags: playfield_active, rubber
+  # Rollovers
+  s_rollover_tr:
+    number: 0x02
+    type: NC
+    tags: rollover
+  s_rollover_tl:
+    number: 0x06
+    type: NC
+    tags: playfield_active, rollover
+  s_rollover_ml:
+    number: 0x0B
+    type: NC
+    tags: playfield_active, rollover
+  s_rollover_mr:
+    number: 0x13
+    type: NC
+    tags: playfield_active, rollover
+  s_rollover_lr:
+    number: 0x19
+    type: NC
+    tags: playfield_active, rollover
+  s_rollover_ll:
+    number: 0x1C
+    type: NC
+    tags: playfield_active, rollover
+  #-----------------
+  # Captive holes
+  #-----------------
+  s_captive_l:
+    number: 0x23
+    type: NC
+    tags: captive
+  s_captive_t:
+    number: 0x00
+    type: NC
+    tags: captive
+  s_captive_r:
+    number: 0x16
+    type: NC
+    tags: captive
+  #-----------------
+  # Jet bumpers
+  #-----------------
+  s_jet_bump_tr:
+    number: 0x03
+    type: NC
+#    debounce: quick
+    tags: playfield_active, jetBumper
+  s_jet_bump_t:
+    number: 0x04
+    type: NC
+#    debounce: quick
+    tags: playfield_active, jetBumper
+  s_jet_bump_tl:
+    number: 0x05
+    type: NC
+#    debounce: quick
+    tags: playfield_active, jetBumper
+  s_jet_bump_low:
+    number: 0x1A
+    type: NC
+    debounce: normal
+    tags: playfield_active, jetBumper
+
+#-----------------
+# ** COILS **
+#-----------------
+coils:
+  #-----------------
+  # Flippers / etc.
+  #-----------------
+  c_flipper_left:
+    number: 0x3C
+    default_pulse_ms: 25
+    default_pulse_power: 0.80
+    max_hold_power: 1.0
+  c_flipper_right:
+    number: 0x3E
+    default_pulse_ms: 25
+    default_pulse_power: 0.80
+    max_hold_power: 1.0
+  c_trough_eject:
+    number: 0x45
+    default_pulse_ms: 120
+    default_pulse_power: 0.40
+  c_outlane_r_gate:
+    number: 0x3F
+    default_pulse_ms: 1000
+    default_pulse_power: 0.50
+  c_outlane_l_kickback:
+    number: 0x44
+    default_pulse_ms: 20
+    default_pulse_power: 0.60
+
+  #-----------------
+  # Jet bumpers
+  #-----------------
+  c_jet_bump_tl:
+    number: 0x40
+    default_pulse_ms: 12
+    default_pulse_power: 1.00
+  c_jet_bump_t:
+    number: 0x41
+    default_pulse_ms: 12
+    default_pulse_power: 1.00
+  c_jet_bump_tr:
+    number: 0x42
+    default_pulse_ms: 12
+    default_pulse_power: 1.00
+  c_jet_bump_low:
+    number: 0x3D
+    default_pulse_ms: 16
+    default_pulse_power: 1.00
+  #-----------------
+  # Captive holes
+  #-----------------
+  c_captive_l:
+    number: 0x47
+    default_pulse_ms: 45
+    default_pulse_power: 0.50
+  c_captive_t:
+    number: 0x43
+    default_pulse_ms: 45
+    default_pulse_power: 0.50
+  c_captive_r:
+    number: 0x46
+    default_pulse_ms: 45
+    default_pulse_power: 0.50
+
+lights:
+  l_A_lane:
+    number: 1-0, 1-18
+    default_on_color: ff0000
+    tags: t_filter_red
+  l_rollover_ml:
+    number: 1-1
+    default_on_color: ff0000
+    tags: t_filter_red
+  l_target_ml:
+    number: 1-2
+    tags: t_middle_arrow
+    default_on_color: white
+  l_target_mm:
+    number: 1-3
+    tags: t_middle_arrow
+    default_on_color: white
+  l_target_mr:
+    number: 1-4
+    tags: t_middle_arrow
+    default_on_color: white
+  l_rollover_mr:
+    number: 1-5, 1-36
+    default_on_color: ff0000
+    tags: t_filter_red
+  l_B_lane:
+    number: 1-6
+    default_on_color: ff0000
+    tags: t_filter_red
+  l_bonus9:
+    number: 1-7
+    tags: t_bonus
+  l_bonus8:
+    number: 1-8
+    tags: t_bonus
+  l_bonus7:
+    number: 1-9
+    tags: t_bonus
+  l_bonus6:
+    number: 1-10
+    tags: t_bonus
+  l_bonus5:
+    number: 1-11
+    tags: t_bonus
+  l_bonus4:
+    number: 1-12
+    tags: t_bonus
+  l_bonus3:
+    number: 1-13
+    tags: t_bonus
+  l_bonus2:
+    number: 1-14
+    tags: t_bonus
+  l_bonus1:
+    number: 1-15
+    tags: t_bonus
+  l_bonus0:
+    number: 1-16
+    tags: t_bonus
+  l_side_ml:
+    number: 1-17
+    tags: t_side
+  l_captive_l:
+    number: 1-18
+  l_outlane_l:
+    number: 1-19
+  l_rollover_ll:
+    number: 1-20
+    default_on_color: ff0000
+    tags: t_filter_red
+  l_side_ll1:
+    number: 1-21
+    tags: t_side
+  l_start_button:
+    number: 1-22
+  l_side_ll2:
+    number: 1-23
+    tags: t_side
+  l_side_lr2:
+    number: 1-24
+    tags: t_side
+  l_side_lr1:
+    number: 1-25
+    tags: t_side
+  l_rollover_lr:
+    number: 1-26, 1-30
+    default_on_color: ff0000
+    tags: t_filter_red
+  l_star1:
+    number: 1-27
+    tags: t_star
+  l_star2:
+    number: 1-28
+    tags: t_star
+  l_star3:
+    number: 1-29
+    tags: t_star
+  l_outlane_r:
+    number: 1-31
+    tags: t_filter_red
+  l_captive_r:
+    number: 1-32, 1-33
+  l_side_mr:
+    number: 1-34
+    tags: t_side
+  l_lane_b:
+    number: 1-35
+    tags: t_filter_red
+  l_side_ur:
+    number: 1-36
+    tags: t_side
+  l_targ_ur:
+    number: 1-38, 1-39
+    tags: t_side
+  l_rollover_tr:
+    number: 1-40
+    default_on_color: ff0000
+    tags: t_filter_red
+  l_captive_t:
+    number: 1-41
+  l_rollover_tl:
+    number: 1-42
+    default_on_color: ff0000
+    tags: t_filter_red
+  l_targ_ul:
+    number: 1-43, 1-44
+    tags: t_side
+#---------------------------
+# Jet bumper lights
+#---------------------------
+  l_jet_bump_t:
+    number: 0-0, 0-1, 0-2, 0-3
+    type: grb
+    tags: t_jet_bump
+  l_jet_bump_tl:
+    number: 0-4, 0-5, 0-6, 0-7
+    type: grb
+    tags: t_jet_bump
+  l_jet_bump_tr:
+    number: 0-8, 0-9, 0-10, 0-11
+    type: grb
+    tags: t_jet_bump
+  l_jet_bump_low:
+    number: 2-0, 2-1, 2-2, 2-3
+    type: grb
+    tags: t_jet_bump

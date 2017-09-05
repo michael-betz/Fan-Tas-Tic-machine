@@ -1,0 +1,8 @@
+# show_version=5
+- time: 0
+  lights:
+    t_side: off-f0.3s
+- time: +10
+  lights:
+    t_side: 380D38-f0.3s
+- time: +2
