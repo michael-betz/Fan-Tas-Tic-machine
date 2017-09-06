@@ -10,7 +10,7 @@ modes:
 
 hardware:
   platform: fantastic
-#  rgb_dmd: rpi_dmd
+  rgb_dmd: rpi_dmd
 
 fantastic:
   debug: True
@@ -96,20 +96,20 @@ flippers:
 # Multimedia stuff
 #-------------------------------------------------------
 
-window:
-  width: 400
-  height: 400
-  title: Fan-Tas-Tic Pinball
-  resizable: false
-  fullscreen: false
-  borderless: false
-  exit_on_escape: false
-  source_display: wndScreen
+# window:
+#   width: 400
+#   height: 400
+#   title: Fan-Tas-Tic Pinball
+#   resizable: false
+#   fullscreen: false
+#   borderless: false
+#   exit_on_escape: false
+#   source_display: wndScreen
 
 displays:
-  wndScreen:
-    width:  320
-    height:  320
+  # wndScreen:
+  #   width:  320
+  #   height:  320
   wndDmd:
     width: 32
     height: 32
@@ -119,38 +119,88 @@ rgb_dmds:
   my_dmd:
      brightness: 1.0
      platform: rpi_dmd
-     source_display: wndDmd    
+     source_display: wndDmd
+     fps: 35
 
-#rpi_dmd:
-#  console_log: full     
+rpi_dmd:
+  console_log: full     
   
 slides:
-  wndScreenSlide:
-  - type: display
-    width: 320
-    height: 320
-    source_display: wndDmd
-    effects:
-      - type: color_dmd
-        dots_x: 32
-        dots_y: 32
-        blur: 0.01
+  # wndScreenSlide:
+  # - type: display
+  #   width: 320
+  #   height: 320
+  #   source_display: wndDmd
+  #   effects:
+  #     - type: color_dmd
+  #       dots_x: 32
+  #       dots_y: 32
+  #       blur: 0.01
 
   testSlide:
   - type: text
-    font_size: 15
     text: "FAN"
+    # font_size: 13
+    # style: dmd_big
+    style: space title
+    color: black
+    animations:
+      show_slide:
+        - property: rotation
+          value: 359
+          duration: 15s
+        - property: rotation
+          value: 0
+          duration: 0.003s
+          repeat: true
+  - type: ellipse
+    width: 24
+    height: 24
+    color: white
   - type: ellipse
     width: 32
-    height: 18
-    color: darkgreen
+    height: 32
+    color: magenta
 
 
 slide_player:
-  mc_ready:
-    wndScreenSlide:
-      target: wndScreen
-  init_done: 
-    testSlide:
-      target: wndDmd
+  # mc_ready:
+  #   wndScreenSlide:
+  #     target: wndScreen
+  init_done: testSlide
 
+widget_styles:
+    # text_default:
+    # font_name: small_pixel
+    # antialias: False
+    # font_size: 13
+  text_default:
+    font_name: Quadrit
+    font_size: 10
+    adjust_top: 2
+    adjust_bottom: 3
+  space title huge:
+    font_name: DEADJIM
+    font_size: 29
+    antialias: true
+    adjust_top: 3
+    adjust_bottom: 3
+  space title:
+    font_name: DEADJIM
+    font_size: 21
+    antialias: true
+    adjust_top: 2
+    adjust_bottom: 3
+  medium:
+    font_name: pixelmix
+    font_size: 8
+    adjust_top: 1
+    adjust_bottom: 1
+  small:
+    font_name: smallest_pixel-7
+    font_size: 9
+    adjust_top: 2
+    adjust_bottom: 3
+  tall title:
+    font_name: big_noodle_titling
+    font_size: 20
