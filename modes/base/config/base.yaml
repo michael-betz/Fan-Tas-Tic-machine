@@ -35,20 +35,22 @@ slides:
   scoreSlide:
     - type: text
       text: (player1|score)
-      style: medium
+      font_name: CG-pixel
+      color: white
+      bitmap_font: True
       number_grouping: true
       min_digits: 2
 
 slide_player:
   single_player_ball_started: scoreSlide
 
-sound_player:
-  shot_rollover_tl: elec_wood
-  shot_rollover_tr: perc_snap2
-  sg_rollovers_default_unlit_hit: blipPool
-  sg_rollovers_default_lit_hit: elec_twip
-  sg_rollovers_default_lit_complete: bass_woodsy_c
-  shot_target_ml_low: elec_fuzz_tom
-  sw_jetBumper: drumTomPool
-  sw_rubber: bdPool
-  sw_target: drumCymbalPool
+# sound_player:
+#   shot_rollover_tl: elec_wood
+#   shot_rollover_tr: perc_snap2
+#   sg_rollovers_default_unlit_hit: blipPool
+#   sg_rollovers_default_lit_hit: elec_twip
+#   sg_rollovers_default_lit_complete: bass_woodsy_c
+#   shot_target_ml_low: elec_fuzz_tom
+#   sw_jetBumper: drumTomPool
+#   sw_rubber: bdPool
+#   sw_target: drumCymbalPool

@@ -190,36 +190,36 @@ show_player:
       show_tokens:
         lights: l_targ_ul, l_targ_ur
 
-slides:
-  # Rotate text
-  slide_jetBumpMultiplier:
-    - type: text
-      text: "BUMP"
-      font_size: 12
-      animations:
-        show_slide:
-          - property: rotation
-            value: -600
-            duration: 1s
-  # Move text from left to right            
-  slide_rollOverComplete:
-    - type: text
-      text: "!WaltZ!"
-      x: 50
-      animations:
-        show_slide:
-          - property: x
-            value: -100
-            relative: True
-            duration: 2.0s
+# slides:
+#   # Rotate text
+#   slide_jetBumpMultiplier:
+#     - type: text
+#       text: "BUMP"
+#       font_size: 12
+#       animations:
+#         show_slide:
+#           - property: rotation
+#             value: -600
+#             duration: 1s
+#   # Move text from left to right            
+#   slide_rollOverComplete:
+#     - type: text
+#       text: "!WaltZ!"
+#       x: 50
+#       animations:
+#         show_slide:
+#           - property: x
+#             value: -100
+#             relative: True
+#             duration: 2.0s
 
-slide_player:
-  sg_rollovers_default_lit_complete: 
-    slide_rollOverComplete:
-      expire: 2.0s
-  sg_jetBumpTargets_default_lit_complete:
-    slide_jetBumpMultiplier:
-      expire: 1.0s
+# slide_player:
+#   sg_rollovers_default_lit_complete: 
+#     slide_rollOverComplete:
+#       expire: 2.0s
+#   sg_jetBumpTargets_default_lit_complete:
+#     slide_jetBumpMultiplier:
+#       expire: 1.0s
 
 
 
