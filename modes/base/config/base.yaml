@@ -34,12 +34,16 @@ scoring:
 slides:
   scoreSlide:
     - type: text
-      text: (player1|score)
-      font_name: CG-pixel
-      color: white
+      text: "(player1|score)"
+      font_name: visitor
+      color: black
       bitmap_font: True
-      number_grouping: true
-      min_digits: 2
+      y: 15.0
+      number_grouping: False
+    - type: image
+      image: bg0
+      fps: 25
+      loops: 0
 
 slide_player:
   single_player_ball_started: scoreSlide

@@ -108,8 +108,8 @@ window:
 
 displays:
   wndscreen:
-    width:  256
-    height: 256
+    width:  32
+    height: 32
   wnddmd:
     width:  32
     height: 32
@@ -124,12 +124,12 @@ rgb_dmds:
 
 # rpi_dmd:
 #   console_log: full     
-  
+
 slides:
   wndScreenSlide:
     - type: display
-      width: 256
-      height: 256
+      width: 32
+      height: 32
       source_display: wnddmd
       # effects:
       #   - type: color_dmd
@@ -141,42 +141,8 @@ slides:
     #   height: 350
     #   corner_radius: 50
     #   color: green
-
-  testSlide:
-  - type: text
-    text: TinyText
-    font_name: visitor
-    bitmap_font: True
-    color: green
-    y: 8
-    font_size: 10
-  - type: text
-    text: "FAN"
-    style: dmd_big
-    color: black
-    animations:
-      show_slide:
-        - property: rotation
-          value: 359
-          duration: 15s
-        - property: rotation
-          value: 0
-          duration: 0.003s
-          repeat: true
-  - type: ellipse
-    width: 24
-    height: 24
-    color: white
-  - type: ellipse
-    width: 32
-    height: 32
-    color: magenta
-
-
+  
 slide_player:
   mc_ready:
     wndScreenSlide:
-      target: wndscreen
-  init_done: 
-    testSlide:
-      target: wnddmd
+      target: wndscreen  

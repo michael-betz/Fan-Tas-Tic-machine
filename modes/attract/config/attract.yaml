@@ -23,3 +23,51 @@ show_player:
       action: stop
     jets:
       action: stop
+
+
+
+slides:
+  testSlide:
+  - type: text
+    text: "FAN"
+    style: dmd_big
+    color: black
+  - type: text
+    text: "Fan-Tas-Tic Pinball. For amusement only. Powered by MPF. Made by YFL - 2017"
+    font_name: visitor
+    bitmap_font: True    
+    color: black
+    y: 5
+    anchor_x: left    
+    x: 32
+    animations:
+      show_slide:
+        - property: x
+          value: -425
+          duration: 15 s
+        - property: x
+          value: 32
+          duration: 0 s
+          repeat: True
+
+  - type: image
+    image: bg2
+    fps: 25
+    loops: 0
+
+    # animations:
+    #   show_slide:
+    #     - property: rotation
+    #       value: 359
+    #       duration: 15s
+    #     - property: rotation
+    #       value: 0
+    #       duration: 0.003s
+    #       repeat: true
+  
+
+
+slide_player:
+  mode_attract_started: 
+    testSlide:
+      target: wnddmd
