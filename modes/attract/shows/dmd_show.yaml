@@ -1,0 +1,8 @@
+# show_version=5
+- time: 0.1
+  widgets: fan_widget
+- time: +2s
+  widgets: tas_widget
+- time: +2s
+  widgets: tic_widget
+- time: +2.5s

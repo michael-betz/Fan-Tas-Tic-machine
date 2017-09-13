@@ -12,6 +12,10 @@ hardware:
   platform: fantastic
   rgb_dmd: rpi_dmd
 
+kivy_config:
+  graphics:
+    multisamples: 0
+
 fantastic:
   debug: True
   port: /dev/ttyACM0
@@ -119,7 +123,7 @@ rgb_dmds:
   my_dmd:
      brightness: 1.0
      platform: rpi_dmd
-     source_display: wndDmd
+     source_display: wnddmd
      fps: 35
 
 # rpi_dmd:
@@ -135,14 +139,9 @@ slides:
       #   - type: color_dmd
       #     dots_x: 32
       #     dots_y: 32
-          # blur: 0.01
-    # - type: rectangle
-    #   width: 350
-    #   height: 350
-    #   corner_radius: 50
-    #   color: green
+      #     blur: 0.01
   
 slide_player:
   mc_ready:
     wndScreenSlide:
-      target: wndscreen  
+      target: wndscreen

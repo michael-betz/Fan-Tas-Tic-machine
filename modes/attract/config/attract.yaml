@@ -12,6 +12,8 @@ show_player:
       loops: -1
     jets:
       loops: -1
+    dmd_show:
+      loops: -1
   mode_attract_stopped:
     middleTarget:
       action: stop
@@ -23,51 +25,71 @@ show_player:
       action: stop
     jets:
       action: stop
-
-
+    dmd_show:
+      action: stop
 
 slides:
   testSlide:
-  - type: text
-    text: "FAN"
-    style: dmd_big
-    color: black
-  - type: text
-    text: "Fan-Tas-Tic Pinball. For amusement only. Powered by MPF. Made by YFL - 2017"
-    font_name: visitor
-    bitmap_font: True    
-    color: black
-    y: 5
-    anchor_x: left    
-    x: 32
-    animations:
-      show_slide:
-        - property: x
-          value: -425
-          duration: 15 s
-        - property: x
-          value: 32
-          duration: 0 s
-          repeat: True
-
+  # - type: text
+  #   text: "--- for amusement only ---"
+  #   font_name: visitor
+  #   bitmap_font: True    
+  #   color: white
+  #   y: 5
+  #   anchor_x: left    
+  #   x: 32
+  #   animations:
+  #     show_slide:
+  #       - property: x
+  #         value: -200
+  #         duration: 15 s
+  #       - property: x
+  #         value: 32
+  #         duration: 0 s
+  #         repeat: True
   - type: image
     image: bg2
     fps: 25
     loops: 0
 
-    # animations:
-    #   show_slide:
-    #     - property: rotation
-    #       value: 359
-    #       duration: 15s
-    #     - property: rotation
-    #       value: 0
-    #       duration: 0.003s
-    #       repeat: true
-  
-
-
 slide_player:
   mode_attract_started: 
     testSlide:
       target: wnddmd
+
+widgets:
+  fan_widget:
+    - type: text
+      text: FAN
+      z: 10
+      style: dmd_big
+      color: black
+      expire: 2s
+      animations:
+        add_to_slide: fade_out
+  tas_widget:
+    - type: text
+      text: TAS
+      z: 10
+      style: dmd_big
+      color: black
+      expire: 2s
+      animations:
+        add_to_slide: fade_out
+  tic_widget:
+    - type: text
+      text: TIC
+      z: 10
+      style: dmd_big
+      color: black
+      expire: 2s
+      animations:
+        add_to_slide: fade_out
+
+animations:
+  fade_out:
+    property: opacity
+    value: 0
+    duration: 2s
+    easing: in_quint
+
