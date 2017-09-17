@@ -3,19 +3,16 @@
 mode:
   start_events: ball_starting
   priority: 100
-  #code: base.Base
+  code: base.Base
 
 #-----------------------------------------------------
 # Basic scoring (no special stuff, just simple hits)
 # We use tags on the Switch devices to group the stuff
 #-----------------------------------------------------
 scoring:
-  # All 4 jet bumpers
-  sw_jetBumper:
-    score: 1
   # Left and right in and outlane
   sw_lane:
-    score: 10
+    score: 75
   # All yellow targets (strong shots)
   sw_target:
     score: 5
@@ -27,9 +24,17 @@ scoring:
     score: 5
   # The 4 red rollover switches at the bottom
   sw_rollover:
-    score: 50
+    score: 5
   sg_rollovers_default_lit_complete:
-    score: 500
+    score: 100
+  # The 3 top jet-bumpers have a multiplier
+  # mode_base_started:
+  #   action: set
+  #   jetBumperMultiplier: 1
+  # sg_jetbumptargets_complete:
+  #   jetBumperMultiplier: 1
+  sw_jetBumper:
+    score: current_player.jetBumperMultiplier
 
 slides:
   scoreSlide:
@@ -44,17 +49,106 @@ slides:
       image: bg0
       fps: 25
       loops: 0
+  slide_jetBumpMultiplier:
+    - type: text
+      text: "BUMP\nx(player1|jetBumperMultiplier)"
+      font_name: visitor
+      color: 88FF88
+      bitmap_font: True
+  # Move text in a rectangle
+  slide_rollOverComplete:
+    - type: text
+      font_name: visitor
+      bitmap_font: True
+      text: "Wal\ntz"
+      color: Red
+      x: 12
+      y: 12
+      animations:
+        show_slide:
+          - property: x, y
+            value:  12, 18
+            duration: 0.3s
+          - property: x, y
+            value:  18, 18
+            duration: 0.3s
+          - property: x, y
+            value:  18, 12
+            duration: 0.3s
+          - property: x, y
+            value:  12, 12
+            duration: 0.3s
+            repeat: True
 
 slide_player:
-  single_player_ball_started: scoreSlide
+  single_player_ball_started: 
+    scoreSlide:
+      priority: -1
+  sg_rollovers_default_lit_complete: 
+    slide_rollOverComplete:
+      expire: 2s
+  sg_jetBumpTargets_default_lit_complete:
+    slide_jetBumpMultiplier:
+      expire: 1.0s
 
-# sound_player:
-#   shot_rollover_tl: elec_wood
-#   shot_rollover_tr: perc_snap2
-#   sg_rollovers_default_unlit_hit: blipPool
-#   sg_rollovers_default_lit_hit: elec_twip
-#   sg_rollovers_default_lit_complete: bass_woodsy_c
-#   shot_target_ml_low: elec_fuzz_tom
-#   sw_jetBumper: drumTomPool
-#   sw_rubber: bdPool
-#   sw_target: drumCymbalPool
+sound_player:
+  shot_rollover_tl: elec_wood
+  shot_rollover_tr: perc_snap2
+  sg_rollovers_default_unlit_hit: blipPool
+  sg_rollovers_default_lit_hit: elec_twip
+  sg_rollovers_default_lit_complete: waltz
+  shot_target_ml_low: elec_fuzz_tom
+  sw_jetBumper: drumTomPool
+  sw_rubber: bdPool
+  sw_target: drumCymbalPool
+
+#---------------------------
+# 4 rollover carousel
+#---------------------------
+shot_groups:
+  sg_rollovers:
+    shots: shot_rollover_ll, shot_rollover_lr, shot_rollover_mr, shot_rollover_ml
+    rotate_left_events:  s_flipper_left_1_active
+    rotate_right_events: s_flipper_right_active
+    reset_events:
+      sg_rollovers_default_lit_complete: 3s
+#---------------------------
+# 2 target at top carousel
+#---------------------------
+  sg_jetBumpTargets:
+    shots: shot_target_tl, shot_target_tr
+    rotate_left_events:  s_flipper_left_1_active
+    rotate_right_events: s_flipper_right_active
+    reset_events:
+      sg_jetbumptargets_complete: 1s
+
+show_player:
+  sg_rollovers_default_lit_complete:
+    rolloverShow:
+      loops: 5
+  sg_jetbumptargets_complete:
+    blinkenShow:
+      loops: 3
+      show_tokens:
+        lights: l_targ_ul, l_targ_ur
+
+shots:
+  #---------------------------
+  # Targets
+  #---------------------------
+  # Top 2 targets are a carousel and just light when hit
+  shot_target_tr:
+    switch: s_target_on_bump_tr
+    show_tokens:
+      lights: l_targ_ur
+  shot_target_tl:
+    switch: s_target_on_bump_tl
+    show_tokens:
+      lights: l_targ_ul
+  # if both are hit, increase jet bumper multiplier value
+  # and change their color.
+  # shot_increaseBumper:
+  #   advance_events: sg_jetbumptargets_complete
+  #   show_tokens:
+  #     lights: l_jet_bump_t, l_jet_bump_tl, l_jet_bump_tr
+  #   profile: rainbow

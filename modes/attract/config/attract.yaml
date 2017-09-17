@@ -29,33 +29,14 @@ show_player:
       action: stop
 
 slides:
-  testSlide:
-  # - type: text
-  #   text: "--- for amusement only ---"
-  #   font_name: visitor
-  #   bitmap_font: True    
-  #   color: white
-  #   y: 5
-  #   anchor_x: left    
-  #   x: 32
-  #   animations:
-  #     show_slide:
-  #       - property: x
-  #         value: -200
-  #         duration: 15 s
-  #       - property: x
-  #         value: 32
-  #         duration: 0 s
-  #         repeat: True
+  attractSlide:
   - type: image
     image: bg2
     fps: 25
     loops: 0
 
 slide_player:
-  mode_attract_started: 
-    testSlide:
-      target: wnddmd
+  mode_attract_started: attractSlide
 
 widgets:
   fan_widget:
@@ -63,16 +44,31 @@ widgets:
       text: FAN
       z: 10
       style: dmd_big
-      color: black
+      color: orange
       expire: 2s
       animations:
-        add_to_slide: fade_out
+        add_to_slide: fade_out  
+  fan_spinner:
+    - type: text
+      text: FAN
+      z: 10
+      style: dmd_big
+      color: orange
+      expire: 5.5s
+      animations: 
+        add_to_slide:
+          - property: rotation
+            value: -360
+            duration: 5s
+          - property: opacity
+            value: 0
+            duration: 0.5s
   tas_widget:
     - type: text
       text: TAS
       z: 10
       style: dmd_big
-      color: black
+      color: green
       expire: 2s
       animations:
         add_to_slide: fade_out
@@ -81,10 +77,43 @@ widgets:
       text: TIC
       z: 10
       style: dmd_big
-      color: black
+      color: magenta
       expire: 2s
       animations:
         add_to_slide: fade_out
+  scroll_widget:
+    - type: text
+      text: "for amusement only"
+      font_name: emulogic
+      bitmap_font: True    
+      color: black
+      anchor_x: left    
+      x: 32
+      z: 10
+      expire: 6s
+      animations:
+        add_to_slide:
+          - property: x
+            value: -150
+            duration: 6s
+          - property: x
+            value: 32
+            duration: 0 s
+  scroll2_widget:
+    - type: text
+      text: "M.\nBetz\n09/17\n----\nyeti\nfrisst\nlama\n.blog\nspot\n.com"
+      font_name: CG-pixel
+      bitmap_font: True
+      color: black
+      anchor_y: top
+      y: 0
+      z: 10
+      expire: 7s
+      animations:
+        add_to_slide:
+          - property: y
+            value: 95
+            duration: 7s
 
 animations:
   fade_out:
@@ -92,4 +121,5 @@ animations:
     value: 0
     duration: 2s
     easing: in_quint
+
 

@@ -124,7 +124,7 @@ rgb_dmds:
      brightness: 1.0
      platform: rpi_dmd
      source_display: wnddmd
-     fps: 35
+     fps: 30
 
 # rpi_dmd:
 #   console_log: full     
@@ -145,3 +145,17 @@ slide_player:
   mc_ready:
     wndScreenSlide:
       target: wndscreen
+
+# widget_styles:
+#   text_default:
+#     font_name: CG-pixel
+#     bitmap_font: True
+#   text_emulogic:
+#     font_name: emulogic
+#     bitmap_font: True
+#   text_minecraftia:
+#     font_name: minecraftia
+#     bitmap_font: True
+#   text_visitor:
+#     font_name: visitor
+#     bitmap_font: True

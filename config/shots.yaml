@@ -5,16 +5,19 @@
 #------------------------------------------------------------------------
 shot_profiles:
     rainbow:
-      loop: True
+      # loop: True
       show: rainbow
       states:
-        - name: off
-        - name: red
-        - name: green
-        - name: blue
-        - name: yellow
-        - name: purple
-        - name: white
+        - name: 0
+        - name: 1
+        - name: 2
+        - name: 3
+        - name: 4
+        - name: 5
+        - name: 6
+        - name: 7
+        - name: 8
+        - name: 9
     flash:
       states:
         - name: off
@@ -34,17 +37,24 @@ shows:
       - lights:
           (lights): off
       - lights:
+          (lights): white
+      - lights:
+          (lights): yellow
+      - lights:
           (lights): red
       - lights:
           (lights): green
       - lights:
           (lights): blue
       - lights:
-          (lights): yellow
-      - lights:
           (lights): purple
       - lights:
-          (lights): white
+          (lights): magenta
+      - lights:
+          (lights): cyan
+      - lights:
+          (lights): orange
+
     grad:
       - lights:
           (lights): 000000
@@ -106,19 +116,18 @@ shots:
     show_tokens:
       lights: l_rollover_lr
 
-  #---------------------------
-  # Targets
-  #---------------------------
-  # Top 2 targets increase jet bumper multiplier value
-  # and change their color.
-  shot_target_tr:
-    switch: s_target_on_bump_tr
+#---------------------------
+# Lower jet-Bunmper
+#---------------------------
+  shot_jb_low:
+    switch: s_jet_bump_low
     show_tokens:
-      lights: l_targ_ur
-  shot_target_tl:
-    switch: s_target_on_bump_tl
-    show_tokens:
-      lights: l_targ_ul
+      lights: l_jet_bump_low
+    profile: rainbow
+
+#---------------------------
+# Targets
+#---------------------------
   # The 3 targets in the middle ...
   shot_target_ml_low:
     switch: s_target_ml_low
@@ -134,93 +143,4 @@ shots:
     switch: s_target_mr_low
     show_tokens:
       lights: l_target_mr
-    profile: grad
-
-#---------------------------
-# Jet-Bunmpers
-#---------------------------
-  shot_jb_low:
-    switch: s_jet_bump_low
-    show_tokens:
-      lights: l_jet_bump_low
-    profile: rainbow
-  shot_jb_t:
-    switch: s_jet_bump_t
-    show_tokens:
-      lights: l_jet_bump_t
-    profile: grad
-  shot_jb_tl:
-    switch: s_jet_bump_tl
-    show_tokens:
-      lights: l_jet_bump_tl
-    profile: grad
-  shot_jb_tr:
-    switch: s_jet_bump_tr
-    show_tokens:
-      lights: l_jet_bump_tr
-    profile: grad
-
-#---------------------------
-# 4 rollover carousel
-#---------------------------
-shot_groups:
-  sg_rollovers:
-    shots: shot_rollover_ll, shot_rollover_lr, shot_rollover_mr, shot_rollover_ml
-    rotate_left_events:  s_flipper_left_1_active
-    rotate_right_events: s_flipper_right_active
-    reset_events:
-      sg_rollovers_default_lit_complete: 3s
-#---------------------------
-# 2 target at top carousel
-#---------------------------
-  sg_jetBumpTargets:
-    shots: shot_target_tl, shot_target_tr
-    rotate_left_events:  s_flipper_left_1_active
-    rotate_right_events: s_flipper_right_active
-    reset_events:
-      sg_jetBumpTargets_default_lit_complete: 1s
-
-show_player:
-  sg_rollovers_default_lit_complete:
-    rolloverShow:
-      loops: 15
-  sg_jetBumpTargets_default_lit_complete:
-    blinkenShow:
-      loops: 5
-      show_tokens:
-        lights: l_targ_ul, l_targ_ur
-
-# slides:
-#   # Rotate text
-#   slide_jetBumpMultiplier:
-#     - type: text
-#       text: "BUMP"
-#       font_size: 12
-#       animations:
-#         show_slide:
-#           - property: rotation
-#             value: -600
-#             duration: 1s
-#   # Move text from left to right            
-#   slide_rollOverComplete:
-#     - type: text
-#       text: "!WaltZ!"
-#       x: 50
-#       animations:
-#         show_slide:
-#           - property: x
-#             value: -100
-#             relative: True
-#             duration: 2.0s
-
-# slide_player:
-#   sg_rollovers_default_lit_complete: 
-#     slide_rollOverComplete:
-#       expire: 2.0s
-#   sg_jetBumpTargets_default_lit_complete:
-#     slide_jetBumpMultiplier:
-#       expire: 1.0s
-
-
-
-  
+    profile: grad  

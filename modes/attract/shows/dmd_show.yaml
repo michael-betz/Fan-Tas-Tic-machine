@@ -1,8 +1,31 @@
 # show_version=5
 - time: 0.1
+  # widgets: scroll2_widget
   widgets: fan_widget
 - time: +2s
   widgets: tas_widget
 - time: +2s
   widgets: tic_widget
 - time: +2.5s
+  widgets: fan_widget
+- time: +2s
+  widgets: tas_widget
+- time: +2s
+  widgets: tic_widget
+- time: +2.5s
+  widgets: scroll_widget
+- time: +6s
+  widgets: fan_widget
+- time: +2s
+  widgets: tas_widget
+- time: +2s
+  widgets: tic_widget
+- time: +2.5s
+  widgets: fan_spinner
+- time: +5.5s
+  widgets: tas_widget
+- time: +2s
+  widgets: tic_widget
+- time: +2.5s
+  widgets: scroll2_widget
+- time: +7s
