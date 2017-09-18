@@ -6,8 +6,10 @@ class Base(Mode):
 
     def mode_start(self, **kwargs):
         # When the two top targets have been hit, change bumper colors
-        self.player.jetBumperMultiplier = 1
+        # self.player.jetBumperMultiplier = 1
         self.add_mode_event_handler('sg_jetbumptargets_complete', self.bumperUpgrade)
+
+    # def mode_stop(self, **kwargs):
 
     def bumperUpgrade( self, **kwargs ):
         self.player.jetBumperMultiplier += 1

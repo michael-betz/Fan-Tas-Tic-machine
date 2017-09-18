@@ -32,7 +32,7 @@ slides:
   attractSlide:
   - type: image
     image: bg2
-    fps: 25
+    fps: 30
     loops: 0
 
 slide_player:
@@ -120,6 +120,6 @@ animations:
     property: opacity
     value: 0
     duration: 2s
-    easing: in_quint
+    # easing: in_quint
 
 

@@ -181,14 +181,14 @@ coils:
   #-----------------
   c_flipper_left:
     number: 0x3C
-    default_pulse_ms: 25
-    default_pulse_power: 0.80
-    max_hold_power: 1.0
+    default_pulse_ms: 23
+    default_pulse_power: 0.65
+    default_hold_power:  0.15
   c_flipper_right:
     number: 0x3E
-    default_pulse_ms: 25
-    default_pulse_power: 0.80
-    max_hold_power: 1.0
+    default_pulse_ms: 23
+    default_pulse_power: 0.65
+    default_hold_power:  0.15
   c_trough_eject:
     number: 0x45
     default_pulse_ms: 120
@@ -207,19 +207,19 @@ coils:
   #-----------------
   c_jet_bump_tl:
     number: 0x40
-    default_pulse_ms: 12
+    default_pulse_ms: 11
     default_pulse_power: 1.00
   c_jet_bump_t:
     number: 0x41
-    default_pulse_ms: 12
+    default_pulse_ms: 11
     default_pulse_power: 1.00
   c_jet_bump_tr:
     number: 0x42
-    default_pulse_ms: 12
+    default_pulse_ms: 11
     default_pulse_power: 1.00
   c_jet_bump_low:
     number: 0x3D
-    default_pulse_ms: 16
+    default_pulse_ms: 15
     default_pulse_power: 1.00
   #-----------------
   # Captive holes

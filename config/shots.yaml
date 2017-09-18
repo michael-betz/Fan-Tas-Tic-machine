@@ -4,8 +4,8 @@
 # Default shots (when no special mode overrides this)
 #------------------------------------------------------------------------
 shot_profiles:
+    # Off + 9 different colors
     rainbow:
-      # loop: True
       show: rainbow
       states:
         - name: 0
@@ -18,11 +18,7 @@ shot_profiles:
         - name: 7
         - name: 8
         - name: 9
-    flash:
-      states:
-        - name: off
-        - name: hit
-          show: flash
+    # Off, 4 x increasing brightness, unlimited flashing
     grad:
       show: grad
       states:
@@ -31,29 +27,31 @@ shot_profiles:
         - name: 2
         - name: 3
         - name: 4
-          show: flash
+          show: blinkenShow
+          show_tokens:
+            color: FFFFFF
 shows:
     rainbow:
       - lights:
           (lights): off
       - lights:
-          (lights): white
+          (lights): white-f1s
       - lights:
-          (lights): yellow
+          (lights): yellow-f1s
       - lights:
-          (lights): red
+          (lights): red-f1s
       - lights:
-          (lights): green
+          (lights): green-f1s
       - lights:
-          (lights): blue
+          (lights): blue-f1s
       - lights:
-          (lights): purple
+          (lights): orange-f1s
       - lights:
-          (lights): magenta
+          (lights): magenta-f1s
       - lights:
-          (lights): cyan
+          (lights): cyan-f1s
       - lights:
-          (lights): orange
+          (lights): purple-f1s
 
     grad:
       - lights:
@@ -63,25 +61,12 @@ shows:
       - lights:
           (lights): 888888
       - lights:
-          (lights): FFFFFF
-    rolloverShow:
-      - time: 0
-        lights:
-          l_rollover_lr: FFFFFF
-          l_rollover_ll: FFFFFF
-          l_rollover_mr: FFFFFF
-          l_rollover_ml: FFFFFF
-      - time: +0.1s
-        lights:
-          l_rollover_lr: 000000
-          l_rollover_ll: 000000
-          l_rollover_mr: 000000
-          l_rollover_ml: 000000
-      - time: +0.1s
+          (lights): FFFFFF      
+
     blinkenShow:
       - time: 0
         lights:
-          (lights): FFFFFF
+          (lights): (color)
       - time: +0.1s
         lights:
           (lights): 000000
@@ -91,14 +76,6 @@ shots:
   #---------------------------
   # Rollovers
   #---------------------------
-  shot_rollover_tl:
-    switch: s_rollover_tl
-    show_tokens:
-      lights: l_rollover_tl
-  shot_rollover_tr:
-    switch: s_rollover_tr
-    show_tokens:
-      lights: l_rollover_tr
   shot_rollover_ml:
     switch: s_rollover_ml
     show_tokens:
@@ -115,15 +92,6 @@ shots:
     switch: s_rollover_lr
     show_tokens:
       lights: l_rollover_lr
-
-#---------------------------
-# Lower jet-Bunmper
-#---------------------------
-  shot_jb_low:
-    switch: s_jet_bump_low
-    show_tokens:
-      lights: l_jet_bump_low
-    profile: rainbow
 
 #---------------------------
 # Targets
@@ -144,3 +112,15 @@ shots:
     show_tokens:
       lights: l_target_mr
     profile: grad  
+
+#---------------------------
+# Shot groups / carousels
+#---------------------------
+# 4 rollover carousel
+shot_groups:
+  sg_rollovers:
+    shots: shot_rollover_ll, shot_rollover_lr, shot_rollover_mr, shot_rollover_ml
+    rotate_left_events:  s_flipper_left_1_active
+    rotate_right_events: s_flipper_right_active
+    reset_events:
+      sg_rollovers_default_lit_complete
