@@ -14,14 +14,14 @@ scoring:
   sw_lane:
     score: 75
   # All yellow targets (strong shots)
-  sw_target:
-    score: 5
+  # sw_target:
+  #   score: 5
   # CAPTIVE Holes
   sw_captive:
     score: 5
   # The 4 red rollover switches at the bottom
-  sw_rollover:
-    score: 5
+  # sw_rollover:
+  #   score: 5
   sg_rollovers_default_lit_complete:
     score: 100
 
@@ -87,15 +87,3 @@ show_player:
       show_tokens:
           lights: l_rollover_ll, l_rollover_ml, l_rollover_lr, l_rollover_mr
           color: FF0000
-  s_rollover_tl_active:
-    blinkenShow:
-      loops: 2
-      show_tokens:
-        lights: l_rollover_tl
-        color: FF0000
-  s_rollover_tr_active:
-    blinkenShow:
-      loops: 2
-      show_tokens:
-        lights: l_rollover_tr
-        color: FF0000

@@ -1,0 +1,32 @@
+# show_version=5
+- lights:
+    l_bonus0: off
+    l_bonus1: off
+    l_bonus2: off
+    l_bonus3: off
+    l_bonus4: off
+    l_bonus5: off
+    l_bonus6: off
+    l_bonus7: off
+    l_bonus8: off
+    l_bonus9: off
+- lights:
+    l_bonus0: FFFFFF
+- lights:
+    l_bonus1: FFFFFF
+- lights:
+    l_bonus2: FFFFFF
+- lights:
+    l_bonus3: FFFFFF
+- lights:
+    l_bonus4: FFFFFF
+- lights:
+    l_bonus5: FFFFFF
+- lights:
+    l_bonus6: FFFFFF
+- lights:
+    l_bonus7: FFFFFF
+- lights:
+    l_bonus8: FFFFFF
+- lights:
+    l_bonus9: FFFFFF

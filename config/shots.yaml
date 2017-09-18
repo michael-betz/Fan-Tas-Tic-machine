@@ -27,9 +27,7 @@ shot_profiles:
         - name: 2
         - name: 3
         - name: 4
-          show: blinkenShow
-          show_tokens:
-            color: FFFFFF
+          show: blinkenShowWhite
 shows:
     rainbow:
       - lights:
@@ -37,11 +35,11 @@ shows:
       - lights:
           (lights): white-f1s
       - lights:
-          (lights): yellow-f1s
+          (lights): green-f1s
       - lights:
           (lights): red-f1s
       - lights:
-          (lights): green-f1s
+          (lights): yellow-f1s
       - lights:
           (lights): blue-f1s
       - lights:
@@ -62,6 +60,15 @@ shows:
           (lights): 888888
       - lights:
           (lights): FFFFFF      
+
+    blinkenShowWhite:
+      - time: 0
+        lights:
+          (lights): FFFFFF
+      - time: +0.1s
+        lights:
+          (lights): 000000
+      - time: +0.1s    
 
     blinkenShow:
       - time: 0
@@ -92,26 +99,28 @@ shots:
     switch: s_rollover_lr
     show_tokens:
       lights: l_rollover_lr
+  shot_adv_bonus:
+    switch: s_rollover_tl, s_rollover_tr, s_target_ml_low, s_target_mr_low
 
 #---------------------------
 # Targets
 #---------------------------
   # The 3 targets in the middle ...
-  shot_target_ml_low:
-    switch: s_target_ml_low
-    show_tokens:
-      lights: l_target_ml
-    profile: grad
+  # shot_target_ml_low:
+  #   switch: s_target_ml_low
+  #   show_tokens:
+  #     lights: l_target_ml
+  #   profile: grad
   shot_target_mm_low:
     switch: s_target_mm_low
     show_tokens:
       lights: l_target_mm
-    profile: rainbow
-  shot_target_mr_low:
-    switch: s_target_mr_low
-    show_tokens:
-      lights: l_target_mr
-    profile: grad  
+    profile: grad
+  # shot_target_mr_low:
+  #   switch: s_target_mr_low
+  #   show_tokens:
+  #     lights: l_target_mr
+  #   profile: grad  
 
 #---------------------------
 # Shot groups / carousels

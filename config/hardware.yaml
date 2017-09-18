@@ -112,11 +112,11 @@ switches:
   s_rollover_tr:
     number: 0x02
     type: NC
-    tags: rollover
+    tags: playfield_active, rollover, adv_bonus
   s_rollover_tl:
     number: 0x06
     type: NC
-    tags: playfield_active, rollover
+    tags: playfield_active, rollover, adv_bonus
   s_rollover_ml:
     number: 0x0B
     type: NC

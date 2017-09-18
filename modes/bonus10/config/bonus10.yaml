@@ -1,0 +1,59 @@
+#config_version=5
+#-------------------------------
+# Controls the 10 playfield Bonus lights
+#-------------------------------
+
+mode:
+  start_events: ball_starting
+  priority: 101
+
+scoring:
+  shot_adv_bonus_hit: 
+    score: current_player.shot_adv_bonus_bonus10_profile * 200
+
+shots:
+  shot_adv_bonus:
+    profile: bonus10_profile
+
+shot_profiles:
+  bonus10_profile:
+    show: bonus_light
+    states:
+      - name:     0
+      - name:  1000
+      - name:  2000
+      - name:  3000
+      - name:  4000
+      - name:  5000
+      - name:  6000
+      - name:  7000
+      - name:  8000
+      - name:  9000
+      - name: 10000
+
+show_player:
+  # Make adv bonus targets flash on hit
+  s_rollover_tl_active:
+    blinkenShow:
+      loops: 2
+      show_tokens:
+        lights: l_rollover_tl
+        color: FF0000
+  s_rollover_tr_active:
+    blinkenShow:
+      loops: 2
+      show_tokens:
+        lights: l_rollover_tr
+        color: FF0000
+  s_target_ml_low_active:
+    blinkenShow:
+      loops: 2
+      show_tokens:
+        lights: l_target_ml
+        color: FFFFFF
+  s_target_mr_low_active:
+    blinkenShow:
+      loops: 2
+      show_tokens:
+        lights: l_target_mr
+        color: FFFFFF
