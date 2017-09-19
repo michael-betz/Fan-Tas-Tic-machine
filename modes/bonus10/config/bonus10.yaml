@@ -6,10 +6,12 @@
 mode:
   start_events: ball_starting
   priority: 101
+  # code: bonus10.Bonus10
 
 scoring:
   shot_adv_bonus_hit: 
     score: current_player.shot_adv_bonus_bonus10_profile * 200
+    bonusHitCount: 1
 
 shots:
   shot_adv_bonus:
@@ -30,6 +32,8 @@ shot_profiles:
       - name:  8000
       - name:  9000
       - name: 10000
+      - name: 20000
+        show: bonus_reddot
 
 show_player:
   # Make adv bonus targets flash on hit
