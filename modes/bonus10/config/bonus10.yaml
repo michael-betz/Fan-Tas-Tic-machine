@@ -2,38 +2,10 @@
 #-------------------------------
 # Controls the 10 playfield Bonus lights
 #-------------------------------
-
 mode:
   start_events: ball_starting
   priority: 101
-  # code: bonus10.Bonus10
-
-scoring:
-  shot_adv_bonus_hit: 
-    score: current_player.shot_adv_bonus_bonus10_profile * 200
-    bonusHitCount: 1
-
-shots:
-  shot_adv_bonus:
-    profile: bonus10_profile
-
-shot_profiles:
-  bonus10_profile:
-    show: bonus_light
-    states:
-      - name:     0
-      - name:  1000
-      - name:  2000
-      - name:  3000
-      - name:  4000
-      - name:  5000
-      - name:  6000
-      - name:  7000
-      - name:  8000
-      - name:  9000
-      - name: 10000
-      - name: 20000
-        show: bonus_reddot
+  code: bonus10.Bonus10
 
 show_player:
   # Make adv bonus targets flash on hit

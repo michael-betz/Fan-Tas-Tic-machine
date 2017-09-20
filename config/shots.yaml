@@ -131,5 +131,4 @@ shot_groups:
     shots: shot_rollover_ll, shot_rollover_lr, shot_rollover_mr, shot_rollover_ml
     rotate_left_events:  s_flipper_left_1_active
     rotate_right_events: s_flipper_right_active
-    reset_events:
-      sg_rollovers_default_lit_complete
+    reset_events: sg_rollovers_default_lit_complete

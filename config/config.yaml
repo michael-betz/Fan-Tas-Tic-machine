@@ -9,6 +9,7 @@ modes:
   - base
   - jet_bumper
   - bonus10
+  - bonus   # End of ball bonus, automatically configured to start when the ball ends
 
 hardware:
   platform: fantastic
