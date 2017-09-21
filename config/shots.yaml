@@ -106,7 +106,8 @@ shots:
 #---------------------------
   shot_target_mm_low:
       switch: s_target_mm_low
-      reset_events: s_outlane_l_active
+      reset_events: 
+        s_outlane_l_active: 3s
       # Use default (off/on) shot profile to light `Ball returns` LED
       show_tokens:
         lights: l_outlane_l
