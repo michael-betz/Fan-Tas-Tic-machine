@@ -8,7 +8,8 @@ class Bonus10(Mode):
 
     def mode_start(self, **kwargs):
         # When the two top targets have been hit, change bumper colors
-        # self.player.jetBumperMultiplier = 1
+        self.player.bonus10HitCount = 0
+        self.player.bonus10Worth = 1000
         self.add_mode_event_handler('shot_adv_bonus_hit', self.hit)
         self.add_mode_event_handler('bonus10_bonus',      self.decrementAniStart )
         self.bls = [ getattr( self.machine.lights, "l_bonus{}".format(i) ) for i in range(10) ]
