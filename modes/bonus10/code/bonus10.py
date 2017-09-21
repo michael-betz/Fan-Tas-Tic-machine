@@ -30,7 +30,7 @@ class Bonus10(Mode):
         if hc <= 4:
             cVal = 150
         elif hc <= 10:
-            cVal = randint(0,4,3)*85
+            cVal = randint(0,4,(3,hc%10))*85
         elif hc == 11:
             # Start mega bonus and killer rainbow animation
             self.player.bonus10Worth += 1000
@@ -40,7 +40,7 @@ class Bonus10(Mode):
         else:
             self.machine.events.post("superMegaHyperBonus")
             return
-        self.cs[:,(hc-1)%10] = cVal
+        self.cs[:,:hc%10] = cVal
         self.colorSet()
     
     def decrementAniStart( self, **kwargs ):
@@ -55,7 +55,7 @@ class Bonus10(Mode):
         if curLed > 0:
             curLed -= 1
             # recursively call again in 0.1 seconds
-            self.delay.reset(100, self.decrementAni, "bonus10AniDelay", curLed=curLed )
+            self.delay.reset(200, self.decrementAni, "bonus10AniDelay", curLed=curLed )
 
     def ultraAniStart( self ):
         for i in range(10):
@@ -65,7 +65,7 @@ class Bonus10(Mode):
     def ultraAni( self ):
         self.cs = roll( self.cs, 1 )
         self.colorSet()
-        self.delay.reset(100, self.ultraAni, "bonus10AniDelay" )
+        self.delay.reset(200, self.ultraAni, "bonus10AniDelay" )
 
 
 
