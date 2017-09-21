@@ -17,7 +17,7 @@ hardware:
 
 rpi_dmd:
   gpio_slowdown: 2
-  pwm_lsb_nanoseconds: 300  
+  pwm_lsb_nanoseconds: 300
 
 kivy_config:
   graphics:
@@ -64,6 +64,7 @@ autofire_coils:
   af_jet_bump_t:
     coil:   c_jet_bump_t
     switch: s_jet_bump_t
+  # Left outlane kickback saver
   af_outlane_l_kickback:
     coil:   c_outlane_l_kickback
     switch: s_outlane_l
@@ -72,6 +73,7 @@ autofire_coils:
       ball_ending: 0
       service_mode_entered: 0
       s_outlane_l_active: 3s
+  # Right outlane gate saver
   af_outlane_r_gate:
     coil:   c_outlane_r_gate
     switch: s_outlane_r
