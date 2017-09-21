@@ -28,17 +28,14 @@ class Bonus10(Mode):
         self.player.bonus10HitCount += 1
         hc = self.player.bonus10HitCount
         if hc <= 4:
-            self.cs[:,:hc] = 150
-            self.colorSet()
-            return
+            cval = 150
         elif hc <= 10:
             # Red and blue channel, 150 --> 0
-            tmp = 150-arange(hc)*ones((3,1))/9*150
+            # tmp = 150-arange(hc)*ones((3,1))/9*150
             # Green channel, 150 --> 255
-            tmp[1,:] = linspace(150,255,hc)
-            #self.cs[:,:hc] = randint(0,4,(3,hc%10))*85
-            self.cs[:,:hc] = tmp
-            self.colorSet()
+            # tmp[1,:] = linspace(150,255,hc)
+            # self.cs[:,:hc] = randint(0,4,(3,hc%10))*85
+            cval = randint(0,4,(3,1))*85
         elif hc == 11:
             # Start mega bonus and killer rainbow animation
             self.player.bonus10Worth += 1000
@@ -48,6 +45,8 @@ class Bonus10(Mode):
         else:
             self.machine.events.post("superMegaHyperBonus")
             return
+        self.cs[:,:hc] = cval
+        self.colorSet()
     
     def decrementAniStart( self, **kwargs ):
         # kwargs = {'hits': 2, 'score': 2000, 'bonus_score': 2000, 'mode': <Mode.bonus10>}
@@ -71,7 +70,7 @@ class Bonus10(Mode):
     def ultraAni( self ):
         self.cs = roll( self.cs, 1 )
         self.colorSet()
-        self.delay.reset(200, self.ultraAni, "bonus10AniDelay" )
+        self.delay.reset(100, self.ultraAni, "bonus10AniDelay" )
 
 
 
