@@ -3,11 +3,10 @@
 mode:
   start_events: ball_starting
   priority: 100
-  # code: base.Base
 
 #-----------------------------------------------------
 # Basic scoring (no special stuff, just simple hits)
-# We use tags on the Switch devices to group the stuff
+# I use tags on the Switch devices to group the stuff
 #-----------------------------------------------------
 scoring:
   # Left and right in and outlane
@@ -20,10 +19,10 @@ scoring:
   sw_captive:
     score: 5
   # The 4 red rollover switches at the bottom
-  # sw_rollover:
-  #   score: 5
+  sw_rollover:
+    score: 50
   sg_rollovers_default_lit_complete:
-    score: 100
+    score: 500
 
 slides:
   scoreSlide:
@@ -45,23 +44,30 @@ slides:
       bitmap_font: True
       text: "Wal\ntz"
       color: Red
+      anchor_x: center
+      anchor_y: middle
       x: 12
       y: 12
       animations:
         show_slide:
           - property: x, y
-            value:  12, 18
+            value:  12, 20
             duration: 0.3s
           - property: x, y
-            value:  18, 18
+            value:  20, 20
             duration: 0.3s
           - property: x, y
-            value:  18, 12
+            value:  20, 12
             duration: 0.3s
           - property: x, y
             value:  12, 12
             duration: 0.3s
             repeat: True
+    - type: text
+      font_name: emulogic
+      bitmap_font: True
+      text: "500"
+      color: 999999
 
 slide_player:
   single_player_ball_started: 

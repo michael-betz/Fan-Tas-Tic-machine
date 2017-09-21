@@ -27,15 +27,18 @@ class Bonus10(Mode):
     def hit( self, **kwargs ):
         self.player.bonus10HitCount += 1
         hc = self.player.bonus10HitCount
-        if hc <= 5:
+        if hc <= 4:
             cVal = 150
         elif hc <= 10:
             cVal = randint(0,4,3)*85
         elif hc == 11:
             # Start mega bonus and killer rainbow animation
+            self.player.bonus10Worth += 1000
             self.ultraAniStart()
+            self.machine.events.post("superMegaHyperBonus")
             return
         else:
+            self.machine.events.post("superMegaHyperBonus")
             return
         self.cs[:,(hc-1)%10] = cVal
         self.colorSet()
@@ -56,7 +59,7 @@ class Bonus10(Mode):
 
     def ultraAniStart( self ):
         for i in range(10):
-            self.cs[:,i] = array( hsv_to_rgb( i/10, 1, 1 ) ) * 255
+            self.cs[:,i] = array( hsv_to_rgb( i/20, 1, 1 ) ) * 255
         self.ultraAni()
 
     def ultraAni( self ):

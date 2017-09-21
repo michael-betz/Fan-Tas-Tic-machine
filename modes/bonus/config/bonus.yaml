@@ -6,7 +6,7 @@
 mode_settings:
   bonus_entries:
     - event: bonus10_bonus
-      score: 1000
+      score: current_player.bonus10Worth
       player_score_entry: bonus10HitCount
       reset_player_score_entry: True
       skip_if_zero: True
@@ -17,7 +17,7 @@ slide_player:
 slides:
   bonus10_slide:
     - type: text
-      text: "Bonus\n(player1|bonus10HitCount)\nx1000"
+      text: "Bonus\n(player1|bonus10HitCount)\nx(player1|bonus10Worth)"
       font_name: CG-pixel
       color: white
       bitmap_font: True

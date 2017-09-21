@@ -11,12 +11,12 @@ mode:
 scoring:
   # The 3 top jet-bumpers have a multiplier
   sg_jetbumptargets_complete:
-    jetBumperMultiplier: 1
+    jetBumperWorth: 20
   sw_jetBumper:
-    score: current_player.jetBumperMultiplier
+    score: current_player.jetBumperWorth
   # RUBBER bands on top part
   sw_rubber:
-    score: 1    
+    score: 10
 
 #---------------------------
 # Target shots
@@ -54,7 +54,7 @@ shot_groups:
 slides:
   slide_jetBumpMultiplier:
     - type: text
-      text: "BUMP\nx(player1|jetBumperMultiplier)"
+      text: "BUMP\n(player1|jetBumperWorth)"
       font_name: visitor
       color: 88FF88
       bitmap_font: True

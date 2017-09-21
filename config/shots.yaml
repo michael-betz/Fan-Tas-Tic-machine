@@ -101,26 +101,23 @@ shots:
       lights: l_rollover_lr
   shot_adv_bonus:
     switch: s_rollover_tl, s_rollover_tr, s_target_ml_low, s_target_mr_low
-
 #---------------------------
-# Targets
+# Middle Target left outlane
 #---------------------------
-  # The 3 targets in the middle ...
-  # shot_target_ml_low:
-  #   switch: s_target_ml_low
-  #   show_tokens:
-  #     lights: l_target_ml
-  #   profile: grad
   shot_target_mm_low:
-    switch: s_target_mm_low
-    show_tokens:
-      lights: l_target_mm
-    profile: grad
-  # shot_target_mr_low:
-  #   switch: s_target_mr_low
-  #   show_tokens:
-  #     lights: l_target_mr
-  #   profile: grad  
+      switch: s_target_mm_low
+      reset_events: s_outlane_l_active
+      # Use default (off/on) shot profile to light `Ball returns` LED
+      show_tokens:
+        lights: l_outlane_l
+
+show_player:
+  s_target_mm_low_active:
+    blinkenShow:
+      loops: 2
+      show_tokens:
+        lights: l_target_mm
+        color: FFFFFF
 
 #---------------------------
 # Shot groups / carousels
