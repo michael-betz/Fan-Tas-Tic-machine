@@ -166,6 +166,10 @@ slide_player:
     wndScreenSlide:
       target: wndscreen
 
+show_player:
+  game_will_end:
+    end_of_game_show
+
 #------------------------------------
 # Styles don't seem to work yet :(
 #------------------------------------
