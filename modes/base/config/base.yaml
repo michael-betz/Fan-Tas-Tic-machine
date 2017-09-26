@@ -9,9 +9,6 @@ mode:
 # I use tags on the Switch devices to group the stuff
 #-----------------------------------------------------
 scoring:
-  # Left and right in and outlane
-  sw_lane:
-    score: 75
   # All yellow targets (strong shots)
   # sw_target:
   #   score: 5
@@ -23,6 +20,11 @@ scoring:
     score: 50
   sg_rollovers_default_lit_complete:
     score: 500
+  # Hit center target to light up "Ball returns" 
+  # in left bottom outlane, to kick ball back onto
+  # playfield and score 3000 points
+  s_outlane_l_active{current_player.shot_target_mm_low_default==1}:
+    score: 3000
 
 slides:
   scoreSlide:
@@ -78,13 +80,13 @@ slide_player:
       expire: 2s
 
 sound_player:
-  shot_rollover_tl: elec_wood
-  shot_rollover_tr: perc_snap2
+  shot_adv_bonus_hit: elec_wood
   sg_rollovers_default_unlit_hit: blipPool
   sg_rollovers_default_lit_hit: elec_twip
   sg_rollovers_default_lit_complete: waltz
   shot_target_ml_low: elec_fuzz_tom
   sw_target: drumCymbalPool
+  ball_drain: vinyl_backspin
 
 show_player:
   sg_rollovers_default_lit_complete:

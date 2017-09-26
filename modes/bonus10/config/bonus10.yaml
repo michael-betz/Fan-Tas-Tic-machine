@@ -2,6 +2,7 @@
 #-------------------------------
 # Controls the 10 playfield Bonus lights
 #-------------------------------
+# bonus is advanced by top 2 rollovers or middle 2 targets
 mode:
   start_events: ball_starting
   priority: 101

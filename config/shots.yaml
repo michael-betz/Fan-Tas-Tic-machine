@@ -102,7 +102,7 @@ shots:
   shot_adv_bonus:
     switch: s_rollover_tl, s_rollover_tr, s_target_ml_low, s_target_mr_low
 #---------------------------
-# Middle Target activates left outlane saver
+# Left outlane saver
 #---------------------------
   shot_target_mm_low:
       switch: s_target_mm_low
@@ -112,6 +112,17 @@ shots:
       # Use default (off/on) shot profile to light `Ball returns` LED
       show_tokens:
         lights: l_outlane_l
+#---------------------------
+# Right outlane saver
+#---------------------------
+  # shot_target_mm_low_second_time:
+  #     hit_events: s_target_mm_low_active{current_player.shot_target_mm_low_default==1}
+  #     reset_events:
+  #       ball_ending: 0
+  #       s_outlane_r_active: 0.5s
+  #     # Use default (off/on) shot profile to light `Ball returns` LED
+  #     show_tokens:
+  #       lights: l_outlane_r
 
 show_player:
   s_target_mm_low_active:

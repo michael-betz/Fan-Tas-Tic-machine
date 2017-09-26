@@ -2,7 +2,9 @@
 #-------------------------------
 # Everything Jet-bumper related
 #-------------------------------
-# Includes the multiplier, the 2 top targets and the rubbers
+# * Top center jet bumper always lit and scores 100
+# * Top left or right target will lite the other 3
+#   bumpers to score 100 instead of 10 points
 
 mode:
   start_events: ball_starting

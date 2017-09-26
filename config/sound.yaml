@@ -1,6 +1,6 @@
 #config_version=5
 sound_system:
-  use_sdl_mixer_loader: False
+  # use_sdl_mixer_loader: False
   master_volume: 1.0
   tracks:
     music:
@@ -16,26 +16,26 @@ sound_system:
 # TODO: right now I cannot set `simultaneous_limit=0` as there is some
 # bug preventing any music playing at all. That means every-time a ball is
 # plungered, a new music track is queued (and played once doen wit the previous track)
-# sound_player:
-#   game_started:
-#     orchestraTuneUp:
-#       action: play
-#       loops: -1
-#   balldevice_playfield_ball_enter:
-#     orchestraTuneUp:
-#       action: stop
-#     musicPool:
-#       action: play
-#   mode_game_stopped:
-#     orchestraTuneUp:
-#       action: stop
-#     musicPool:
-#       action: stop
-#   mode_attract_started:
-#     orchestraTuneUp:
-#       action: stop
-#     musicPool:
-#       action: stop
+sound_player:
+  # game_started:
+  #   orchestraTuneUp:
+  #     action: play
+  #     loops: -1
+  balldevice_playfield_ball_enter:
+    orchestraTuneUp:
+      action: stop
+    musicPool:
+      action: play
+  mode_game_stopped:
+    orchestraTuneUp:
+      action: stop
+    musicPool:
+      action: stop
+  mode_attract_started:
+    orchestraTuneUp:
+      action: stop
+    musicPool:
+      action: stop
 
 #----------------------------------------
 # Audio asset management

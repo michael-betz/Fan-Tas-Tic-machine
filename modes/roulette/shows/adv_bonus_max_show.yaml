@@ -1,0 +1,14 @@
+# show_version=5
+- time: 0
+  slides:
+    star_show_slide:
+    - type: text
+      font_name: CG-pixel
+      bitmap_font: True
+      text: "MAX\nBONUS"
+      color: cyan
+    - type: rectangle
+      width: 32
+      height: 20
+      color: red
+- time: '+3s'

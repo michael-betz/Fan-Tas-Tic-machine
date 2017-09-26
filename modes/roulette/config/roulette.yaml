@@ -1,0 +1,89 @@
+#config_version=5
+#-------------------------------
+# Controls the roulette wheel
+#-------------------------------
+mode:
+  start_events: ball_starting
+  priority: 101
+
+event_player:
+  ball_hold_bh_captive_l_full:
+    roulette_SPIN
+  ball_hold_bh_captive_t_full:
+    roulette_SPIN
+  ball_hold_bh_captive_r_full:
+    roulette_SPIN
+
+random_event_player:
+    roulette_SPIN:
+      # scope: machine
+      # force_different: False
+      # force_all: False
+      events:
+        # 500 + 1 star, 3 stars to shoot again
+        roulette_star: 250
+        # scores 3 x the lit bonus value
+        roulette_triple_bonus: 83
+        # scores 3000
+        roulette_3000: 166
+        # scores 2 x the lit bonus value
+        roulette_double_bonus: 83
+        # scores the lit (highest) bonus value
+        roulette_bonus: 166
+        # bonus to 10 x 1000
+        roulette_adv_bonus_max: 1000 #83
+        # light A&B lanes, once lit score 3000
+        roulette_ab_lanes: 83
+        # 500 + open the gate
+        roulette_open_gate: 86
+
+scoring:
+  roulette_star:
+    score: 500
+    starCount: 1
+  roulette_triple_bonus:
+    score: 3 * current_player.bonus10Worth * current_player.bonus10HitCount
+  roulette_3000:
+    score: 3000
+  roulette_double_bonus:
+    score: 2 * current_player.bonus10Worth * current_player.bonus10HitCount
+  roulette_bonus:
+    score: 1 * current_player.bonus10Worth * current_player.bonus10HitCount
+  roulette_ab_lanes:
+    score: 500    
+
+show_player:
+  roulette_star:
+    star_show:
+      loops: 0
+      events_when_stopped: roulette_done
+  roulette_triple_bonus:
+    tripple_bonus_show:
+      loops: 0
+      events_when_stopped: roulette_done
+  roulette_3000:
+    3000_show:
+      loops: 0
+      events_when_stopped: roulette_done
+  roulette_double_bonus:
+    double_bonus_show:
+      loops: 0
+      events_when_stopped: roulette_done
+  roulette_bonus:
+    bonus_show:
+      loops: 0
+      events_when_stopped: roulette_done
+  roulette_adv_bonus_max:
+    adv_bonus_max_show:
+      loops: 0
+      events_when_stopped: roulette_done
+  roulette_ab_lanes:
+    ab_lanes_show:
+      loops: 0
+      events_when_stopped: roulette_done
+  roulette_open_gate:
+    open_gate_show:
+      loops: 0
+      events_when_stopped: roulette_done
+    
+

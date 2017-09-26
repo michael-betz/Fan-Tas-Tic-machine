@@ -12,6 +12,7 @@ class Bonus10(Mode):
         self.player.bonus10Worth = 1000
         self.add_mode_event_handler('shot_adv_bonus_hit', self.hit)
         self.add_mode_event_handler('bonus10_bonus',      self.decrementAniStart )
+        self.add_mode_event_handler('roulette_adv_bonus_max', self.hitMax)
         self.bls = [ getattr( self.machine.lights, "l_bonus{}".format(i) ) for i in range(10) ]
         self.cs = zeros(30,dtype=uint8).reshape((3,10))
         self.colorSet()
@@ -24,6 +25,12 @@ class Bonus10(Mode):
     def mode_stop(self, **kwargs):
         self.cs[:] = 0
         self.colorSet()
+    
+    def hitMax( self, **kwargs ):
+        if self.player.bonus10HitCount < 10:
+            self.hit()
+            # recursively call again in 0.1 seconds
+            self.delay.reset(200, self.hitMax, "bonus10AniDelay" )
 
     def hit( self, **kwargs ):
         self.player.bonus10HitCount += 1

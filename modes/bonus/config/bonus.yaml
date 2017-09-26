@@ -17,6 +17,9 @@ mode_settings:
 slide_player:
   bonus10_bonus: bonus10_slide
 
+sound_player:
+  bonus10_bonus: ambi_choir
+
 slides:
   bonus10_slide:
     - type: text
