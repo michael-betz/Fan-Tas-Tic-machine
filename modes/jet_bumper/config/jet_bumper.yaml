@@ -13,7 +13,7 @@ mode:
 scoring:
   # The 3 top jet-bumpers have a multiplier
   sg_jetbumptargets_complete:
-    jetBumperWorth: 20
+    jetBumperWorth: 100
   sw_jetBumper:
     score: current_player.jetBumperWorth
   # RUBBER bands on top part

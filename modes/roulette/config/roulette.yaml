@@ -15,7 +15,7 @@ event_player:
     roulette_SPIN
 
 random_event_player:
-    roulette_SPIN:
+    roulette_choose:
       # scope: machine
       # force_different: False
       # force_all: False
@@ -31,7 +31,7 @@ random_event_player:
         # scores the lit (highest) bonus value
         roulette_bonus: 166
         # bonus to 10 x 1000
-        roulette_adv_bonus_max: 1000 #83
+        roulette_adv_bonus_max: 83
         # light A&B lanes, once lit score 3000
         roulette_ab_lanes: 83
         # 500 + open the gate
@@ -40,7 +40,6 @@ random_event_player:
 scoring:
   roulette_star:
     score: 500
-    starCount: 1
   roulette_triple_bonus:
     score: 3 * current_player.bonus10Worth * current_player.bonus10HitCount
   roulette_3000:
@@ -53,6 +52,10 @@ scoring:
     score: 500    
 
 show_player:
+  roulette_SPIN:
+    spin_show:
+      loops: 0
+      events_when_stopped: roulette_choose
   roulette_star:
     star_show:
       loops: 0

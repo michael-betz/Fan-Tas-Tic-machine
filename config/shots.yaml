@@ -28,56 +28,81 @@ shot_profiles:
         - name: 3
         - name: 4
           show: blinkenShowWhite
+    stars:
+      show: stars
+      states:
+        - name: 0
+        - name: 1
+        - name: 2
+        - name: 3
 shows:
-    rainbow:
-      - lights:
-          (lights): off
-      - lights:
-          (lights): white-f1s
-      - lights:
-          (lights): green-f1s
-      - lights:
-          (lights): red-f1s
-      - lights:
-          (lights): yellow-f1s
-      - lights:
-          (lights): blue-f1s
-      - lights:
-          (lights): orange-f1s
-      - lights:
-          (lights): magenta-f1s
-      - lights:
-          (lights): cyan-f1s
-      - lights:
-          (lights): purple-f1s
+  stars:
+    - lights:
+        l_star1: off
+        l_star2: off
+        l_star3: off
+    - lights:
+        l_star1: FFFFFF
+        l_star2: off
+        l_star3: off
+    - lights:
+        l_star1: FFFFFF
+        l_star2: FFFFFF
+        l_star3: off
+    - lights:
+        l_star1: FFFF88
+        l_star2: FFFF88
+        l_star3: FFFF88
 
-    grad:
-      - lights:
-          (lights): 000000
-      - lights:
-          (lights): 111111
-      - lights:
-          (lights): 888888
-      - lights:
-          (lights): FFFFFF      
+  rainbow:
+    - lights:
+        (lights): off
+    - lights:
+        (lights): white-f1s
+    - lights:
+        (lights): green-f1s
+    - lights:
+        (lights): red-f1s
+    - lights:
+        (lights): yellow-f1s
+    - lights:
+        (lights): blue-f1s
+    - lights:
+        (lights): orange-f1s
+    - lights:
+        (lights): magenta-f1s
+    - lights:
+        (lights): cyan-f1s
+    - lights:
+        (lights): purple-f1s
 
-    blinkenShowWhite:
-      - time: 0
-        lights:
-          (lights): FFFFFF
-      - time: +0.1s
-        lights:
-          (lights): 000000
-      - time: +0.1s    
+  grad:
+    - lights:
+        (lights): 000000
+    - lights:
+        (lights): 111111
+    - lights:
+        (lights): 888888
+    - lights:
+        (lights): FFFFFF      
 
-    blinkenShow:
-      - time: 0
-        lights:
-          (lights): (color)
-      - time: +0.1s
-        lights:
-          (lights): 000000
-      - time: +0.1s      
+  blinkenShowWhite:
+    - time: 0
+      lights:
+        (lights): FFFFFF
+    - time: +0.1s
+      lights:
+        (lights): 000000
+    - time: +0.1s    
+
+  blinkenShow:
+    - time: 0
+      lights:
+        (lights): (color)
+    - time: +0.1s
+      lights:
+        (lights): 000000
+    - time: +0.1s      
 
 shots:
   #---------------------------
@@ -102,28 +127,44 @@ shots:
   shot_adv_bonus:
     switch: s_rollover_tl, s_rollover_tr, s_target_ml_low, s_target_mr_low
 #---------------------------
-# Left outlane saver
+# Outlane savers
 #---------------------------
+# Left outlane kickback
   shot_target_mm_low:
-      switch: s_target_mm_low
-      reset_events:
-        ball_ending: 0
-        s_outlane_l_active: 0.5s
-      # Use default (off/on) shot profile to light `Ball returns` LED
-      show_tokens:
-        lights: l_outlane_l
+    switch: s_target_mm_low
+    reset_events:
+      ball_ending: 0
+      s_outlane_l_active: 0.5s
+    # Use default (off/on) shot profile to light `Ball returns` LED
+    show_tokens:
+      lights: l_outlane_l
+# Right outlane gate saver
+  shot_gate_light:
+    hit_events: roulette_open_gate
+    reset_events:
+      ball_ending: 0
+      s_outlane_r_active: 0.5s
+    # Use default (off/on) shot profile to light `Ball returns` LED
+    show_tokens:
+      lights: l_outlane_r
 #---------------------------
-# Right outlane saver
+# AB lanes
+#---------------------------   
+  shot_AB_lanes:
+    hit_events: roulette_ab_lanes
+    # Use default (off/on) shot profile to light `Ball returns` LED
+    show_tokens:
+      lights: l_A_lane, l_B_lane
 #---------------------------
-  # shot_target_mm_low_second_time:
-  #     hit_events: s_target_mm_low_active{current_player.shot_target_mm_low_default==1}
-  #     reset_events:
-  #       ball_ending: 0
-  #       s_outlane_r_active: 0.5s
-  #     # Use default (off/on) shot profile to light `Ball returns` LED
-  #     show_tokens:
-  #       lights: l_outlane_r
+# 3 x Stars
+#---------------------------
+  shot_star_advance:
+    hit_events: roulette_star
+    profile: stars
 
+#---------------------------
+# Outlane saver lightshows
+#---------------------------
 show_player:
   s_target_mm_low_active:
     blinkenShow:
@@ -137,7 +178,13 @@ show_player:
       loops: 15
       show_tokens:
         lights: l_outlane_l
-        color: FFFFFF
+        color: FF0000
+  s_outlane_r_active{current_player.shot_gate_light_default==1}:
+    blinkenShow:
+      loops: 15
+      show_tokens:
+        lights: l_outlane_r
+        color: FF0000
 
 #---------------------------
 # Shot groups / carousels
