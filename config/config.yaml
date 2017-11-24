@@ -165,7 +165,7 @@ displays:
 
 rgb_dmds:
   my_dmd:
-     brightness: 100
+     brightness: 1
      platform: rpi_dmd
      source_display: wnddmd
      fps: 30
