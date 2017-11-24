@@ -13,6 +13,7 @@ scoring:
 
 shots:
   shot_adv_bonus:
+    switch: s_rollover_tl, s_rollover_tr, s_target_ml_low, s_target_mr_low
     profile: bonus10_profile
 
 shot_profiles:

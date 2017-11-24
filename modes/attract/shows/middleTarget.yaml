@@ -2,7 +2,6 @@
 - time: 0
   lights:
     t_middle_arrow: 000000-f1s
-    l_string: red
 - time: +2
   lights:
     l_target_ml: 909000-f1s
@@ -10,7 +9,6 @@
   lights:
     l_target_ml: 000000-f1s
     l_target_mm: 909000-f1s
-    l_string: green
 - time: +1.1
   lights:
     l_target_mm: 000000-f1s
@@ -18,7 +16,6 @@
 - time: +1.1
   lights:
     l_target_mr: 000000-f1s
-    l_string: blue
 - time: +2
   lights:
     l_target_mr: 909000-f1s
@@ -26,7 +23,6 @@
   lights:
     l_target_mm: 909000-f1s
     l_target_mr: 000000-f1s
-    l_string: off
 - time: +1.1
   lights:
     l_target_ml: 909000-f1s

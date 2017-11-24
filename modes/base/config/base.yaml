@@ -87,3 +87,57 @@ show_player:
       show_tokens:
           lights: l_rollover_ll, l_rollover_ml, l_rollover_lr, l_rollover_mr
           color: FF0000
+
+
+shots:
+  #---------------------------
+  # Rollovers
+  #---------------------------
+  shot_rollover_ml:
+    switch: s_rollover_ml
+    show_tokens:
+      lights: l_rollover_ml
+  shot_rollover_mr:
+    switch: s_rollover_mr
+    show_tokens:
+      lights: l_rollover_mr
+  shot_rollover_ll:
+    switch: s_rollover_ll
+    show_tokens:
+      lights: l_rollover_ll
+  shot_rollover_lr:
+    switch: s_rollover_lr
+    show_tokens:
+      lights: l_rollover_lr
+
+#---------------------------
+# Targets
+#---------------------------
+  # The 3 targets in the middle ...
+  # shot_target_ml_low:
+  #   switch: s_target_ml_low
+  #   show_tokens:
+  #     lights: l_target_ml
+  #   profile: grad
+  shot_target_mm_low:
+    switch: s_target_mm_low
+    show_tokens:
+      lights: l_target_mm
+    profile: grad
+  # shot_target_mr_low:
+  #   switch: s_target_mr_low
+  #   show_tokens:
+  #     lights: l_target_mr
+  #   profile: grad  
+
+#---------------------------
+# Shot groups / carousels
+#---------------------------
+# 4 rollover carousel
+shot_groups:
+  sg_rollovers:
+    shots: shot_rollover_ll, shot_rollover_lr, shot_rollover_mr, shot_rollover_ml
+    rotate_left_events:  s_flipper_left_1_active
+    rotate_right_events: s_flipper_right_active
+    reset_events:
+      sg_rollovers_default_lit_complete          
