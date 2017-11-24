@@ -1,0 +1,34 @@
+#config_version=5
+#-------------------------------
+# Controls the end of ball bonus slides
+#-------------------------------
+
+mode_settings:
+  display_delay_ms: 750
+  hurry_up_delay_ms: 0
+  hurry_up_event: flipper_cancel
+  bonus_entries:
+    - event: bonus10_bonus
+      score: current_player.bonus10Worth
+      player_score_entry: bonus10HitCount
+      reset_player_score_entry: True
+      skip_if_zero: True
+
+slide_player:
+  bonus10_bonus: bonus10_slide
+
+sound_player:
+  bonus10_bonus: ambi_choir
+
+slides:
+  bonus10_slide:
+    - type: text
+      text: "Bonus\n(player1|bonus10HitCount)\nx(player1|bonus10Worth)"
+      font_name: CG-pixel
+      color: white
+      bitmap_font: True
+    - type: image
+      image: bg19
+      fps: 30
+      loops: 0
+

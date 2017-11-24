@@ -3,27 +3,38 @@
 mode:
   start_events: ball_starting
   priority: 100
-  # code: base.Base
 
 #-----------------------------------------------------
 # Basic scoring (no special stuff, just simple hits)
-# We use tags on the Switch devices to group the stuff
+# I use tags on the Switch devices to group the stuff
 #-----------------------------------------------------
 scoring:
-  # Left and right in and outlane
-  sw_lane:
-    score: 75
-  # All yellow targets (strong shots)
-  # sw_target:
-  #   score: 5
-  # CAPTIVE Holes
-  sw_captive:
-    score: 5
   # The 4 red rollover switches at the bottom
-  # sw_rollover:
-  #   score: 5
+  sw_rollover:
+    score: 50
+  # Waltz bonus
   sg_rollovers_default_lit_complete:
-    score: 100
+    score: 3000
+  # Hit center target to light up "Ball returns" 
+  # in left bottom outlane, to kick ball back onto
+  # playfield and score 3000 points
+  s_outlane_l_active{current_player.shot_target_mm_low_default==1}:
+    score: 3000
+  # Gate save scores 3000
+  s_outlane_r_active{current_player.shot_gate_light_default==1}:
+    score: 3000
+  # When AB lanes light are ON, they score 3000
+  s_lane_tl_active{current_player.shot_AB_lanes_default==1}:
+    score: 3000
+  s_lane_tr_active{current_player.shot_AB_lanes_default==1}:
+    score: 3000
+
+#-------------------    
+# 3 stars lit = extra ball
+#-------------------
+# extra_balls:
+#   three_stars:
+#     award_events: shot_star_advance_3_hit
 
 slides:
   scoreSlide:
@@ -45,23 +56,30 @@ slides:
       bitmap_font: True
       text: "Wal\ntz"
       color: Red
+      anchor_x: center
+      anchor_y: middle
       x: 12
       y: 12
       animations:
         show_slide:
           - property: x, y
-            value:  12, 18
+            value:  12, 20
             duration: 0.3s
           - property: x, y
-            value:  18, 18
+            value:  20, 20
             duration: 0.3s
           - property: x, y
-            value:  18, 12
+            value:  20, 12
             duration: 0.3s
           - property: x, y
             value:  12, 12
             duration: 0.3s
             repeat: True
+    - type: text
+      font_name: emulogic
+      bitmap_font: True
+      text: "3k"
+      color: BBBBBB
 
 slide_player:
   single_player_ball_started: 
@@ -72,13 +90,13 @@ slide_player:
       expire: 2s
 
 sound_player:
-  shot_rollover_tl: elec_wood
-  shot_rollover_tr: perc_snap2
+  shot_adv_bonus_hit: elec_wood
   sg_rollovers_default_unlit_hit: blipPool
   sg_rollovers_default_lit_hit: elec_twip
   sg_rollovers_default_lit_complete: waltz
   shot_target_ml_low: elec_fuzz_tom
   sw_target: drumCymbalPool
+  ball_drain: vinyl_backspin
 
 show_player:
   sg_rollovers_default_lit_complete:

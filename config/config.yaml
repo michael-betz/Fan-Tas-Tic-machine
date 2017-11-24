@@ -7,16 +7,18 @@ config:
 
 modes:
   - base
+  # Increase jet-bumper value with top 2 targets
   - jet_bumper
+  # Track bonus points with LED row
   - bonus10
+  # End of ball bonus, automatically configured to start when the ball ends
+  - bonus
+  # ball hold, spin the well and give out random rewards
+  - roulette
 
 hardware:
   platform: fantastic
   rgb_dmd: rpi_dmd
-
-kivy_config:
-  graphics:
-    multisamples: 0
 
 fantastic:
   debug: True
@@ -29,8 +31,19 @@ fantastic:
 # Player variables
 #-------------------
 player_vars:
-  jetBumperMultiplier:
-    initial_value: 1
+  # Hom much do different tragets score at the beginning
+  jetBumperWorth:
+    initial_value: 10
+  # Will change to 2000 when ultraBonus is achieved
+  bonus10Worth:
+    initial_value: 1000
+
+# extra_ball_groups:
+#   main:
+#     enabled: yes
+#     award_events: shot_star_advance_3_hit
+#     max_lit: 1
+#     max_per_ball: 2
 
 #-------------------
 # ** Only 1 (so far) **
@@ -56,12 +69,24 @@ autofire_coils:
   af_jet_bump_t:
     coil:   c_jet_bump_t
     switch: s_jet_bump_t
+  # Left outlane kickback saver
   af_outlane_l_kickback:
     coil:   c_outlane_l_kickback
     switch: s_outlane_l
+    enable_events: shot_target_mm_low_hit
+    disable_events: 
+      ball_ending: 0
+      service_mode_entered: 0
+      s_outlane_l_active: 3s
+  # Right outlane gate saver
   af_outlane_r_gate:
     coil:   c_outlane_r_gate
     switch: s_outlane_r
+    enable_events: roulette_open_gate
+    disable_events: 
+      ball_ending: 0
+      service_mode_entered: 0
+      s_outlane_r: 3s
 
 #-------------------
 # ** Ball Devices **
@@ -80,6 +105,7 @@ ball_devices:
     eject_timeouts: 3s
     tags: ball_add_live
     mechanical_eject: True
+  # SPIN ball holds
   bd_captive_l:
     ball_switches: s_captive_l
     eject_coil: c_captive_l
@@ -96,6 +122,17 @@ ball_devices:
     entrance_count_delay: 100ms
     eject_timeouts: 1s
 
+ball_holds:
+  bh_captive_l:
+    hold_devices: bd_captive_l
+    release_one_events: roulette_done
+  bh_captive_t:
+    hold_devices: bd_captive_t
+    release_one_events: roulette_done
+  bh_captive_r:
+    hold_devices: bd_captive_r
+    release_one_events: roulette_done
+
 flippers:
   left_flipper:
     main_coil: c_flipper_left
@@ -103,7 +140,6 @@ flippers:
   right_flipper:
     main_coil: c_flipper_right
     activation_switch: s_flipper_right
-
 
 #-------------------------------------------------------
 # Multimedia stuff
@@ -144,17 +180,19 @@ slides:
       width: 32
       height: 32
       source_display: wnddmd
-      # effects:
-      #   - type: color_dmd
-      #     dots_x: 32
-      #     dots_y: 32
-      #     blur: 0.01
   
 slide_player:
   mc_ready:
     wndScreenSlide:
       target: wndscreen
 
+show_player:
+  game_will_end:
+    end_of_game_show
+
+#------------------------------------
+# Styles don't seem to work yet :(
+#------------------------------------
 # widget_styles:
 #   text_default:
 #     font_name: CG-pixel

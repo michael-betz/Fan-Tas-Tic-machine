@@ -2,7 +2,9 @@
 #-------------------------------
 # Everything Jet-bumper related
 #-------------------------------
-# Includes the multiplier, the 2 top targets and the rubbers
+# * Top center jet bumper always lit and scores 100
+# * Top left or right target will lite the other 3
+#   bumpers to score 100 instead of 10 points
 
 mode:
   start_events: ball_starting
@@ -11,12 +13,12 @@ mode:
 scoring:
   # The 3 top jet-bumpers have a multiplier
   sg_jetbumptargets_complete:
-    jetBumperMultiplier: 1
+    jetBumperWorth: 100
   sw_jetBumper:
-    score: current_player.jetBumperMultiplier
+    score: current_player.jetBumperWorth
   # RUBBER bands on top part
   sw_rubber:
-    score: 1    
+    score: 10
 
 #---------------------------
 # Target shots
@@ -48,13 +50,12 @@ shot_groups:
     shots: shot_target_tl, shot_target_tr
     rotate_left_events:  s_flipper_left_1_active
     rotate_right_events: s_flipper_right_active
-    reset_events:
-      sg_jetbumptargets_complete
+    reset_events: sg_jetbumptargets_complete, ball_ending
 
 slides:
   slide_jetBumpMultiplier:
     - type: text
-      text: "BUMP\nx(player1|jetBumperMultiplier)"
+      text: "BUMP\n(player1|jetBumperWorth)"
       font_name: visitor
       color: 88FF88
       bitmap_font: True

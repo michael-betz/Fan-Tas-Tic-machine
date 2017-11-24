@@ -1,0 +1,14 @@
+# show_version=5
+- time: 0
+  slides:
+    spin_show_slide:
+    - type: text
+      font_name: CG-pixel
+      bitmap_font: True
+      text: "SPIN"
+      color: white
+    - type: rectangle
+      width: 32
+      height: 20
+      color: blue
+- time: '+1s'

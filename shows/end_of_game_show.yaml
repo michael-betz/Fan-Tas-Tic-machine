@@ -1,0 +1,28 @@
+# show_version=5
+- time: 0
+  slides:
+    eog_slide_1:
+      transition:
+        type: move_out
+        duration: 1s
+        direction: top
+      widgets:
+      - type: text
+        text: "Game\nOver"
+        font_name: CG-pixel
+        bitmap_font: True
+        color: white
+
+- time: '+2'
+  slides:
+    eog_slide_2:
+      transition:
+        type: move_out
+        duration: 1s
+        direction: top
+      widgets:
+      - type: text
+        text: "(player1|score)"
+        font_name: CG-pixel
+        bitmap_font: True
+        color: white

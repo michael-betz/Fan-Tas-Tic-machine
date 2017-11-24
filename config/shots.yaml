@@ -28,53 +28,78 @@ shot_profiles:
         - name: 3
         - name: 4
           show: blinkenShowWhite
+    stars:
+      show: stars
+      states:
+        - name: 0
+        - name: 1
+        - name: 2
+        - name: 3
 shows:
-    rainbow:
-      - lights:
-          (lights): off
-      - lights:
-          (lights): white-f1s
-      - lights:
-          (lights): green-f1s
-      - lights:
-          (lights): red-f1s
-      - lights:
-          (lights): yellow-f1s
-      - lights:
-          (lights): blue-f1s
-      - lights:
-          (lights): orange-f1s
-      - lights:
-          (lights): magenta-f1s
-      - lights:
-          (lights): cyan-f1s
-      - lights:
-          (lights): purple-f1s
+  stars:
+    - lights:
+        l_star1: off
+        l_star2: off
+        l_star3: off
+    - lights:
+        l_star1: FFFFFF
+        l_star2: off
+        l_star3: off
+    - lights:
+        l_star1: FFFFFF
+        l_star2: FFFFFF
+        l_star3: off
+    - lights:
+        l_star1: FFFF88
+        l_star2: FFFF88
+        l_star3: FFFF88
 
-    grad:
-      - lights:
-          (lights): 000000
-      - lights:
-          (lights): 111111
-      - lights:
-          (lights): 888888
-      - lights:
-          (lights): FFFFFF      
+  rainbow:
+    - lights:
+        (lights): off
+    - lights:
+        (lights): white-f1s
+    - lights:
+        (lights): green-f1s
+    - lights:
+        (lights): red-f1s
+    - lights:
+        (lights): yellow-f1s
+    - lights:
+        (lights): blue-f1s
+    - lights:
+        (lights): orange-f1s
+    - lights:
+        (lights): magenta-f1s
+    - lights:
+        (lights): cyan-f1s
+    - lights:
+        (lights): purple-f1s
 
-    blinkenShowWhite:
-      - time: 0
-        lights:
-          (lights): FFFFFF
-      - time: +0.1s
-        lights:
-          (lights): 000000
-      - time: +0.1s    
+  grad:
+    - lights:
+        (lights): 000000
+    - lights:
+        (lights): 111111
+    - lights:
+        (lights): 888888
+    - lights:
+        (lights): FFFFFF      
 
-    blinkenShow:
-      - time: 0
-        lights:
-          (lights): (color)
-      - time: +0.1s
-        lights:
-          (lights): 000000
-      - time: +0.1s      
+  blinkenShowWhite:
+    - time: 0
+      lights:
+        (lights): FFFFFF
+    - time: +0.1s
+      lights:
+        (lights): 000000
+    - time: +0.1s    
+
+  blinkenShow:
+    - time: 0
+      lights:
+        (lights): (color)
+    - time: +0.1s
+      lights:
+        (lights): 000000
+    - time: +0.1s      

@@ -2,10 +2,11 @@
 #-------------------------------
 # Controls the 10 playfield Bonus lights
 #-------------------------------
-
+# bonus is advanced by top 2 rollovers or middle 2 targets
 mode:
   start_events: ball_starting
   priority: 101
+  code: bonus10.Bonus10
 
 scoring:
   shot_adv_bonus_hit: 
@@ -16,21 +17,37 @@ shots:
     switch: s_rollover_tl, s_rollover_tr, s_target_ml_low, s_target_mr_low
     profile: bonus10_profile
 
-shot_profiles:
-  bonus10_profile:
-    show: bonus_light
-    states:
-      - name:     0
-      - name:  1000
-      - name:  2000
-      - name:  3000
-      - name:  4000
-      - name:  5000
-      - name:  6000
-      - name:  7000
-      - name:  8000
-      - name:  9000
-      - name: 10000
+slides:
+  ultra_bonus10_slide:
+    - type: text
+      text: "\n(player1|bonus10HitCount)\nx(player1|bonus10Worth)"
+      font_name: CG-pixel
+      color: white
+      bitmap_font: True
+    - type: text
+      text: "ULTRA bonus"
+      font_name: CG-pixel
+      color: white
+      y: 23
+      x: 35
+      bitmap_font: True
+      animations:
+        add_to_slide:
+          - property: x
+            value: -25
+            duration: 3s
+          - property: x
+            value: 32
+            duration: 0 s      
+    - type: image
+      image: bg20
+      fps: 30
+      loops: 0
+
+slide_player:
+  superMegaHyperBonus:
+    ultra_bonus10_slide:
+      expire: 3s
 
 show_player:
   # Make adv bonus targets flash on hit
