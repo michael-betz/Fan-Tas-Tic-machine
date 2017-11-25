@@ -15,17 +15,19 @@ modes:
   - bonus
   # ball hold, spin the well and give out random rewards
   - roulette
+  # left and right outlanes and savers
+  - outlanes
 
 hardware:
   platform: fantastic
   rgb_dmd: rpi_dmd
 
-fantastic:
-  debug: True
-  port: /dev/ttyACM0
-  led_clock_0: 3200000  #WS2812 High speed mode
-  led_clock_1: 1700000  #WS2811 Low speed mode
-  led_clock_2: 3200000  #WS2812 High speed mode
+# fantastic:
+#   debug: True
+#   port: /dev/ttyACM0
+#   led_clock_0: 3200000  #WS2812 High speed mode
+#   led_clock_1: 1700000  #WS2811 Low speed mode
+#   led_clock_2: 3200000  #WS2812 High speed mode
 
 #-------------------
 # Player variables
@@ -57,6 +59,7 @@ playfields:
 # ** Autofire coils **
 #-------------------
 autofire_coils:
+  # jet bumpers
   af_jet_bump_low:
     coil:   c_jet_bump_low
     switch: s_jet_bump_low
@@ -73,20 +76,15 @@ autofire_coils:
   af_outlane_l_kickback:
     coil:   c_outlane_l_kickback
     switch: s_outlane_l
-    enable_events: shot_target_mm_low_hit
-    disable_events: 
-      ball_ending: 0
-      service_mode_entered: 0
-      s_outlane_l_active: 3s
+    enable_events: player_shot_left_kickback{value==1}
+    disable_events: ball_ending, service_mode_entered, player_shot_left_kickback{value==0}
   # Right outlane gate saver
+  # (only enabled by roulette)
   af_outlane_r_gate:
     coil:   c_outlane_r_gate
     switch: s_outlane_r
-    enable_events: roulette_open_gate
-    disable_events: 
-      ball_ending: 0
-      service_mode_entered: 0
-      s_outlane_r: 3s
+    enable_events: player_shot_right_gate{value==1}
+    disable_events: ball_ending, service_mode_entered, player_shot_right_gate{value==0}
 
 #-------------------
 # ** Ball Devices **
@@ -170,9 +168,9 @@ rgb_dmds:
      source_display: wnddmd
      fps: 30
 
-rpi_dmd:
-  gpio_slowdown: 2
-  pwm_lsb_nanoseconds: 300
+# rpi_dmd:
+#   gpio_slowdown: 2
+#   pwm_lsb_nanoseconds: 300
 
 slides:
   wndScreenSlide:
@@ -186,9 +184,9 @@ slide_player:
     wndScreenSlide:
       target: wndscreen
 
-show_player:
-  game_will_end:
-    end_of_game_show
+# show_player:
+#   game_will_end:
+#     end_of_game_show
 
 #------------------------------------
 # Styles don't seem to work yet :(

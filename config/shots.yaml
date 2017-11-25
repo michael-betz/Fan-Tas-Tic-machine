@@ -9,6 +9,7 @@ shot_profiles:
       show: rainbow
       states:
         - name: 0
+          start_step: 0
         - name: 1
         - name: 2
         - name: 3
@@ -23,6 +24,7 @@ shot_profiles:
       show: grad
       states:
         - name: 0
+          start_step: 0
         - name: 1
         - name: 2
         - name: 3
@@ -32,6 +34,7 @@ shot_profiles:
       show: stars
       states:
         - name: 0
+          start_step: 0
         - name: 1
         - name: 2
         - name: 3
@@ -42,12 +45,12 @@ shows:
         l_star2: off
         l_star3: off
     - lights:
-        l_star1: FFFFFF
+        l_star1: 888888
         l_star2: off
         l_star3: off
     - lights:
-        l_star1: FFFFFF
-        l_star2: FFFFFF
+        l_star1: 888888
+        l_star2: 888888
         l_star3: off
     - lights:
         l_star1: FFFF88

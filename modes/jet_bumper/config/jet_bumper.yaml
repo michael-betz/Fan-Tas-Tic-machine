@@ -12,7 +12,7 @@ mode:
 
 scoring:
   # The 3 top jet-bumpers have a multiplier
-  sg_jetbumptargets_complete:
+  sg_jetbumptargets_lit_complete:
     jetBumperWorth: 100
   sw_jetBumper:
     score: current_player.jetBumperWorth
@@ -36,7 +36,7 @@ shots:
   # if both are hit, increase jet bumper multiplier value (score_player)
   # and change their color (shot_profile below)
   shot_increaseBumper:
-    advance_events: sg_jetbumptargets_complete
+    advance_events: sg_jetbumptargets_lit_complete
     show_tokens:
       lights: l_jet_bump_t, l_jet_bump_tl, l_jet_bump_tr
     profile: rainbow
@@ -46,11 +46,11 @@ shots:
 #---------------------------
 shot_groups:
   # 2 target at top carousel
-  sg_jetBumpTargets:
+  sg_jetbumptargets:
     shots: shot_target_tl, shot_target_tr
     rotate_left_events:  s_flipper_left_1_active
     rotate_right_events: s_flipper_right_active
-    reset_events: sg_jetbumptargets_complete, ball_ending
+    reset_events: sg_jetbumptargets_lit_complete
 
 slides:
   slide_jetBumpMultiplier:
@@ -61,17 +61,17 @@ slides:
       bitmap_font: True
 
 slide_player:
-  sg_jetbumptargets_complete:
+  sg_jetbumptargets_lit_complete:
     slide_jetBumpMultiplier:
       expire: 1.0s
 
-sound_player:
-  sw_jetBumper: drumTomPool
-  sw_rubber: bdPool
+# sound_player:
+#   sw_jetBumper: drumTomPool
+#   sw_rubber: bdPool
 
 show_player:
   # Make upper targets flash on complete
-  sg_jetbumptargets_complete:
+  sg_jetbumptargets_lit_complete:
     blinkenShow:
       loops: 5
       show_tokens:

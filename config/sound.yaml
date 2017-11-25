@@ -16,26 +16,26 @@ sound_system:
 # TODO: right now I cannot set `simultaneous_limit=0` as there is some
 # bug preventing any music playing at all. That means every-time a ball is
 # plungered, a new music track is queued (and played once doen wit the previous track)
-sound_player:
-  # game_started:
+# sound_player:
+#   game_started:
+#     orchestraTuneUp:
+#       action: play
+#       loops: -1
+#   balldevice_playfield_ball_enter:
+#     orchestraTuneUp:
+#       action: stop
+#     music_pool:
+#       action: play
+  # mode_game_stopped:
   #   orchestraTuneUp:
-  #     action: play
-  #     loops: -1
-  balldevice_playfield_ball_enter:
-    orchestraTuneUp:
-      action: stop
-    musicPool:
-      action: play
-  mode_game_stopped:
-    orchestraTuneUp:
-      action: stop
-    musicPool:
-      action: stop
-  mode_attract_started:
-    orchestraTuneUp:
-      action: stop
-    musicPool:
-      action: stop
+  #     action: stop
+  #   music_pool:
+  #     action: stop
+  # mode_attract_started:
+  #   orchestraTuneUp:
+  #     action: stop
+  #   music_pool:
+  #     action: stop
 
 #----------------------------------------
 # Audio asset management
@@ -46,110 +46,110 @@ assets:
       load:  on_demand
     music:
       track: music
-      streaming: true
+      # streaming: true
     sfx:
       track: sfx
       load:  preload
 
 sound_pools:
-  musicPool:
+  music_pool:
     type: random
     sounds:
-    - barberOfSeville
-    - brandenburg
-    - bumblebee
-    - canCan
-    - carmen
-    - danceMacabre
-    - entryGladiatos
-    - flowerDuet
-    - fourSeasons
-    - goetterfunken
-    - hungarian5
-    - largo
-    - largoAlFactotum
-    - mountainKing
-    - orchestraTuneUp
-    - redetzkyMarch
-    - reedPipes
-    - russianDance
-    - sugarPlumFairy
-    - vienna
-    - wTell
-    - washingtonPost
-    - zarathustra
+      - barberOfSeville
+      - brandenburg
+      - bumblebee
+      - canCan
+      - carmen
+      - danceMacabre
+      - entryGladiatos
+      - flowerDuet
+      - fourSeasons
+      - goetterfunken
+      - hungarian5
+      - largo
+      - largoAlFactotum
+      - mountainKing
+      - orchestraTuneUp
+      - redetzkyMarch
+      - reedPipes
+      - russianDance
+      - sugarPlumFairy
+      - vienna
+      - wTell
+      - washingtonPost
+      - zarathustra
   snPool:
     type: random
     sounds:
-    - sn_dolf
-    - sn_dub
-    - sn_zome
+      - sn_dolf
+      - sn_dub
+      - sn_zome
   snapPool:
     type: random
     sounds:
-    - perc_snap
-    - perc_snap2
+      - perc_snap
+      - perc_snap2
   bassCPool:
     type: random
     sounds:
-    - bass_hit_c
-    - bass_voxy_hit_c
-    - bass_woodsy_c
+      - bass_hit_c
+      - bass_voxy_hit_c
+      - bass_woodsy_c
   drumBassPool:
     type: random
     sounds:
-    - drum_bass_hard
-    - drum_bass_soft
+      - drum_bass_hard
+      - drum_bass_soft
   drumCymbalPool:
     type: random
     sounds:
-    #- drum_cymbal_closed
-    - drum_cymbal_hard
-    - drum_cymbal_open
-    #- drum_cymbal_pedal
-    - drum_cymbal_soft
-    - drum_splash_hard
-    - drum_splash_soft
+      #- drum_cymbal_closed
+      - drum_cymbal_hard
+      - drum_cymbal_open
+      #- drum_cymbal_pedal
+      - drum_cymbal_soft
+      - drum_splash_hard
+      - drum_splash_soft
   drumSnarePool:
     type: random
     sounds:
-    - drum_snare_hard    
-    - drum_snare_soft
+      - drum_snare_hard    
+      - drum_snare_soft
   drumTomPool:
     type: random
     sounds:
-    - drum_tom_hi_hard
-    - drum_tom_hi_soft
-    - drum_tom_lo_hard
-    - drum_tom_lo_soft
-    - drum_tom_mid_hard
-    - drum_tom_mid_soft
+      - drum_tom_hi_hard
+      - drum_tom_hi_soft
+      - drum_tom_lo_hard
+      - drum_tom_lo_soft
+      - drum_tom_mid_hard
+      - drum_tom_mid_soft
   blipPool:
     type: random
     sounds:
-    - elec_blip
-    - elec_blip2
+      - elec_blip
+      - elec_blip2
   beepsPool:
     type: random
     sounds:
-    - elec_beep
-    - elec_twip
-    - elec_plip
-    - elec_pop
-    - elec_flip
+      - elec_beep
+      - elec_twip
+      - elec_plip
+      - elec_pop
+      - elec_flip
   bdPool:
     type: random
     sounds:
-    #- bd_808
-    - bd_ada
-    #- bd_boom
-    - bd_fat
-    #- bd_gas
-    - bd_haus
-    #- bd_klub
-    #- bd_pure
-    - bd_sone
-    - bd_tek
-    - bd_zome
-    - bd_zum
+      #- bd_808
+      - bd_ada
+      #- bd_boom
+      - bd_fat
+      #- bd_gas
+      - bd_haus
+      #- bd_klub
+      #- bd_pure
+      - bd_sone
+      - bd_tek
+      - bd_zome
+      - bd_zum
 

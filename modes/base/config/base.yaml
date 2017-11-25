@@ -13,20 +13,7 @@ scoring:
   sw_rollover:
     score: 50
   # Waltz bonus
-  sg_rollovers_default_lit_complete:
-    score: 3000
-  # Hit center target to light up "Ball returns" 
-  # in left bottom outlane, to kick ball back onto
-  # playfield and score 3000 points
-  s_outlane_l_active{current_player.shot_target_mm_low_default==1}:
-    score: 3000
-  # Gate save scores 3000
-  s_outlane_r_active{current_player.shot_gate_light_default==1}:
-    score: 3000
-  # When AB lanes light are ON, they score 3000
-  s_lane_tl_active{current_player.shot_AB_lanes_default==1}:
-    score: 3000
-  s_lane_tr_active{current_player.shot_AB_lanes_default==1}:
+  sg_rollovers_lit_complete:
     score: 3000
 
 #-------------------    
@@ -85,27 +72,26 @@ slide_player:
   single_player_ball_started: 
     scoreSlide:
       priority: -1
-  sg_rollovers_default_lit_complete: 
+  sg_rollovers_lit_complete: 
     slide_rollOverComplete:
       expire: 2s
 
-sound_player:
-  shot_adv_bonus_hit: elec_wood
-  sg_rollovers_default_unlit_hit: blipPool
-  sg_rollovers_default_lit_hit: elec_twip
-  sg_rollovers_default_lit_complete: waltz
-  shot_target_ml_low: elec_fuzz_tom
-  sw_target: drumCymbalPool
-  ball_drain: vinyl_backspin
+# sound_player:
+#   shot_adv_bonus_hit: elec_wood
+#   sg_rollovers_unlit_hit: blipPool
+#   sg_rollovers_lit_hit: elec_twip
+#   sg_rollovers_lit_complete: waltz
+#   shot_target_ml_low: elec_fuzz_tom
+#   sw_target: drumCymbalPool
+#   ball_drain: vinyl_backspin
 
 show_player:
-  sg_rollovers_default_lit_complete:
+  sg_rollovers_lit_complete:
     blinkenShow:
       loops: 10
       show_tokens:
           lights: l_rollover_ll, l_rollover_ml, l_rollover_lr, l_rollover_mr
           color: FF0000
-
 
 shots:
   #---------------------------
@@ -129,26 +115,6 @@ shots:
       lights: l_rollover_lr
 
 #---------------------------
-# Targets
-#---------------------------
-  # The 3 targets in the middle ...
-  # shot_target_ml_low:
-  #   switch: s_target_ml_low
-  #   show_tokens:
-  #     lights: l_target_ml
-  #   profile: grad
-  shot_target_mm_low:
-    switch: s_target_mm_low
-    show_tokens:
-      lights: l_target_mm
-    profile: grad
-  # shot_target_mr_low:
-  #   switch: s_target_mr_low
-  #   show_tokens:
-  #     lights: l_target_mr
-  #   profile: grad  
-
-#---------------------------
 # Shot groups / carousels
 #---------------------------
 # 4 rollover carousel
@@ -158,4 +124,4 @@ shot_groups:
     rotate_left_events:  s_flipper_left_1_active
     rotate_right_events: s_flipper_right_active
     reset_events:
-      sg_rollovers_default_lit_complete          
+      sg_rollovers_lit_complete
