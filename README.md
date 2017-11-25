@@ -72,8 +72,25 @@ cd ~
 git clone https://github.com/yetifrisstlama/Fan-Tas-Tic-machine.git
 ```
 
+Now `sudo mpf both -t` does run but DMD looks blurry. Apply the patch from
 
+https://github.com/kivy/kivy/issues/5249
 
+```bash
+sudo vim /usr/local/lib/python3.5/dist-packages/kivy/core/text/__init__.py
+```
 
+line 688
 
+```python
+texture = Texture.create(size=(width, height),
+                         mipmap=self.options['mipmap'],
+                         callback=self._texture_fill)
+texture.flip_vertical()
+texture.add_reload_observer(self._texture_refresh)
+#switching off linear interpolation
++ texture.mag_filter="nearest"
++ texture.min_filter="nearest"
+self.texture = texture
+```
 
