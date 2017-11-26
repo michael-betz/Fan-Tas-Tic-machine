@@ -3,78 +3,58 @@ Game Rules for the Fan-Tas-Tic pinball machine
 
 # Installing everything from scratch
 
-## Raspi setup
-(written 10/24/2017)
-
-	* Get a 16 GB SD card
-	* Download and install Raspian on it
+Fastest is to start with KivyPie
 
 ```bash
-wget http://vx2-downloads.raspberrypi.org/raspbian_lite/images/spbian_lite-2017-09-08/2017-09-07-raspbian-stretch-lite.zipunzip 2017-09-07-raspbian-stretch-lite.zip
-sudo dd bs=4M if=2017-09-07-raspbian-stretch-lite.img of=/dev/mmcblk0 nv=fsync
+wget http://kivypie.mitako.eu/kivy-pie-1.0.zip
+unzip kivy-pie-1.0.zip
+sudo dd bs=4M if=kivy-pie-1.0.img of=/dev/mmcblk0 conv=fsync
 touch /media/michael/boot/ssh
+vim /media/michael/boot/interfaces
+	
+	iface wlan0 inet dhcp
+	        wpa-ssid "ssid"
+	        wpa-psk "password"
+
+vim /boot/cmdline.txt --> add isolcpus=3
 ```
 
-  * boot up, connnect to wired ethernet, ssh in, default password is `raspberry`
+boot it up and ssh into it `sysop@kivypie` Password: `posys`.
 
 ```bash
-ssh pi@raspberrypi
-passwd
-sudo passwd
-sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
-```  
+sudo pipaos-config --expand-rootfs
+sudo umount /tmp
 
-add
-
-		network={
-		    ssid="testing"
-		    psk="testingPassword"
-		}
-
-now wifi is up.
-
-```bash
-sudo raspi-config --> hostname: fantastic  --> timezone: US/Pacific
-sudo apt-get update
-sudo apt-get upgrade
-
-sudo apt-get install vim git python3-pip libopenjp2-7-dev \
-libblas-dev libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev \
-liblapack-dev libsdl2-mixer-dev libgstreamer1.0-dev \
-# gstreamer1.0-plugins-{bad,base,good,ugly} \
-# gstreamer1.0-{omx,alsa}
-
-sudo pip3 install Cython==0.24.1
-sudo pip3 install Pillow
-sudo pip3 install numpy
-sudo pip3 install git+https://github.com/kivy/kivy.git@master
-
+git clone https://github.com/yetifrisstlama/Fan-Tas-Tic-machine.git
 mkdir mpfdev
 cd mpfdev
 git clone https://github.com/yetifrisstlama/mpf.git
 git clone https://github.com/missionpinball/mpf-mc.git
 git clone https://github.com/missionpinball/mpf-examples.git
 git clone https://github.com/hzeller/rpi-rgb-led-matrix.git
+
+sudo pip3 install --install-option="--no-cython-compile" cython==0.24.1
+sudo pip3 install numpy
+
 cd mpf
 git checkout fantastic
 sudo pip3 install -e .
+
 cd ../mpf-mc
+vim setup.py  --> line 467:   if not have_cython or True:
 sudo pip3 install -e .
 
+cd ../rpi-rgb-led-matrix
+sudo make install-python PYTHON=$(which python3)
 sudo vim /etc/modprobe.d/blacklist-rgb-matrix.conf
 --> add `blacklist snd_bcm2835`
-sudo update-initramfs -u
-sudo reboot
-cd ~/mpfdev/rpi-rgb-led-matrix
-sudo make install-python PYTHON=$(which python3)
-
-cd ~
-git clone https://github.com/yetifrisstlama/Fan-Tas-Tic-machine.git
 ```
+ 
+
+### Kivy nearest neighbor hack
 
 Now `sudo mpf both -t` does run but DMD looks blurry. Apply the patch from
-
-https://github.com/kivy/kivy/issues/5249
+https://github.com/kivy/kivy/issues/5249 to fix it. Watch out with tab and sapces etc.
 
 ```bash
 sudo vim /usr/local/lib/python3.5/dist-packages/kivy/core/text/__init__.py
@@ -94,3 +74,21 @@ texture.add_reload_observer(self._texture_refresh)
 self.texture = texture
 ```
 
+### Samba
+
+```bash
+sudo apt-get install samba
+sudo smbpasswd -a sysop
+sudo vim /etc/samba/smb.conf
+[pihome]
+   comment= Pi Home
+   path=/home/pi
+   browseable=Yes
+   writeable=Yes
+   only guest=no
+   create mask=0777
+   directory mask=0777
+   public=no
+sudo /etc/init.d/samba restart
+```
+access from ubuntu: `smb://fantastic/fantastic/`
