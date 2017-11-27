@@ -92,3 +92,17 @@ sudo vim /etc/samba/smb.conf
 sudo /etc/init.d/samba restart
 ```
 access from ubuntu: `smb://fantastic/fantastic/`
+
+### SD card images
+
+__Backup__
+
+```bash
+sudo dd bs=4M if=/dev/mmcblk0 | gzip > fantastic_17_11_26.gz
+```
+
+__Restore__
+
+```bash
+sudo gzip -dc fantastic_17_11_26.gz | dd bs=4M of=/dev/mmcblk0
+```
