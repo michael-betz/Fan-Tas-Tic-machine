@@ -239,7 +239,7 @@ coils:
 
 lights:
   l_A_lane:
-    number: 1-0, 1-18
+    number: 1-0
     default_on_color: ff0000
     tags: t_filter_red
   l_rollover_ml:
@@ -263,7 +263,7 @@ lights:
     default_on_color: ff0000
     tags: t_filter_red
   l_B_lane:
-    number: 1-6
+    number: 1-6, 1-35
     default_on_color: ff0000
     tags: t_filter_red
   l_bonus9:
@@ -342,9 +342,6 @@ lights:
   l_side_mr:
     number: 1-34
     tags: t_side
-  l_lane_b:
-    number: 1-35
-    tags: t_filter_red
   l_side_ur:
     number: 1-36
     tags: t_side
