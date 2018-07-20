@@ -9,6 +9,7 @@ modes:
   - base
   # Increase jet-bumper value with top 2 targets
   - jet_bumper
+  - jet_bumper_strong
   # Track bonus points with LED row
   - bonus10
   # End of ball bonus, automatically configured to start when the ball ends
@@ -22,16 +23,16 @@ hardware:
   platform: fantastic
   rgb_dmd: rpi_dmd
 
-fantastic:
-  debug: True
-  port: /dev/ttyACM0
-  led_clock_0: 3200000  #WS2812 High speed mode
-  led_clock_1: 1700000  #WS2811 Low speed mode
-  led_clock_2: 3200000  #WS2812 High speed mode
+# fantastic:
+#   debug: True
+#   port: /dev/ttyACM0
+#   led_clock_0: 3200000  #WS2812 High speed mode
+#   led_clock_1: 1700000  #WS2811 Low speed mode
+#   led_clock_2: 3200000  #WS2812 High speed mode
 
-rpi_dmd:
-  gpio_slowdown: 2
-  pwm_lsb_nanoseconds: 300
+# rpi_dmd:
+#   gpio_slowdown: 2
+#   pwm_lsb_nanoseconds: 300
 
 #-------------------
 # Player variables
@@ -44,20 +45,13 @@ player_vars:
   bonus10Worth:
     initial_value: 1000
 
-# extra_ball_groups:
-#   main:
-#     enabled: yes
-#     award_events: shot_star_advance_3_hit
-#     max_lit: 1
-#     max_per_ball: 2
-
 #-------------------
 # ** Only 1 (so far) **
 #-------------------
 playfields:
   playfield:
     default_source_device: bd_plunger
-    tags: default  
+    tags: default
 
 #-------------------
 # ** Autofire coils **
@@ -105,7 +99,6 @@ ball_devices:
     ball_switches: s_ball_on_plunger
     entrance_count_delay: 300ms
     eject_timeouts: 3s
-    tags: ball_add_live
     mechanical_eject: True
   # SPIN ball holds
   bd_captive_l:
@@ -178,7 +171,7 @@ slides:
       width: 32
       height: 32
       source_display: wnddmd
-  
+
 slide_player:
   mc_ready:
     wndScreenSlide:

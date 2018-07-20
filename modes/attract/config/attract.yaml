@@ -114,6 +114,14 @@ widgets:
           - property: y
             value: 95
             duration: 7s
+  hs1_widget:
+    - type: text
+      color: black
+      text: "(machine|score1_name)\n(machine|score1_value)"
+      font_name: CG-pixel
+      bitmap_font: True
+      z: 10
+      expire: 5s
 
 animations:
   fade_out:

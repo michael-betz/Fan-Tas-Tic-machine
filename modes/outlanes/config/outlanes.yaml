@@ -5,7 +5,9 @@
 # * Middle yellow target / roulette spin enables outlnane saver
 # * on the left is kickbakc on the right gate
 # this relies on the autofire-coils in config/config.yaml
-# Also takes care of the AB lanes and the 3 star extraball
+# Also takes care of
+#   * AB lanes
+#   * 3 star extraball
 
 mode:
   start_events: ball_starting
@@ -23,7 +25,7 @@ shots:
     # Use default (off/on) shot profile to light `Ball returns` LED
     show_tokens:
       lights: l_outlane_l
-  
+
   right_gate:
     hit_events: roulette_open_gate
     reset_events:
@@ -32,13 +34,13 @@ shots:
     # Use default (off/on) shot profile to light `Ball returns` LED
     show_tokens:
       lights: l_outlane_r
-  
+
   ab_lanes:
     hit_events: roulette_ab_lanes
     reset_events: ball_ending
     show_tokens:
       lights: l_A_lane, l_B_lane
-  
+
   bonus_stars:
     hit_events: roulette_star
     # reset_events: ball_ending
@@ -67,8 +69,8 @@ show_player:
         lights: l_outlane_r
         color: FFFFFF
 
-scoring:
-  # Hit center target to light up "Ball returns" 
+variable_player:
+  # Hit center target to light up "Ball returns"
   # in left bottom outlane, to kick ball back onto
   # playfield and score 3000 points
   s_outlane_l_active{current_player.shot_left_kickback==1}:

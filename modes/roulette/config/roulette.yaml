@@ -4,7 +4,7 @@
 #-------------------------------
 mode:
   start_events: ball_starting
-  priority: 101
+  priority: 100
 
 event_player:
   ball_hold_bh_captive_l_full:
@@ -37,7 +37,7 @@ random_event_player:
         # 500 + open the gate
         roulette_open_gate: 86
 
-scoring:
+variable_player:
   roulette_star:
     score: 500
   roulette_triple_bonus:
@@ -49,7 +49,7 @@ scoring:
   roulette_bonus:
     score: 1 * current_player.bonus10Worth * current_player.bonus10HitCount
   roulette_ab_lanes:
-    score: 500    
+    score: 500
 
 show_player:
   roulette_SPIN:
@@ -88,5 +88,5 @@ show_player:
     open_gate_show:
       loops: 0
       events_when_stopped: roulette_done
-    
+
 

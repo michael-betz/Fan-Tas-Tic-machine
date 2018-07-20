@@ -336,6 +336,7 @@ lights:
     tags: t_star
   l_outlane_r:
     number: 1-31
+    default_on_color: ff0000
     tags: t_filter_red
   l_captive_r:
     number: 1-32, 1-33

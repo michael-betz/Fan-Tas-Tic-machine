@@ -1,13 +1,15 @@
 #config_version=5
+
 sound_system:
-  # use_sdl_mixer_loader: False
+  buffer: 1024
+  channels: 1
   master_volume: 1.0
   tracks:
     music:
-      simultaneous_sounds: 0
-      volume: 1.0
+      simultaneous_sounds: 1
+      volume: 0.8
     sfx:
-      simultaneous_sounds: 8
+      simultaneous_sounds: 4
       volume: 1.0
 
 #----------------------------------------
@@ -15,45 +17,41 @@ sound_system:
 #----------------------------------------
 # TODO: right now I cannot set `simultaneous_limit=0` as there is some
 # bug preventing any music playing at all. That means every-time a ball is
-# plungered, a new music track is queued (and played once doen wit the previous track)
-# sound_player:
-#   game_started:
-#     orchestraTuneUp:
-#       action: play
-#       loops: -1
-#   balldevice_playfield_ball_enter:
-#     orchestraTuneUp:
-#       action: stop
-#     music_pool:
-#       action: play
-  # mode_game_stopped:
-  #   orchestraTuneUp:
-  #     action: stop
-  #   music_pool:
-  #     action: stop
-  # mode_attract_started:
-  #   orchestraTuneUp:
-  #     action: stop
-  #   music_pool:
-  #     action: stop
+# plungered, a new music track is queued (and played once done with the previous track)
+
+sound_player:
+  game_started:
+    orchestraTuneUp:
+      action: play
+      loops: -1
+      volume: 1.0
+      start_at: 6s
+  mode_game_stopped:
+    orchestraTuneUp:
+      action: stop
+    music_pool:
+      action: stop
+  mode_attract_started:
+    orchestraTuneUp:
+      action: stop
+    music_pool:
+      action: stop
 
 #----------------------------------------
 # Audio asset management
 #----------------------------------------
 assets:
   sounds:
-    default:
-      load:  on_demand
     music:
       track: music
-      # streaming: true
     sfx:
       track: sfx
-      load:  preload
 
 sound_pools:
   music_pool:
-    type: random
+    track: music
+    type: random_force_all
+    streaming: true
     sounds:
       - barberOfSeville
       - brandenburg
@@ -69,7 +67,6 @@ sound_pools:
       - largo
       - largoAlFactotum
       - mountainKing
-      - orchestraTuneUp
       - redetzkyMarch
       - reedPipes
       - russianDance
@@ -80,28 +77,33 @@ sound_pools:
       - zarathustra
   snPool:
     type: random
+    track: sfx
     sounds:
       - sn_dolf
       - sn_dub
       - sn_zome
   snapPool:
     type: random
+    track: sfx
     sounds:
       - perc_snap
       - perc_snap2
   bassCPool:
     type: random
+    track: sfx
     sounds:
       - bass_hit_c
       - bass_voxy_hit_c
       - bass_woodsy_c
   drumBassPool:
     type: random
+    track: sfx
     sounds:
       - drum_bass_hard
       - drum_bass_soft
   drumCymbalPool:
     type: random
+    track: sfx
     sounds:
       #- drum_cymbal_closed
       - drum_cymbal_hard
@@ -112,11 +114,13 @@ sound_pools:
       - drum_splash_soft
   drumSnarePool:
     type: random
+    track: sfx
     sounds:
-      - drum_snare_hard    
+      - drum_snare_hard
       - drum_snare_soft
   drumTomPool:
     type: random
+    track: sfx
     sounds:
       - drum_tom_hi_hard
       - drum_tom_hi_soft
@@ -126,11 +130,13 @@ sound_pools:
       - drum_tom_mid_soft
   blipPool:
     type: random
+    track: sfx
     sounds:
       - elec_blip
       - elec_blip2
   beepsPool:
     type: random
+    track: sfx
     sounds:
       - elec_beep
       - elec_twip
@@ -139,6 +145,7 @@ sound_pools:
       - elec_flip
   bdPool:
     type: random
+    track: sfx
     sounds:
       #- bd_808
       - bd_ada
@@ -152,4 +159,18 @@ sound_pools:
       - bd_tek
       - bd_zome
       - bd_zum
+  tablaPool:
+    type: random
+    track: sfx
+    sounds:
+      - tabla_ghe1
+      - tabla_ghe2
+      - tabla_ghe3
+      - tabla_ghe4
+      - tabla_ghe5
+      - tabla_ghe6
+      - tabla_ghe7
+      - tabla_ghe8
+
+
 

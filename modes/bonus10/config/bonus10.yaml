@@ -5,11 +5,11 @@
 # bonus is advanced by top 2 rollovers or middle 2 targets
 mode:
   start_events: ball_starting
-  priority: 101
+  priority: 100
   code: bonus10.Bonus10
 
-scoring:
-  shot_adv_bonus_hit: 
+variable_player:
+  shot_adv_bonus_hit:
     score: current_player.shot_adv_bonus_bonus10_profile * 200
 
 shots:
@@ -37,7 +37,7 @@ slides:
             duration: 3s
           - property: x
             value: 32
-            duration: 0 s      
+            duration: 0 s
     - type: image
       image: bg20
       fps: 30

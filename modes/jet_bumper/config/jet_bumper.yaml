@@ -10,7 +10,7 @@ mode:
   start_events: ball_starting
   priority: 100
 
-scoring:
+variable_player:
   # The 3 top jet-bumpers have a multiplier
   sg_jetbumptargets_lit_complete:
     jetBumperWorth: 100
@@ -65,9 +65,12 @@ slide_player:
     slide_jetBumpMultiplier:
       expire: 1.0s
 
-# sound_player:
-#   sw_jetBumper: drumTomPool
-#   sw_rubber: bdPool
+sound_player:
+  sw_jetBumper: snPool
+  sw_rubber: bdPool
+  # yellow targets on top
+  sg_jetbumptargets_hit: bass_hit_c
+  sg_jetbumptargets_lit_complete: bass_hard_c
 
 show_player:
   # Make upper targets flash on complete
@@ -81,6 +84,6 @@ show_player:
   s_jet_bump_low_active:
     jet_glow:
       loops: 0
-      show_tokens: 
+      show_tokens:
         lights: l_jet_bump_low
 

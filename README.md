@@ -11,7 +11,7 @@ unzip kivy-pie-1.0.zip
 sudo dd bs=4M if=kivy-pie-1.0.img of=/dev/mmcblk0 conv=fsync
 touch /media/michael/boot/ssh
 vim /media/michael/boot/interfaces
-	
+
 	iface wlan0 inet dhcp
 	        wpa-ssid "ssid"
 	        wpa-psk "password"
@@ -49,7 +49,7 @@ sudo make install-python PYTHON=$(which python3)
 sudo vim /etc/modprobe.d/blacklist-rgb-matrix.conf
 --> add `blacklist snd_bcm2835`
 ```
- 
+
 
 ### Kivy nearest neighbor hack
 
@@ -105,4 +105,19 @@ __Restore__
 
 ```bash
 sudo gzip -dc fantastic_17_11_26.gz | dd bs=4M of=/dev/mmcblk0
+```
+
+# Get kivy running
+With miniconda I had to do this to force the system libstdc++
+
+```bash
+mv /home/michael/miniconda3/lib/libstdc++.so.6 /home/michael/miniconda3/lib/libstdc++.so.6.bak
+```
+
+# Test Kivy
+```python
+>>> import os
+>>> os.environ['LIBGL_DEBUG'] = 'verbose'
+>>> import kivy
+>>> from kivy.core.window import Window
 ```

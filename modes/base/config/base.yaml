@@ -2,26 +2,19 @@
 
 mode:
   start_events: ball_starting
-  priority: 100
+  priority: 50
 
 #-----------------------------------------------------
-# Basic scoring (no special stuff, just simple hits)
+# Basic variable_player (no special stuff, just simple hits)
 # I use tags on the Switch devices to group the stuff
 #-----------------------------------------------------
-scoring:
+variable_player:
   # The 4 red rollover switches at the bottom
   sw_rollover:
     score: 50
   # Waltz bonus
   sg_rollovers_lit_complete:
     score: 3000
-
-#-------------------    
-# 3 stars lit = extra ball
-#-------------------
-# extra_balls:
-#   three_stars:
-#     award_events: shot_star_advance_3_hit
 
 slides:
   scoreSlide:
@@ -69,21 +62,28 @@ slides:
       color: BBBBBB
 
 slide_player:
-  single_player_ball_started: 
+  single_player_ball_started:
     scoreSlide:
       priority: -1
-  sg_rollovers_lit_complete: 
+  sg_rollovers_lit_complete:
     slide_rollOverComplete:
       expire: 2s
 
-# sound_player:
-#   shot_adv_bonus_hit: elec_wood
-#   sg_rollovers_unlit_hit: blipPool
-#   sg_rollovers_lit_hit: elec_twip
-#   sg_rollovers_lit_complete: waltz
-#   shot_target_ml_low: elec_fuzz_tom
-#   sw_target: drumCymbalPool
-#   ball_drain: vinyl_backspin
+sound_player:
+  # Background music start (stop is in sound.yaml)
+  s_ball_on_plunger_inactive:
+    orchestraTuneUp:
+      action: stop
+    music_pool:
+      action: play
+  # yellow targets
+  shot_adv_bonus_hit: perc_till
+  supermegahyperbonus: bass_trance_c
+  # rollovers
+  sg_rollovers_unlit_hit: blipPool
+  sg_rollovers_lit_hit: elec_twip
+  sg_rollovers_lit_complete: waltz
+  ball_drain: vinyl_backspin
 
 show_player:
   sg_rollovers_lit_complete:
