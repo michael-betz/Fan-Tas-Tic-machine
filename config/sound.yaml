@@ -7,7 +7,7 @@ sound_system:
   tracks:
     music:
       simultaneous_sounds: 1
-      volume: 0.8
+      volume: 0.9
     sfx:
       simultaneous_sounds: 4
       volume: 1.0
@@ -43,6 +43,7 @@ sound_player:
 assets:
   sounds:
     music:
+      streaming: true
       track: music
     sfx:
       track: sfx
@@ -51,7 +52,6 @@ sound_pools:
   music_pool:
     track: music
     type: random_force_all
-    streaming: true
     sounds:
       - barberOfSeville
       - brandenburg
