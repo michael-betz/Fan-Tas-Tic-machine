@@ -1,32 +1,20 @@
 #show_version=5
 - time: 0.1
   widgets: hs1_widget
-- time: +5s
+- time: +4s
+  widgets: hs2_widget
+- time: +2s
+  widgets: hs3_widget
+- time: +2s
   widgets: fan_widget
-- time: +2.5s
+- time: +1.5s
   widgets: tas_widget
-- time: +2.5s
+- time: +1.5s
   widgets: tic_widget
-- time: +3s
-  widgets: fan_widget
-- time: +2.5s
-  widgets: tas_widget
-- time: +2.5s
-  widgets: tic_widget
-- time: +3s
-  widgets: scroll_widget
-- time: +7s
-  widgets: fan_widget
-- time: +2.5s
-  widgets: tas_widget
-- time: +2.5s
-  widgets: tic_widget
-- time: +3s
+- time: +2s
   widgets: fan_spinner
-- time: +6s
+- time: +4.5s
   widgets: tas_widget
-- time: +2.5s
+- time: +1.5s
   widgets: tic_widget
-- time: +3s
-  widgets: scroll2_widget
-- time: +7.5s
+- time: +1.5s

@@ -6,9 +6,4 @@ high_score:
     - HS1
     - HS2
     - HS3
-  defaults:
-    score:
-      - ABC: 3
-      - QC:  2
-      - MPF: 1
 
