@@ -1,6 +1,7 @@
 #config_version=5
 
 sound_system:
+  enabled: False
   buffer: 1024
   channels: 1
   master_volume: 1.0

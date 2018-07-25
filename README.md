@@ -33,16 +33,22 @@ git clone https://github.com/missionpinball/mpf-mc.git
 git clone https://github.com/missionpinball/mpf-examples.git
 git clone https://github.com/hzeller/rpi-rgb-led-matrix.git
 
-sudo pip3 install --install-option="--no-cython-compile" cython==0.24.1
-sudo pip3 install numpy
+sudo apt-get install -y build-essential libbz2-dev libssl-dev libreadline-dev libsqlite3-dev tk-dev libpng-dev libfreetype6-dev
+curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+source ~/.bashrc
+pyenv install 3.6.6
+pyenv global 3.6.6
+
+pip3 install cython
+pip3 install numpy
 
 cd mpf
 git checkout fantastic
-sudo pip3 install -e .
+pip3 install -e .
 
 cd ../mpf-mc
 vim setup.py  --> line 467:   if not have_cython or True:
-sudo pip3 install -e .
+pip3 install -e .
 
 cd ../rpi-rgb-led-matrix
 sudo make install-python PYTHON=$(which python3)
@@ -50,14 +56,13 @@ sudo vim /etc/modprobe.d/blacklist-rgb-matrix.conf
 --> add `blacklist snd_bcm2835`
 ```
 
-
 ### Kivy nearest neighbor hack
 
 Now `sudo mpf both -t` does run but DMD looks blurry. Apply the patch from
 https://github.com/kivy/kivy/issues/5249 to fix it. Watch out with tab and sapces etc.
 
 ```bash
-sudo vim /usr/local/lib/python3.5/dist-packages/kivy/core/text/__init__.py
+vim ~/.pyenv/versions/3.6.6/lib/python3.6/site-packages/kivy/core/text/__init__.py
 ```
 
 line 688

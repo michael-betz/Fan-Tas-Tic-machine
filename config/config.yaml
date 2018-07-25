@@ -18,6 +18,7 @@ modes:
   - roulette
   # left and right outlanes and savers
   - outlanes
+  - high_score
 
 hardware:
   platform: fantastic

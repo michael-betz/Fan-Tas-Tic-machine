@@ -1,9 +1,14 @@
 #config_version=5
-
 high_score:
-  categories:
+  _overwrite: True
+  categories: !!omap
   - score:
     - HS1
     - HS2
     - HS3
+  defaults:
+    score:
+      - ABC: 3
+      - QC:  2
+      - MPF: 1
 
