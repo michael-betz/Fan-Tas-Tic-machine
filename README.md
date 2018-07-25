@@ -28,10 +28,11 @@ sudo umount /tmp
 git clone https://github.com/yetifrisstlama/Fan-Tas-Tic-machine.git
 mkdir mpfdev
 cd mpfdev
-git clone https://github.com/yetifrisstlama/mpf.git
+git clone https://github.com/missionpinball/mpf.git
 git clone https://github.com/missionpinball/mpf-mc.git
 git clone https://github.com/missionpinball/mpf-examples.git
 git clone https://github.com/hzeller/rpi-rgb-led-matrix.git
+git checkout 0.50.x
 
 sudo apt-get install -y build-essential libbz2-dev libssl-dev libreadline-dev libsqlite3-dev tk-dev libpng-dev libfreetype6-dev
 curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash

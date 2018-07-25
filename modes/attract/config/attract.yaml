@@ -34,9 +34,33 @@ slides:
     image: bg2
     fps: 30
     loops: 0
+  # testSlide:
+  #   - type: text
+  #     text: "HS2"
+  #     font_name: emulogic
+  #     bitmap_font: True
+  #     anchor_y: middle
+  #     y: 24
+  #   - type: text_input
+  #     key: high_score
+  #     style: dmd_small
+  #     anchor_x: left
+  #     anchor_y: middle
+  #     max_chars: 5
+  #     x: left
+  #     y: 12
+  #   - type: text
+  #     text: "1234"
+  #     key: high_score
+  #     anchor_x: left
+  #     anchor_y: middle
+  #     x: left+4
+  #     style: dmd_small
+  #     y: 12
 
 slide_player:
   mode_attract_started: attractSlide
+  # mode_attract_started: testSlide
 
 widgets:
   fan_widget:

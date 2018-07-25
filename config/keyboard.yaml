@@ -5,7 +5,7 @@ virtual_platform_start_active_switches: s_trough
 keyboard:
     z:
         switch: s_flipper_left_1
-    .:
+    '/':
         switch: s_flipper_right
     s:
         switch: s_start
