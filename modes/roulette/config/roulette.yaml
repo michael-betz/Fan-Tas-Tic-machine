@@ -3,39 +3,63 @@
 # Controls the roulette wheel
 #-------------------------------
 mode:
-  start_events: ball_starting
+  start_events: ball_hold_bh_captive_l_full, ball_hold_bh_captive_t_full, ball_hold_bh_captive_r_full
+  stop_events: roulette_end
   priority: 100
 
-event_player:
-  ball_hold_bh_captive_l_full:
-    roulette_SPIN
-  ball_hold_bh_captive_t_full:
-    roulette_SPIN
-  ball_hold_bh_captive_r_full:
-    roulette_SPIN
+show_player:
+  mode_roulette_started: roulette_show
+slide_player:
+  mode_roulette_started: rouletteSlide
+
+slides:
+  rouletteSlide:
+  - type: image
+    image: roulette
+    fps: 30
+    loops: 1
+
+widgets:
+  rouletteWidget:
+  - type: text
+    font_name: CG-pixel
+    bitmap_font: True
+    text: "<placeholder>"
+    color: cyan
+    z: 10
+    expire: 1.75s
+    animations:
+      add_to_slide: fade_out
+
+animations:
+  fade_out:
+    property: opacity
+    value: 0
+    duration: 1.75s
+    easing: in_quint
 
 random_event_player:
-    roulette_choose:
-      # scope: machine
-      # force_different: False
-      # force_all: False
-      events:
-        # 500 + 1 star, 3 stars to shoot again
-        roulette_star: 250
-        # scores 3 x the lit bonus value
-        roulette_triple_bonus: 83
-        # scores 3000
-        roulette_3000: 166
-        # scores 2 x the lit bonus value
-        roulette_double_bonus: 83
-        # scores the lit (highest) bonus value
-        roulette_bonus: 166
-        # bonus to 10 x 1000
-        roulette_adv_bonus_max: 83
-        # light A&B lanes, once lit score 3000
-        roulette_ab_lanes: 83
-        # 500 + open the gate
-        roulette_open_gate: 86
+  roulette_choose:
+    # scope: machine
+    # force_different: False
+    # force_all: False
+    events:
+      # 500 + 1 star, 3 stars to shoot again
+      roulette_star: 250
+      # scores 3 x the lit bonus value
+      roulette_triple_bonus: 83
+      # scores 3000
+      roulette_3000: 166
+      # scores 2 x the lit bonus value
+      roulette_double_bonus: 83
+      # scores the lit (highest) bonus value
+      roulette_bonus: 166
+      # bonus to 10 x 1000
+      roulette_adv_bonus_max: 83
+      # light A&B lanes, once lit score 3000
+      roulette_ab_lanes: 83
+      # 500 + open the gate
+      roulette_open_gate: 86
 
 variable_player:
   roulette_star:
@@ -51,42 +75,36 @@ variable_player:
   roulette_ab_lanes:
     score: 500
 
-show_player:
-  roulette_SPIN:
-    spin_show:
-      loops: 0
-      events_when_stopped: roulette_choose
+widget_player:
   roulette_star:
-    star_show:
-      loops: 0
-      events_when_stopped: roulette_done
+    rouletteWidget:
+      widget_settings:
+        text: "******\nSTAR\n******"
   roulette_triple_bonus:
-    tripple_bonus_show:
-      loops: 0
-      events_when_stopped: roulette_done
+    rouletteWidget:
+      widget_settings:
+        text: "3 x\nBonus"
   roulette_3000:
-    3000_show:
-      loops: 0
-      events_when_stopped: roulette_done
+    rouletteWidget:
+      widget_settings:
+        text: "3000\npts."
   roulette_double_bonus:
-    double_bonus_show:
-      loops: 0
-      events_when_stopped: roulette_done
+    rouletteWidget:
+      widget_settings:
+        text: "2 x\nBonus"
   roulette_bonus:
-    bonus_show:
-      loops: 0
-      events_when_stopped: roulette_done
-  roulette_adv_bonus_max:
-    adv_bonus_max_show:
-      loops: 0
-      events_when_stopped: roulette_done
+    rouletteWidget:
+      widget_settings:
+        text: "Bonus"
   roulette_ab_lanes:
-    ab_lanes_show:
-      loops: 0
-      events_when_stopped: roulette_done
+    rouletteWidget:
+      widget_settings:
+        text: "AAAAAA\nLANES\nBBBBBB"
+  roulette_adv_bonus_max:
+    rouletteWidget:
+      widget_settings:
+        text: "MAX\nBONUS"
   roulette_open_gate:
-    open_gate_show:
-      loops: 0
-      events_when_stopped: roulette_done
-
-
+    rouletteWidget:
+      widget_settings:
+        text: "Open\nGate"
