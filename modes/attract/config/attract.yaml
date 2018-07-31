@@ -12,8 +12,8 @@ show_player:
       loops: -1
     jets:
       loops: -1
-    dmd_show:
-      loops: -1
+    # dmd_show:
+    #   loops: -1
   mode_attract_stopped:
     middleTarget:
       action: stop
@@ -35,28 +35,37 @@ slides:
     fps: 30
     loops: 0
   # testSlide:
-  #   - type: text
-  #     text: "HS2"
-  #     font_name: emulogic
-  #     bitmap_font: True
-  #     anchor_y: middle
-  #     y: 24
-  #   - type: text_input
-  #     key: high_score
-  #     style: dmd_small
-  #     anchor_x: left
-  #     anchor_y: middle
-  #     max_chars: 5
-  #     x: left
-  #     y: 12
-  #   - type: text
-  #     text: "1234"
-  #     key: high_score
-  #     anchor_x: left
-  #     anchor_y: middle
-  #     x: left+4
-  #     style: dmd_small
-  #     y: 12
+  # - type: text
+  #   text: MBETZ
+  #   color: magenta
+  #   font_name: emulogic
+  #   bitmap_font: True
+  #   anchor_y: middle
+  #   anchor_x: left
+  #   x: 34
+  #   y: middle
+  #   animations:
+  #     show_slide:
+  #     - property: x
+  #       value: -40
+  #       duration: 4 s
+  # - type: text
+  #   text: HS6
+  #   color: 555555
+  #   style: dmd_big
+  #   anchor_y: top
+  #   anchor_x: middle
+  #   y: top-6
+  #   x: middle
+  # - type: text
+  #   text: 30002
+  #   color: cyan
+  #   font_name: CG-pixel
+  #   bitmap_font: True
+  #   anchor_y: bottom
+  #   anchor_x: middle
+  #   y: bottom+6
+  #   x: middle
 
 slide_player:
   mode_attract_started: attractSlide

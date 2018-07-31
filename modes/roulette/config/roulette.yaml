@@ -25,7 +25,7 @@ widgets:
     font_name: CG-pixel
     bitmap_font: True
     text: "<placeholder>"
-    color: cyan
+    color: white
     z: 10
     expire: 1.75s
     animations:
