@@ -21,22 +21,22 @@ modes:
   - high_score
 
 game:
-    balls_per_game: 1
+    balls_per_game: 3
 
 hardware:
   platform: fantastic
   rgb_dmd: rpi_dmd
 
-# fantastic:
-#   debug: True
-#   port: /dev/ttyACM0
-#   led_clock_0: 3200000  #WS2812 High speed mode
-#   led_clock_1: 1700000  #WS2811 Low speed mode
-#   led_clock_2: 3200000  #WS2812 High speed mode
+fantastic:
+  debug: True
+  port: /dev/ttyACM0
+  led_clock_0: 3200000  #WS2812 High speed mode
+  led_clock_1: 1700000  #WS2811 Low speed mode
+  led_clock_2: 3200000  #WS2812 High speed mode
 
-# rpi_dmd:
-#   gpio_slowdown: 2
-#   pwm_lsb_nanoseconds: 300
+rpi_dmd:
+  gpio_slowdown: 2
+  pwm_lsb_nanoseconds: 300
 
 #-------------------
 # Player variables
@@ -124,13 +124,13 @@ ball_devices:
 ball_holds:
   bh_captive_l:
     hold_devices: bd_captive_l
-    release_one_events: roulette_done
+    release_one_events: mode_roulette_stopped
   bh_captive_t:
     hold_devices: bd_captive_t
-    release_one_events: roulette_done
+    release_one_events: mode_roulette_stopped
   bh_captive_r:
     hold_devices: bd_captive_r
-    release_one_events: roulette_done
+    release_one_events: mode_roulette_stopped
 
 flippers:
   left_flipper:

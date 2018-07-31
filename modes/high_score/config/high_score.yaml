@@ -9,6 +9,7 @@ mode:
 high_score:
   _overwrite: True
   award_slide_display_time: 4s
+  enter_initials_timeout: 2min
   categories: !!omap
   - score:
     - HS1
@@ -56,7 +57,7 @@ slides:
   - type: text
     text: (player_name)
     color: ffffff
-    style: dmd_big
+    style: dmd_med
     anchor_y: middle
     anchor_x: middle
     x: middle
@@ -64,16 +65,16 @@ slides:
   - type: text
     text: (award)
     color: ffffff
-    style: dmd_med
+    style: dmd_small
     anchor_y: top
     anchor_x: middle
     y: top-1
     x: middle
   - type: text
     text: (value)
-    color: ffffff
+    color: cyan
     number_grouping: true
-    style: dmd_med
+    style: dmd_small
     anchor_y: bottom
     anchor_x: middle
     y: bottom+1
