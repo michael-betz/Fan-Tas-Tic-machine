@@ -127,3 +127,11 @@ mv /home/michael/miniconda3/lib/libstdc++.so.6 /home/michael/miniconda3/lib/libs
 >>> import kivy
 >>> from kivy.core.window import Window
 ```
+
+# Start on boot
+add the following to `/etc/rc.local`
+```bash
+/home/sysop/start.sh &
+```
+
+Will start mpf in a screen session. To see it running use `sudo screen -r`

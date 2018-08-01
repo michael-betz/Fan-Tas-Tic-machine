@@ -12,8 +12,8 @@ show_player:
       loops: -1
     jets:
       loops: -1
-    # dmd_show:
-    #   loops: -1
+    dmd_show:
+      loops: -1
   mode_attract_stopped:
     middleTarget:
       action: stop
