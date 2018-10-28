@@ -131,6 +131,7 @@ mv /home/michael/miniconda3/lib/libstdc++.so.6 /home/michael/miniconda3/lib/libs
 # Start on boot
 add the following to `/etc/rc.local`
 ```bash
+/home/sysop/shutdown/shutdown_handler &
 /home/sysop/start.sh &
 ```
 
