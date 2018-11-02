@@ -21,7 +21,8 @@ modes:
   - high_score
 
 game:
-    balls_per_game: 3
+  balls_per_game: 3
+  max_players: 4
 
 hardware:
   platform: fantastic
@@ -194,6 +195,14 @@ info_lights:
         light: l_bg_p3_score
     player_up_4:
         light: l_bg_p4_score
+
+show_player:
+  init_done:
+    cello_guy:
+      loops: -1
+    flute_guy:
+      loops: -1
+
 
 #-------------------------------------------------------
 # Multimedia stuff

@@ -1,0 +1,19 @@
+#show_version=5
+- time: +5
+  lights:
+    l_bg_celloguy: FF0000-f5s
+- time: +5
+  lights:
+    l_bg_celloguy: FFFF00-f5s
+- time: +5
+  lights:
+    l_bg_celloguy: 00FF00-f5s
+- time: +5
+  lights:
+    l_bg_celloguy: 00FFFF-f5s
+- time: +5
+  lights:
+    l_bg_celloguy: 0000FF-f5s
+- time: +5
+  lights:
+    l_bg_celloguy: FF00FF-f5s

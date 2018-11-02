@@ -1,0 +1,50 @@
+#show_version=5
+- time: 0
+  lights:
+    l_bg_r_flute_guy: off-f3s
+- time: +30
+  lights:
+    l_bg_r_flute_guy: FFFFFF-f5s
+- time: +7
+  lights:
+    l_bg_r_flute_guy: 555555-f0.3s
+- time: +0.3
+  lights:
+    l_bg_r_flute_guy: FFFFFF-f0.3s
+- time: +0.3
+  lights:
+    l_bg_r_flute_guy: 555555-f0.3s
+- time: +0.3
+  lights:
+    l_bg_r_flute_guy: FFCCCC-f0.3s
+- time: +0.3
+  lights:
+    l_bg_r_flute_guy: 555555-f0.3s
+- time: +0.3
+  lights:
+    l_bg_r_flute_guy: FF8888-f0.3s
+- time: +0.3
+  lights:
+    l_bg_r_flute_guy: 555555-f0.3s
+- time: +0.3
+  lights:
+    l_bg_r_flute_guy: FF5555-f0.3s
+- time: +0.3
+  lights:
+    l_bg_r_flute_guy: 555555-f0.3s
+- time: +0.3
+  lights:
+    l_bg_r_flute_guy: FF3333-f0.3s
+- time: +0.3
+  lights:
+    l_bg_r_flute_guy: 555555-f0.3s
+- time: +0.3
+  lights:
+    l_bg_r_flute_guy: FF1111-f0.3s
+- time: +0.3
+  lights:
+    l_bg_r_flute_guy: 555555-f0.3s
+- time: +0.3
+  lights:
+    l_bg_r_flute_guy: FF0000-f0.3s
+- time: +3

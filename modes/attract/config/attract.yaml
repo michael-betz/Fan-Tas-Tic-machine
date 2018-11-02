@@ -14,19 +14,6 @@ show_player:
       loops: -1
     dmd_show:
       loops: -1
-  mode_attract_stopped:
-    middleTarget:
-      action: stop
-    startLED:
-      action: stop
-    sideLeds:
-      action: stop
-    redStuff:
-      action: stop
-    jets:
-      action: stop
-    dmd_show:
-      action: stop
 
 slides:
   attractSlide:
