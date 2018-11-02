@@ -80,10 +80,47 @@ show_player:
       show_tokens:
         lights: l_targ_ul, l_targ_ur
         color: 00FF00
-  # Make lower jet-bumper glow on hit
+
+  # Make jet-bumpers glow on hit
+  s_jet_bump_tr_active:
+    jet_glow:
+      loops: 0
+      show_tokens:
+        lights: l_jet_bump_tr
+  s_jet_bump_t_active:
+    jet_glow:
+      loops: 0
+      show_tokens:
+        lights: l_jet_bump_t
+  s_jet_bump_tl_active:
+    jet_glow:
+      loops: 0
+      show_tokens:
+        lights: l_jet_bump_tl
   s_jet_bump_low_active:
     jet_glow:
       loops: 0
       show_tokens:
         lights: l_jet_bump_low
 
+  # Make other stuff glow on hit
+  s_rubber_tl_active:
+    jet_glow:
+      loops: 0
+      show_tokens:
+        lights: l_targ_ul
+  s_rubber_tr_active:
+    jet_glow:
+      loops: 0
+      show_tokens:
+        lights: l_side_ur
+  s_rubber_targ_l_active:
+    jet_glow:
+      loops: 0
+      show_tokens:
+        lights: l_target_ml, l_target_mm
+  s_rubber_targ_r_active:
+    jet_glow:
+      loops: 0
+      show_tokens:
+        lights: l_target_mr, l_target_mm
