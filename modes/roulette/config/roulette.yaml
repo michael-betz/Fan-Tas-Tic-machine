@@ -14,28 +14,33 @@ slide_player:
 
 slides:
   rouletteSlide:
-  - type: image
-    image: roulette
-    fps: 30
-    loops: 1
+    widgets:
+    - type: image
+      image: roulette
+      fps: 35
+      loops: 1
 
 widgets:
-  rouletteWidget:
+  rouletteTextWidget:
   - type: text
     font_name: CG-pixel
     bitmap_font: True
     text: "<placeholder>"
     color: white
-    z: 10
-    expire: 1.75s
+    z: 11
+    opacity: 0
     animations:
-      add_to_slide: fade_out
+      add_to_slide: fade_in
+  rouletteImageWidget:
+  - type: image
+    image: 1f3b0
+    z: 10
 
 animations:
-  fade_out:
+  fade_in:
     property: opacity
-    value: 0
-    duration: 1.75s
+    value: 1
+    duration: 1.0s
     easing: in_quint
 
 random_event_player:
@@ -77,34 +82,67 @@ variable_player:
 
 widget_player:
   roulette_star:
-    rouletteWidget:
+    rouletteTextWidget:
       widget_settings:
-        text: "******\nSTAR\n******"
-  roulette_triple_bonus:
-    rouletteWidget:
+        text: STAR
+        color: 000000
+    rouletteImageWidget:
       widget_settings:
-        text: "3 x\nBonus"
+        image: 2b50
+
   roulette_3000:
-    rouletteWidget:
+    rouletteTextWidget:
       widget_settings:
         text: "3000\npts."
+    rouletteImageWidget:
+      widget_settings:
+        image: 1f4b0
+
+  roulette_triple_bonus:
+    rouletteTextWidget:
+      widget_settings:
+        text: "3 x\nBonus"
+        color: 000000
+    rouletteImageWidget:
+      widget_settings:
+        image: 1f3b0
+
   roulette_double_bonus:
-    rouletteWidget:
+    rouletteTextWidget:
       widget_settings:
         text: "2 x\nBonus"
+    rouletteImageWidget:
+      widget_settings:
+        image: 1f4b0
+
   roulette_bonus:
-    rouletteWidget:
+    rouletteTextWidget:
       widget_settings:
         text: "Bonus"
-  roulette_ab_lanes:
-    rouletteWidget:
+    rouletteImageWidget:
       widget_settings:
-        text: "AAAAAA\nLANES\nBBBBBB"
+        image: 1f4b5
+
+  roulette_ab_lanes:
+    rouletteTextWidget:
+      widget_settings:
+        text: "AB\nLanes"
+    rouletteImageWidget:
+      widget_settings:
+        image: 1f6e3
+
   roulette_adv_bonus_max:
-    rouletteWidget:
+    rouletteTextWidget:
       widget_settings:
         text: "MAX\nBONUS"
+    rouletteImageWidget:
+      widget_settings:
+        image: 1f973
+
   roulette_open_gate:
-    rouletteWidget:
+    rouletteTextWidget:
       widget_settings:
         text: "Open\nGate"
+    rouletteImageWidget:
+      widget_settings:
+        image: 1f6aa
