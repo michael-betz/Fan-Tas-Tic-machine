@@ -1,7 +1,7 @@
 #config_version=5
 
 sound_system:
-  enabled: True
+  enabled: False
   buffer: 1024
   channels: 1
   master_volume: 1.0
@@ -44,7 +44,7 @@ sound_player:
 assets:
   sounds:
     music:
-      streaming: true
+      # streaming: true
       track: music
     sfx:
       track: sfx

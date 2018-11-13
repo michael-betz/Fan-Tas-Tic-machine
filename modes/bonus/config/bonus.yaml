@@ -23,7 +23,7 @@ sound_player:
 slides:
   bonus10_slide:
     - type: text
-      text: "Bonus\n(player1|bonus10HitCount)\nx(player1|bonus10Worth)"
+      text: "Bonus\n(bonus10HitCount)\nx(bonus10Worth)"
       font_name: CG-pixel
       color: white
       bitmap_font: True

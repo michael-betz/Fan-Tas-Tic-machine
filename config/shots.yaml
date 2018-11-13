@@ -79,6 +79,28 @@ shows:
     - lights:
         (lights): purple-f1s
 
+  fast_rainbow:
+    - lights:
+        (lights): off
+    - lights:
+        (lights): white
+    - lights:
+        (lights): green
+    - lights:
+        (lights): red
+    - lights:
+        (lights): yellow
+    - lights:
+        (lights): blue
+    - lights:
+        (lights): orange
+    - lights:
+        (lights): magenta
+    - lights:
+        (lights): cyan
+    - lights:
+        (lights): purple
+
   grad:
     - lights:
         (lights): 000000
@@ -87,7 +109,7 @@ shows:
     - lights:
         (lights): 888888
     - lights:
-        (lights): FFFFFF      
+        (lights): FFFFFF
 
   blinkenShowWhite:
     - time: 0
@@ -96,7 +118,7 @@ shows:
     - time: +0.1s
       lights:
         (lights): 000000
-    - time: +0.1s    
+    - time: +0.1s
 
   blinkenShow:
     - time: 0
@@ -105,4 +127,4 @@ shows:
     - time: +0.1s
       lights:
         (lights): 000000
-    - time: +0.1s      
+    - time: +0.1s

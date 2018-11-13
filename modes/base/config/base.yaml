@@ -19,16 +19,19 @@ variable_player:
 slides:
   scoreSlide:
     - type: text
-      text: "(player1|score)"
+      text: "(score)"
       font_name: visitor
       color: black
       bitmap_font: True
       y: 15.0
       number_grouping: False
+      z: 1
     - type: image
-      image: bg0
+      image: bg1
       fps: 30
       loops: 0
+      z: 0
+
   # Move text in a rectangle
   slide_rollOverComplete:
     - type: text
@@ -62,7 +65,7 @@ slides:
       color: BBBBBB
 
 slide_player:
-  single_player_ball_started:
+  mode_base_started:
     scoreSlide:
       priority: -1
   sg_rollovers_lit_complete:
@@ -85,6 +88,7 @@ sound_player:
   sg_rollovers_lit_complete: waltz
   ball_drain: vinyl_backspin
 
+
 show_player:
   sg_rollovers_lit_complete:
     blinkenShow:
@@ -92,6 +96,25 @@ show_player:
       show_tokens:
           lights: l_rollover_ll, l_rollover_ml, l_rollover_lr, l_rollover_mr
           color: FF0000
+  # Make captive LEDs blink
+  ball_hold_bh_captive_l_full:
+    fast_rainbow:
+      speed: 8
+      loops: 1
+      show_tokens:
+        lights: l_captive_l
+  ball_hold_bh_captive_t_full:
+    fast_rainbow:
+      speed: 8
+      loops: 1
+      show_tokens:
+        lights: l_captive_t
+  ball_hold_bh_captive_r_full:
+    fast_rainbow:
+      speed: 8
+      loops: 1
+      show_tokens:
+        lights: l_captive_r
 
 shots:
   #---------------------------

@@ -232,6 +232,16 @@ rgb_dmds:
      fps: 30
      only_send_changes: True
 
+image_pools:
+  bgAni_pool:
+    images:
+      - bg0
+      - bg1
+      - bg2
+      - bg3
+      - bg4
+    type: random
+    load: preload
 
 # show_player:
 #   game_will_end:

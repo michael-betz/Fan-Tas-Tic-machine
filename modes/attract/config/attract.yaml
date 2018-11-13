@@ -18,7 +18,7 @@ show_player:
 slides:
   attractSlide:
   - type: image
-    image: bg2
+    image: bg25
     fps: 30
     loops: 0
   # testSlide:
@@ -103,7 +103,7 @@ widgets:
         add_to_slide: fade_out
   hs1_widget:
     - type: text
-      color: black
+      color: white
       text: "(machine|score1_name)\n(machine|score1_value)"
       font_name: CG-pixel
       bitmap_font: True
@@ -111,7 +111,7 @@ widgets:
       expire: 4s
   hs2_widget:
     - type: text
-      color: black
+      color: white
       text: "(machine|score2_name)\n(machine|score2_value)"
       font_name: CG-pixel
       bitmap_font: True
@@ -119,7 +119,7 @@ widgets:
       expire: 2s
   hs3_widget:
     - type: text
-      color: black
+      color: white
       text: "(machine|score3_name)\n(machine|score3_value)"
       font_name: CG-pixel
       bitmap_font: True

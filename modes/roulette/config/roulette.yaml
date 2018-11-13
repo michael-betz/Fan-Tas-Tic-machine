@@ -9,6 +9,7 @@ mode:
 
 show_player:
   mode_roulette_started: roulette_show
+
 slide_player:
   mode_roulette_started: rouletteSlide
 
@@ -85,7 +86,7 @@ widget_player:
     rouletteTextWidget:
       widget_settings:
         text: STAR
-        color: 000000
+        color: black
     rouletteImageWidget:
       widget_settings:
         image: 2b50
@@ -96,21 +97,22 @@ widget_player:
         text: "3000\npts."
     rouletteImageWidget:
       widget_settings:
-        image: 1f4b0
+        image: 1f939-2640
 
   roulette_triple_bonus:
     rouletteTextWidget:
       widget_settings:
         text: "3 x\nBonus"
-        color: 000000
+        color: black
     rouletteImageWidget:
       widget_settings:
-        image: 1f3b0
+        image: 1f911
 
   roulette_double_bonus:
     rouletteTextWidget:
       widget_settings:
         text: "2 x\nBonus"
+        color: black
     rouletteImageWidget:
       widget_settings:
         image: 1f4b0
@@ -119,6 +121,7 @@ widget_player:
     rouletteTextWidget:
       widget_settings:
         text: "Bonus"
+        color: black
     rouletteImageWidget:
       widget_settings:
         image: 1f4b5
@@ -127,6 +130,7 @@ widget_player:
     rouletteTextWidget:
       widget_settings:
         text: "AB\nLanes"
+        color: black
     rouletteImageWidget:
       widget_settings:
         image: 1f6e3
