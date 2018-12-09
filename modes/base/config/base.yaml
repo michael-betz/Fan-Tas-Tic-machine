@@ -21,16 +21,16 @@ slides:
     - type: text
       text: "(score)"
       font_name: visitor
-      color: black
+      color: purple
       bitmap_font: True
       y: 15.0
       number_grouping: False
       z: 1
-    - type: image
-      image: bg1
-      fps: 30
-      loops: 0
-      z: 0
+#    - type: image
+#      image: bg1
+#      fps: 30
+#      loops: 0
+#      z: 0
 
   # Move text in a rectangle
   slide_rollOverComplete:

@@ -43,19 +43,19 @@ switches:
   s_outlane_l:
     number: 0x28
     type: NC
-    tags: playfield_active, lane
+    tags: lane
   s_outlane_r:
     number: 0x17
     type: NC
-    tags: playfield_active, lane
+    tags: lane
   s_lane_tl:
     number: 0x08
     type: NC
-    tags: playfield_active, lane
+    tags: lane
   s_lane_tr:
     number: 0x15
     type: NC
-    tags: playfield_active, lane
+    tags: lane
   #-----------------
   # Targets
   #-----------------
@@ -157,22 +157,22 @@ switches:
     number: 0x03
     type: NC
 #    debounce: quick
-    tags: playfield_active, jetBumper
+    tags: jetBumper
   s_jet_bump_t:
     number: 0x04
     type: NC
 #    debounce: quick
-    tags: playfield_active, jetBumper
+    tags: jetBumper
   s_jet_bump_tl:
     number: 0x05
     type: NC
 #    debounce: quick
-    tags: playfield_active, jetBumper
+    tags: jetBumper
   s_jet_bump_low:
     number: 0x1A
     type: NC
     debounce: normal
-    tags: playfield_active, jetBumper
+    tags: jetBumper
 
 #-----------------
 # ** COILS **
