@@ -25,7 +25,7 @@ game:
   max_players: 4
 
 hardware:
-  platform: fantastic
+  platform: fantastic_platform
   rgb_dmd: rpi_dmd
 
 fantastic:
