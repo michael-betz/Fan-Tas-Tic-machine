@@ -1,6 +1,5 @@
-// Runs as root on boot
-// entry in /etc/rc.local:
-// /home/sysop/shutdown/shutdown_handler &
+// Shut down the system if a GPIO pin changes state
+// Runs as root
 #include <bcm2835.h>
 #include <stdio.h>
 

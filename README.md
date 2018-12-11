@@ -32,7 +32,6 @@ git clone https://github.com/missionpinball/mpf.git
 git clone https://github.com/missionpinball/mpf-mc.git
 git clone https://github.com/missionpinball/mpf-examples.git
 git clone https://github.com/hzeller/rpi-rgb-led-matrix.git
-git checkout 0.50.x
 
 sudo apt-get install -y build-essential libbz2-dev libssl-dev libreadline-dev libsqlite3-dev tk-dev libpng-dev libfreetype6-dev
 curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
@@ -44,7 +43,6 @@ pip3 install cython
 pip3 install numpy
 
 cd mpf
-git checkout fantastic
 pip3 install -e .
 
 cd ../mpf-mc
@@ -80,24 +78,14 @@ texture.add_reload_observer(self._texture_refresh)
 self.texture = texture
 ```
 
-### Samba
+### File access from remote PC
 
 ```bash
-sudo apt-get install samba
-sudo smbpasswd -a sysop
-sudo vim /etc/samba/smb.conf
-[pihome]
-   comment= Pi Home
-   path=/home/pi
-   browseable=Yes
-   writeable=Yes
-   only guest=no
-   create mask=0777
-   directory mask=0777
-   public=no
-sudo /etc/init.d/samba restart
+sshfs ~/sshfs sysop@fantastic:/home/sysop/mpfdev
 ```
-access from ubuntu: `smb://fantastic/fantastic/`
+
+... gotta love sshfs!!!
+
 
 ### SD card images
 
@@ -128,11 +116,11 @@ mv /home/michael/miniconda3/lib/libstdc++.so.6 /home/michael/miniconda3/lib/libs
 >>> from kivy.core.window import Window
 ```
 
-# Start on boot
+# Start on boot, Shutdown on switch toggle
 add the following to `/etc/rc.local`
 ```bash
-/home/sysop/shutdown/shutdown_handler &
-/home/sysop/start.sh &
+/home/sysop/Fan-Tas-Tic-machine/shutdown/shutdown_handler &
+/home/sysop/Fan-Tas-Tic-machine/start.sh &
 ```
 
 Will start mpf in a screen session. To see it running use `sudo screen -r`
