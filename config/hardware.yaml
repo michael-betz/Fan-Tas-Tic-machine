@@ -259,7 +259,7 @@ lights:
     tags: t_middle_arrow
     default_on_color: white
   l_rollover_mr:
-    number: 1-5, 1-36
+    number: 1-5, 1-36 
     default_on_color: ff0000
     tags: t_filter_red
   l_B_lane:
@@ -344,7 +344,7 @@ lights:
     number: 1-34
     tags: t_side
   l_side_ur:
-    number: 1-36
+    number: 1-37
     tags: t_side
   l_targ_ur:
     number: 1-38, 1-39
