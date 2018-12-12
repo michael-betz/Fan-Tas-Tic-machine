@@ -236,7 +236,46 @@ coils:
     number: 0x46
     default_pulse_ms: 45
     default_pulse_power: 0.50
+  #-----------------
+  # Backglass score wheels
+  #-----------------
+  # CH 1, I2C 0x20
+  c_score_p1_4:   # 10000 counts
+    number: 0x80
+    default_pulse_ms: 13
+    default_pulse_power: 0.80
+  c_score_p1_3:
+    number: 0x81  # 1000 counts
+    default_pulse_ms: 13
+    default_pulse_power: 0.80
+  c_score_p1_2:
+    number: 0x82  # 100 counts
+    default_pulse_ms: 13
+    default_pulse_power: 0.80
+  c_score_p1_1:
+    number: 0x83  # 10 counts
+    default_pulse_ms: 13
+    default_pulse_power: 0.80
+  c_score_p2_4:   # 10000 counts
+    number: 0x84
+    default_pulse_ms: 13
+    default_pulse_power: 0.80
+  c_score_p2_3:
+    number: 0x85  # 1000 counts
+    default_pulse_ms: 13
+    default_pulse_power: 0.80
+  c_score_p2_2:
+    number: 0x86  # 100 counts
+    default_pulse_ms: 13
+    default_pulse_power: 0.80
+  c_score_p2_1:
+    number: 0x87  # 10 counts
+    default_pulse_ms: 13
+    default_pulse_power: 0.80
 
+#-----------------
+# ** LIGHTS **
+#-----------------
 lights:
   l_A_lane:
     number: 1-0
@@ -259,7 +298,7 @@ lights:
     tags: t_middle_arrow
     default_on_color: white
   l_rollover_mr:
-    number: 1-5, 1-36 
+    number: 1-5, 1-36
     default_on_color: ff0000
     tags: t_filter_red
   l_B_lane:
@@ -362,9 +401,9 @@ lights:
   l_targ_ul:
     number: 1-43, 1-44
     tags: t_side
-#---------------------------
-# Jet bumper lights
-#---------------------------
+  #---------------------------
+  # Jet bumper lights
+  #---------------------------
   l_jet_bump_t:
     number: 0-0, 0-1, 0-2, 0-3
     type: grb
@@ -381,9 +420,9 @@ lights:
     number: 0-12, 0-13, 0-14, 0-15
     type: grb
     tags: t_jet_bump
-#---------------------------
-# Back glass
-#---------------------------
+  #---------------------------
+  # Back glass
+  #---------------------------
   l_bg_r_flute_guy:
     number: 2-0
   l_bg_tilt:
