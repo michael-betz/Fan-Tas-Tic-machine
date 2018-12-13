@@ -457,6 +457,7 @@ lights:
     number: 2-19
   l_bg_p1_score:
     number: 2-20, 2-21, 2-22, 2-23, 2-27
+    tags: l_bg_p1_score
   l_bg_00:
     number: 2-24
   l_bg_10:
