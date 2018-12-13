@@ -111,26 +111,32 @@ switches:
   # Rollovers
   s_rollover_tr:
     number: 0x02
+    ignore_window_ms: 300
     type: NC
     tags: playfield_active, rollover, adv_bonus
   s_rollover_tl:
     number: 0x06
+    ignore_window_ms: 300
     type: NC
     tags: playfield_active, rollover, adv_bonus
   s_rollover_ml:
     number: 0x0B
+    ignore_window_ms: 300
     type: NC
     tags: playfield_active, rollover
   s_rollover_mr:
     number: 0x13
+    ignore_window_ms: 300
     type: NC
     tags: playfield_active, rollover
   s_rollover_lr:
     number: 0x19
+    ignore_window_ms: 300
     type: NC
     tags: playfield_active, rollover
   s_rollover_ll:
     number: 0x1C
+    ignore_window_ms: 300
     type: NC
     tags: playfield_active, rollover
   #-----------------
