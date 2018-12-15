@@ -48,10 +48,12 @@ switches:
     tags: lane
   s_lane_tl:
     number: 0x08
+    ignore_window_ms: 1000
     type: NC
     tags: lane
   s_lane_tr:
     number: 0x15
+    ignore_window_ms: 1000
     type: NC
     tags: lane
   #-----------------
@@ -177,6 +179,26 @@ switches:
     type: NC
     debounce: normal
     tags: jetBumper
+  #-----------------
+  # Backglass score wheels zero switches
+  #-----------------
+  # CH 1, I2C 0x21
+  s_score_p1_4:   # 10000 counts
+    number: 0x88
+  s_score_p1_3:
+    number: 0x89  # 1000 counts
+  s_score_p1_2:
+    number: 0x8a  # 100 counts
+  s_score_p1_1:
+    number: 0x8b  # 10 counts
+  s_score_p2_4:   # 10000 counts
+    number: 0x8c
+  s_score_p2_3:
+    number: 0x8d  # 1000 counts
+  s_score_p2_2:
+    number: 0x8e  # 100 counts
+  s_score_p2_1:
+    number: 0x8f  # 10 counts
 
 #-----------------
 # ** COILS **

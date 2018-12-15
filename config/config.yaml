@@ -151,35 +151,35 @@ score_reels:
   score_p1_4:
     coil_inc: c_score_p1_4
     repeat_pulse_time: 100
-    # switch_0: s_score_p1_4
+    switch_0: s_score_p1_4
   score_p1_3:
     coil_inc: c_score_p1_3
     repeat_pulse_time: 100
-    # switch_0: s_score_p1_3
+    switch_0: s_score_p1_3
   score_p1_2:
     coil_inc: c_score_p1_2
     repeat_pulse_time: 100
-    # switch_0: s_score_p1_2
+    switch_0: s_score_p1_2
   score_p1_1:
     coil_inc: c_score_p1_1
     repeat_pulse_time: 100
-    # switch_0: s_score_p1_1
+    switch_0: s_score_p1_1
   score_p2_4:
     coil_inc: c_score_p2_4
     repeat_pulse_time: 100
-    # switch_0: s_score_p2_4
+    switch_0: s_score_p2_4
   score_p2_3:
     coil_inc: c_score_p2_3
     repeat_pulse_time: 100
-    # switch_0: s_score_p2_3
+    switch_0: s_score_p2_3
   score_p2_2:
     coil_inc: c_score_p2_2
     repeat_pulse_time: 100
-    # switch_0: s_score_p2_2
+    switch_0: s_score_p2_2
   score_p2_1:
     coil_inc: c_score_p2_1
     repeat_pulse_time: 100
-    # switch_0: s_score_p2_1
+    switch_0: s_score_p2_1
 
 score_reel_groups:
   player1:
