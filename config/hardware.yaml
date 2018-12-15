@@ -199,6 +199,23 @@ switches:
     number: 0x8d  # 100 counts
   s_score_p3_1:
     number: 0x8c  # 10 counts
+  # CH 1, I2C 0x23
+  s_score_p2_4:   # 10000 counts
+    number: 0x9b
+  s_score_p2_3:
+    number: 0x9a  # 1000 counts
+  s_score_p2_2:
+    number: 0x99  # 100 counts
+  s_score_p2_1:
+    number: 0x98  # 10 counts
+  s_score_p4_4:   # 10000 counts
+    number: 0x9f
+  s_score_p4_3:
+    number: 0x9e  # 1000 counts
+  s_score_p4_2:
+    number: 0x9d  # 100 counts
+  s_score_p4_1:
+    number: 0x9c  # 10 counts
 
 #-----------------
 # ** COILS **
@@ -270,35 +287,68 @@ coils:
   # CH 1, I2C 0x20
   c_score_p3_4:   # 10000 counts
     number: 0x80
-    default_pulse_ms: 11
+    default_pulse_ms: 10
     default_pulse_power: 1.0
   c_score_p3_3:
     number: 0x81  # 1000 counts
-    default_pulse_ms: 11
+    default_pulse_ms: 10
     default_pulse_power: 1.0
   c_score_p3_2:
     number: 0x82  # 100 counts
-    default_pulse_ms: 11
+    default_pulse_ms: 10
     default_pulse_power: 1.0
   c_score_p3_1:
     number: 0x83  # 10 counts
-    default_pulse_ms: 11
+    default_pulse_ms: 10
     default_pulse_power: 1.0
   c_score_p1_4:   # 10000 counts
     number: 0x84
-    default_pulse_ms: 11
+    default_pulse_ms: 10
     default_pulse_power: 1.0
   c_score_p1_3:
     number: 0x85  # 1000 counts
-    default_pulse_ms: 11
+    default_pulse_ms: 10
     default_pulse_power: 1.0
   c_score_p1_2:
     number: 0x86  # 100 counts
-    default_pulse_ms: 11
+    default_pulse_ms: 10
     default_pulse_power: 1.0
   c_score_p1_1:
     number: 0x87  # 10 counts
-    default_pulse_ms: 11
+    default_pulse_ms: 10
+    default_pulse_power: 1.0
+  # CH 1, I2C 0x22
+  c_score_p4_4:   # 10000 counts
+    number: 0x90
+    default_pulse_ms: 10
+    default_pulse_power: 1.0
+  c_score_p4_3:
+    number: 0x91  # 1000 counts
+    default_pulse_ms: 10
+    default_pulse_power: 1.0
+  c_score_p4_2:
+    number: 0x92  # 100 counts
+    default_pulse_ms: 10
+    default_pulse_power: 1.0
+  c_score_p4_1:
+    number: 0x93  # 10 counts
+    default_pulse_ms: 10
+    default_pulse_power: 1.0
+  c_score_p2_4:   # 10000 counts
+    number: 0x94
+    default_pulse_ms: 10
+    default_pulse_power: 1.0
+  c_score_p2_3:
+    number: 0x95  # 1000 counts
+    default_pulse_ms: 10
+    default_pulse_power: 1.0
+  c_score_p2_2:
+    number: 0x96  # 100 counts
+    default_pulse_ms: 10
+    default_pulse_power: 1.0
+  c_score_p2_1:
+    number: 0x97  # 10 counts
+    default_pulse_ms: 10
     default_pulse_power: 1.0
 
 #-----------------
