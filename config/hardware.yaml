@@ -178,7 +178,6 @@ switches:
     number: 0x1A
     type: NC
     debounce: normal
-    tags: jetBumper
   #-----------------
   # Backglass score wheels zero switches
   #-----------------

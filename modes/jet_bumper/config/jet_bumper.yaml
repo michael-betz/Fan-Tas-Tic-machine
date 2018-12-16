@@ -2,9 +2,9 @@
 #-------------------------------
 # Everything Jet-bumper related
 #-------------------------------
-# * Top center jet bumper always lit and scores 100
+# * Lower jet bumper always lit and scores 100
 # * Top left or right target will lite the other 3
-#   bumpers to score 100 instead of 10 points
+#   bumpers to score N*100 instead of 10 points
 
 mode:
   start_events: ball_starting
@@ -16,6 +16,8 @@ variable_player:
     jetBumperWorth: 100
   sw_jetBumper:
     score: current_player.jetBumperWorth
+  s_jet_bump_low_active:
+    score: 100
   # RUBBER bands on top part
   sw_rubber:
     score: 10
