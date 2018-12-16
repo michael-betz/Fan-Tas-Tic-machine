@@ -1,8 +1,8 @@
 #show_version=5
-- time: 5
+- time: 35
   shows:
     fast_rainbow:
-      speed: 8
+      speed: 4
       loops: 0
       key: ssA
       show_tokens:
@@ -10,7 +10,7 @@
 - time: +0.5
   shows:
     fast_rainbow:
-      speed: 8
+      speed: 4
       loops: 0
       key: ssB
       show_tokens:
@@ -18,7 +18,7 @@
 - time: +0.5
   shows:
     fast_rainbow:
-      speed: 8
+      speed: 4
       loops: 0
       key: ssC
       show_tokens:
@@ -26,7 +26,7 @@
 - time: +0.5
   shows:
     fast_rainbow:
-      speed: 8
+      speed: 4
       loops: 0
       key: ssD
       show_tokens:
