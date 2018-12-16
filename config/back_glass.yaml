@@ -1,0 +1,106 @@
+#config_version=5
+#-------------------------------------------------------
+# Back glass stuff
+#-------------------------------------------------------
+score_reels:
+  score_p1_4:
+    coil_inc: c_score_p1_4
+    switch_0: s_score_p1_4
+    repeat_pulse_time: 100
+  score_p1_3:
+    coil_inc: c_score_p1_3
+    switch_0: s_score_p1_3
+    repeat_pulse_time: 100
+  score_p1_2:
+    coil_inc: c_score_p1_2
+    switch_0: s_score_p1_2
+    repeat_pulse_time: 100
+  score_p1_1:
+    coil_inc: c_score_p1_1
+    switch_0: s_score_p1_1
+    repeat_pulse_time: 100
+  score_p3_4:
+    coil_inc: c_score_p3_4
+    switch_0: s_score_p3_4
+    repeat_pulse_time: 100
+  score_p3_3:
+    coil_inc: c_score_p3_3
+    switch_0: s_score_p3_3
+    repeat_pulse_time: 100
+  score_p3_2:
+    coil_inc: c_score_p3_2
+    switch_0: s_score_p3_2
+    repeat_pulse_time: 100
+  score_p3_1:
+    coil_inc: c_score_p3_1
+    switch_0: s_score_p3_1
+    repeat_pulse_time: 100
+
+score_reel_groups:
+  player1:
+    reels: score_p1_4, score_p1_3, score_p1_2, score_p1_1, None
+    tags: player1
+    lights_tag: l_bg_p1_score
+  player2:
+    reels: score_p3_4, score_p3_3, score_p3_2, score_p3_1, None
+    tags: player2
+    lights_tag: l_bg_p3_score
+
+info_lights:
+    match_00:
+        light: l_bg_00
+    match_10:
+        light: l_bg_10
+    match_20:
+        light: l_bg_20
+    match_30:
+        light: l_bg_30
+    match_40:
+        light: l_bg_40
+    match_50:
+        light: l_bg_50
+    match_60:
+        light: l_bg_60
+    match_70:
+        light: l_bg_70
+    match_80:
+        light: l_bg_80
+    match_90:
+        light: l_bg_90
+    ball_1:
+        light: l_bg_ball_1
+    ball_2:
+        light: l_bg_ball_2
+    ball_3:
+        light: l_bg_ball_3
+    ball_4:
+        light: l_bg_ball_4
+    ball_5:
+        light: l_bg_ball_5
+    player_1:
+        light: l_bg_nplayer_1
+    player_2:
+        light: l_bg_nplayer_2
+    player_3:
+        light: l_bg_nplayer_3
+    player_4:
+        light: l_bg_nplayer_4
+    tilt:
+        light: l_bg_tilt
+    game_over:
+        light: l_bg_gameover
+    player_up_1:
+        light: l_bg_p1_score
+    player_up_2:
+        light: l_bg_p2_score
+    player_up_3:
+        light: l_bg_p3_score
+    player_up_4:
+        light: l_bg_p4_score
+
+show_player:
+  init_done:
+    cello_guy:
+      loops: -1
+    flute_guy:
+      loops: -1

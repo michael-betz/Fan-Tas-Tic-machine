@@ -1,0 +1,33 @@
+#show_version=5
+- time: 5
+  shows:
+    fast_rainbow:
+      speed: 8
+      loops: 0
+      key: ssA
+      show_tokens:
+        lights: l_bg_p1_score
+- time: +0.5
+  shows:
+    fast_rainbow:
+      speed: 8
+      loops: 0
+      key: ssB
+      show_tokens:
+        lights: l_bg_p2_score
+- time: +0.5
+  shows:
+    fast_rainbow:
+      speed: 8
+      loops: 0
+      key: ssC
+      show_tokens:
+        lights: l_bg_p4_score
+- time: +0.5
+  shows:
+    fast_rainbow:
+      speed: 8
+      loops: 0
+      key: ssD
+      show_tokens:
+        lights: l_bg_p3_score
