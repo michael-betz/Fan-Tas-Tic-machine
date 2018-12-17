@@ -100,7 +100,5 @@ info_lights:
 
 show_player:
   init_done:
-    cello_guy:
-      loops: -1
     flute_guy:
       loops: -1

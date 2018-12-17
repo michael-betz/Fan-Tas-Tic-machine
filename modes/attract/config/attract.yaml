@@ -16,6 +16,8 @@ show_player:
       loops: -1
     score_color:
       loops: -1
+    cello_guy:
+      loops: -1
 
 slides:
   attractSlide:

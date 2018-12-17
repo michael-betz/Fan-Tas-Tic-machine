@@ -90,6 +90,17 @@ sound_player:
 
 
 show_player:
+  # Make cello guy change color on rubber hit
+  mode_base_started:
+    rainbow:
+      show_tokens:
+        lights: l_bg_celloguy
+      key: celloShowManual
+      manual_advance: true
+  sw_rubber:
+    celloShowManual:
+      action: advance
+  # Make red rollovers blink on 4 complete
   sg_rollovers_lit_complete:
     blinkenShow:
       loops: 10
