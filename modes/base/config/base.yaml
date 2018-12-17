@@ -92,7 +92,7 @@ sound_player:
 show_player:
   # Make cello guy change color on rubber hit
   mode_base_started:
-    rainbow:
+    fast_rainbow:
       show_tokens:
         lights: l_bg_celloguy
       key: celloShowManual
