@@ -19,6 +19,24 @@ score_reels:
     coil_inc: c_score_p1_1
     switch_0: s_score_p1_1
     repeat_pulse_time: 100
+
+  score_p2_4:
+    coil_inc: c_score_p2_4
+    switch_0: s_score_p2_4
+    repeat_pulse_time: 100
+  score_p2_3:
+    coil_inc: c_score_p2_3
+    switch_0: s_score_p2_3
+    repeat_pulse_time: 100
+  score_p2_2:
+    coil_inc: c_score_p2_2
+    switch_0: s_score_p2_2
+    repeat_pulse_time: 100
+  score_p2_1:
+    coil_inc: c_score_p2_1
+    switch_0: s_score_p2_1
+    repeat_pulse_time: 100
+
   score_p3_4:
     coil_inc: c_score_p3_4
     switch_0: s_score_p3_4
@@ -36,15 +54,40 @@ score_reels:
     switch_0: s_score_p3_1
     repeat_pulse_time: 100
 
+  score_p4_4:
+    coil_inc: c_score_p4_4
+    switch_0: s_score_p4_4
+    repeat_pulse_time: 100
+  score_p4_3:
+    coil_inc: c_score_p4_3
+    switch_0: s_score_p4_3
+    repeat_pulse_time: 100
+  score_p4_2:
+    coil_inc: c_score_p4_2
+    switch_0: s_score_p4_2
+    repeat_pulse_time: 100
+  score_p4_1:
+    coil_inc: c_score_p4_1
+    switch_0: s_score_p4_1
+    repeat_pulse_time: 100
+
 score_reel_groups:
   player1:
     reels: score_p1_4, score_p1_3, score_p1_2, score_p1_1, None
     tags: player1
     lights_tag: l_bg_p1_score
   player2:
-    reels: score_p3_4, score_p3_3, score_p3_2, score_p3_1, None
+    reels: score_p2_4, score_p2_3, score_p2_2, score_p2_1, None
     tags: player2
+    lights_tag: l_bg_p2_score
+  player3:
+    reels: score_p3_4, score_p3_3, score_p3_2, score_p3_1, None
+    tags: player3
     lights_tag: l_bg_p3_score
+  player4:
+    reels: score_p4_4, score_p4_3, score_p4_2, score_p4_1, None
+    tags: player4
+    lights_tag: l_bg_p4_score
 
 info_lights:
     match_00:

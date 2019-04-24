@@ -23,6 +23,7 @@ slides:
   attractSlide:
   - type: image
     image: bg25
+    # image: bgAni_pool
     fps: 30
     loops: -1
   # testSlide:
