@@ -1,0 +1,71 @@
+#config_version=5
+slide_player:
+    credits_added:
+        credit_added_slide:
+            expire: 2s
+    not_enough_credits:
+        not_enough_credits_slide:
+            expire: 2s
+    enabling_free_play:
+        enabling_free_play_slide:
+            expire: 2s
+    enabling_credit_play:
+        enabling_credit_play_slide:
+            expire: 2s
+    max_credits_reached:
+        max_credits_reached_slide:
+            expire: 2s
+    player_added:
+        player_added_slide:
+            expire: 1s
+
+slides:
+    credit_added_slide:
+        - type: text
+          z: 4
+          font_name: CG-pixel
+          bitmap_font: True
+          text: (machine|credits_string)
+    not_enough_credits_slide:
+        - type: text
+          z: 4
+          style: dmd_big
+          color: red
+          text: COIN
+    enabling_free_play_slide:
+        - type: text
+          z: 4
+          font_name: CG-pixel
+          bitmap_font: True
+          text: FREE PLAY
+    enabling_credit_play_slide:
+        - type: text
+          z: 4
+          font_name: CG-pixel
+          bitmap_font: True
+          text: CREDIT PLAY
+    max_credits_reached_slide:
+        - type: text
+          z: 4
+          font_name: CG-pixel
+          bitmap_font: True
+          text: MAX
+    player_added_slide:
+        - type: text
+          z: 4
+          style: dmd_big
+          text: PLAY!
+
+sound_player:
+    credits_added:
+        tabla_ghe1:
+            action: play
+            loops: 0
+    not_enough_credits:
+        elec_twip:
+            action: play
+            loops: 0
+    player_added:
+        drum_snare_soft:
+            action: play
+            loops: 0

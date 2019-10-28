@@ -3,5 +3,5 @@ mode:
   start_events: sg_jetbumptargets_lit_complete
   priority: 150
 
-sound_player:
-  sw_jetBumper: tablaPool
+#sound_player:
+#  sw_jetBumper: tablaPool

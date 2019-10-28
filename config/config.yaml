@@ -20,14 +20,35 @@ modes:
   # left and right outlanes and savers
   - outlanes
   - high_score
+  - credits
+
+hardware:
+  platform: fantastic_platform
+  rgb_dmd: rpi_dmd
 
 game:
   balls_per_game: 3
   max_players: 4
 
-hardware:
-  platform: fantastic_platform
-  rgb_dmd: rpi_dmd
+credits:
+    max_credits: 12
+    free_play: False
+    switches:
+        - switch: s_coin
+          type: money
+          value: .25
+    pricing_tiers:
+        - price: .50
+          credits: 1
+    fractional_credit_expiration_time: 15m
+    credit_expiration_time: 2h
+    persist_credits_while_off_time: 1h
+    free_play_string: FREE
+    credits_string: CRED
+
+logging:
+    console:
+         platforms: full
 
 fantastic:
   debug: True
@@ -41,7 +62,7 @@ rpi_dmd:
   rows: 32
   gpio_slowdown: 2
   pwm_lsb_nanoseconds: 300
-  drop_privileges: 1
+  drop_privileges: 0
 
 #-------------------
 # Player variables
@@ -161,6 +182,8 @@ displays:
   wnddmd:
     width:  32
     height: 32
+    round_anchor_x: left
+    round_anchor_y: top
     default: True
 
 rgb_dmds:
@@ -187,19 +210,11 @@ image_pools:
 #   game_will_end:
 #     end_of_game_show
 
-#------------------------------------
-# Styles don't seem to work yet :(
-#------------------------------------
-# widget_styles:
-#   text_default:
-#     font_name: dmd_small
-#     bitmap_font: True
-# text_emulogic:
-#   font_name: emulogic
-#   bitmap_font: True
-# text_minecraftia:
-#   font_name: minecraftia
-#   bitmap_font: True
-# text_visitor:
-#   font_name: visitor
-#   bitmap_font: True
+widget_styles:
+  text_default:
+    font_name: smallest_pixel-7
+    font_size: 9
+    adjust_bottom: 3
+    adjust_top: 2
+    # bitmap_font: True
+    # font_name: CG-pixel
