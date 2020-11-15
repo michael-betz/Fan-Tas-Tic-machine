@@ -25,6 +25,9 @@ switches:
     number: 0x4B
     type: NC
     debounce: quick
+  s_coin:
+    number: 0x4A
+    type: NC
   #-----------------
   # Playfield / misc.
   #-----------------
@@ -286,68 +289,68 @@ coils:
   # CH 1, I2C 0x20
   c_score_p3_4:   # 10000 counts
     number: 0x80
-    default_pulse_ms: 10
+    default_pulse_ms: 9
     default_pulse_power: 1.0
   c_score_p3_3:
     number: 0x81  # 1000 counts
-    default_pulse_ms: 10
+    default_pulse_ms: 9
     default_pulse_power: 1.0
   c_score_p3_2:
     number: 0x82  # 100 counts
-    default_pulse_ms: 10
+    default_pulse_ms: 9
     default_pulse_power: 1.0
   c_score_p3_1:
     number: 0x83  # 10 counts
-    default_pulse_ms: 10
+    default_pulse_ms: 9
     default_pulse_power: 1.0
   c_score_p1_4:   # 10000 counts
     number: 0x84
-    default_pulse_ms: 10
+    default_pulse_ms: 9
     default_pulse_power: 1.0
   c_score_p1_3:
     number: 0x85  # 1000 counts
-    default_pulse_ms: 10
+    default_pulse_ms: 9
     default_pulse_power: 1.0
   c_score_p1_2:
     number: 0x86  # 100 counts
-    default_pulse_ms: 10
+    default_pulse_ms: 9
     default_pulse_power: 1.0
   c_score_p1_1:
     number: 0x87  # 10 counts
-    default_pulse_ms: 10
+    default_pulse_ms: 9
     default_pulse_power: 1.0
   # CH 1, I2C 0x22
   c_score_p4_4:   # 10000 counts
     number: 0x90
-    default_pulse_ms: 10
+    default_pulse_ms: 9
     default_pulse_power: 1.0
   c_score_p4_3:
     number: 0x91  # 1000 counts
-    default_pulse_ms: 10
+    default_pulse_ms: 9
     default_pulse_power: 1.0
   c_score_p4_2:
     number: 0x92  # 100 counts
-    default_pulse_ms: 10
+    default_pulse_ms: 9
     default_pulse_power: 1.0
   c_score_p4_1:
     number: 0x93  # 10 counts
-    default_pulse_ms: 10
+    default_pulse_ms: 9
     default_pulse_power: 1.0
   c_score_p2_4:   # 10000 counts
     number: 0x94
-    default_pulse_ms: 10
+    default_pulse_ms: 9
     default_pulse_power: 1.0
   c_score_p2_3:
     number: 0x95  # 1000 counts
-    default_pulse_ms: 10
+    default_pulse_ms: 9
     default_pulse_power: 1.0
   c_score_p2_2:
     number: 0x96  # 100 counts
-    default_pulse_ms: 10
+    default_pulse_ms: 9
     default_pulse_power: 1.0
   c_score_p2_1:
     number: 0x97  # 10 counts
-    default_pulse_ms: 10
+    default_pulse_ms: 9
     default_pulse_power: 1.0
 
 #-----------------

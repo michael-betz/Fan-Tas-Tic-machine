@@ -67,7 +67,7 @@ widgets:
   fan_widget:
     - type: text
       text: FAN
-      z: 10
+      z: 3
       style: dmd_big
       color: orange
       expire: 1.5s
@@ -76,7 +76,7 @@ widgets:
   fan_spinner:
     - type: text
       text: FAN
-      z: 10
+      z: 3
       style: dmd_big
       color: orange
       expire: 4.5s
@@ -91,7 +91,7 @@ widgets:
   tas_widget:
     - type: text
       text: TAS
-      z: 10
+      z: 3
       style: dmd_big
       color: green
       expire: 1.5s
@@ -100,7 +100,7 @@ widgets:
   tic_widget:
     - type: text
       text: TIC
-      z: 10
+      z: 3
       style: dmd_big
       color: magenta
       expire: 1.5s
@@ -108,27 +108,18 @@ widgets:
         add_to_slide: fade_out
   hs1_widget:
     - type: text
-      color: white
       text: "(machine|score1_name)\n(machine|score1_value)"
-      font_name: CG-pixel
-      bitmap_font: True
-      z: 10
+      z: 3
       expire: 4s
   hs2_widget:
     - type: text
-      color: white
       text: "(machine|score2_name)\n(machine|score2_value)"
-      font_name: CG-pixel
-      bitmap_font: True
-      z: 10
+      z: 3
       expire: 2s
   hs3_widget:
     - type: text
-      color: white
       text: "(machine|score3_name)\n(machine|score3_value)"
-      font_name: CG-pixel
-      bitmap_font: True
-      z: 10
+      z: 3
       expire: 2s
 
 animations:
