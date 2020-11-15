@@ -11,8 +11,8 @@ Follow instruction to install the
 [bcm2835](https://www.airspayce.com/mikem/bcm2835/) library. Then
 
 ```bash
-./build.sh                  # compile
-sudo ./shutdown_handler &   # run in background
+make  # compile
+sudo ./shutdown_handler &  # run in background
 ```
 
 ## Run on boot
