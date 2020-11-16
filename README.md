@@ -14,59 +14,91 @@ sudo dd bs=4M if=kivy-pie-1.0.img of=/dev/mmcblk0 conv=fsync
 # mount SD card (file manager) ...
 
 # enable SSH server
-touch /media/<...>/boot/ssh
+touch /media/$USER/xsysroot/ssh
 
-# Add your wifi credentials
-vim /media/<...>/boot/interfaces
-    iface wlan0 inet dhcp
-    wpa-ssid "ssid"
-    wpa-psk "password"
+# Add your wifi credentials in wpa-ssid / wpa-psk
+vim /media/$USER/xsysroot/interfaces
+
+# The above doesn't seem to work anymore ...
+# so mount the system partition and add the wifi credentials to:
+vim /media/$USER/<...>/etc/network/interfaces
 
 # Reserve a CPU core for the LED panel
-vim /boot/cmdline.txt
-    add isolcpus=3
+vim /media/$USER/xsysroot/cmdline.txt
+    # append this to the list of space-separated commands
+    isolcpus=3
 ```
 
-boot it up and ssh into it `sysop@kivypie`.
-Default password: `posys`. Better change it!
+Unmount, stick it in the raspberry pi, hope that it boots and connects to wifi. Then ssh into it: `ssh sysop@kivypie`.
+Default password for sysop and sudo: `posys`. Better change that!
 
 ```bash
-sudo pipaos-config --expand-rootfs
+# Expand partition to SD card size
 sudo umount /tmp
+sudo pipaos-config --expand-rootfs
+sudo reboot now
 
-sudo apt-get install -y git build-essential libbz2-dev libssl-dev libreadline-dev libsqlite3-dev tk-dev libpng-dev libfreetype6-dev
+# Update and install stuff
+sudo umount /tmp
+sudo apt update
+sudo apt upgrade
+sudo apt-get install -y build-essential libbz2-dev libssl-dev libreadline-dev libsqlite3-dev tk-dev libpng-dev libfreetype6-dev libncurses5-dev sox
+
+# Install python 3.6.6 ... like this because there is no package in raspian :(
 curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+
+# add the following to ~/.bashrc:
+vim ~/.bashrc
+    export PATH="/home/sysop/.pyenv/bin:$PATH"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+
 source ~/.bashrc
+sudo umount /tmp
 pyenv install 3.6.6
 pyenv global 3.6.6
 
 pip3 install cython
 pip3 install numpy
 
+# Delete all the KivyPie demo crap
+cd ~
+rm -rf *
+
 # Clone game rules and helper scripts
 git clone https://github.com/yetifrisstlama/Fan-Tas-Tic-machine.git
+
+# Convert music to .wav files
+cd Fan-Tas-Tic-machine
+mkdir sounds/music
+cd oggmusic
+./convert.sh
 
 # Follow instruction to install bcm2835 library
 # https://www.airspayce.com/mikem/bcm2835/
 # then compile auto-shutdown handler
-cd Fan-Tas-Tic-machine/shutdown
+mkdir mpfdev
+cd mpfdev/
+wget http://www.airspayce.com/mikem/bcm2835/bcm2835-1.68.tar.gz
+tar -xvf bcm2835-1.68.tar.gz
+cd bcm2835-1.68/
+./configure
+make
+sudo make install
+cd ~/Fan-Tas-Tic-machine/shutdown
 make
 
-# Clone Mission Pinball + etc.
-mkdir ~/mpfdev
+# Install Mission Pinball Framework
 cd ~/mpfdev
 git clone https://github.com/missionpinball/mpf.git
-git clone https://github.com/missionpinball/mpf-mc.git
-git clone https://github.com/yetifrisstlama/Fan-Tas-Tic-platform.git
-git clone https://github.com/hzeller/rpi-rgb-led-matrix.git
-
-# Install Mission Pinball Framework
 cd mpf
 git checkout 295c411cebe7e0eab25542cf54414edf799c6327
 pip3 install -e .
 
 # Install Mission Pinball Media Controller
-cd ../mpf-mc
+cd ~/mpfdev
+git clone https://github.com/missionpinball/mpf-mc.git
+cd mpf-mc
 git checkout 10249a4b494d6c0e62f6e52ff91f1b982e8ce15a
 vim setup.py
     # comment-out line 612:
@@ -74,11 +106,16 @@ vim setup.py
 pip3 install -e .
 
 # Install Mission Pinball Fan-Tas-Tic platform driver
-cd ~/mpfdev/Fan-Tas-Tic-platform
+cd ~/mpfdev
+git clone https://github.com/yetifrisstlama/Fan-Tas-Tic-platform.git
+cd Fan-Tas-Tic-platform
+git checkout 53ce0c4dd1288a8593bb532f194353135734a09e
 pip3 install -e .
 
 # Install LED panel driver
-cd ../rpi-rgb-led-matrix
+cd ~/mpfdev
+git clone https://github.com/hzeller/rpi-rgb-led-matrix.git
+cd rpi-rgb-led-matrix
 git checkout d18ba4a4654480572f7c43fb37e1aa9c9b6ab627
 make
 sudo make install-python PYTHON=$(which python3)
@@ -86,48 +123,53 @@ sudo make install-python PYTHON=$(which python3)
 # need to disable rpi internal sound
 sudo vim /etc/modprobe.d/blacklist-rgb-matrix.conf
     blacklist snd_bcm2835
+
+# Make C-media USB the default sound-card
+sudo vim /etc/modprobe.d/alsa-base.conf
+    options snd-usb-audio index=0
+    options snd_bcm2835 index=1
 ```
+
+Do a manual test-run if mpf starts. The -a option makes it re-generate all cache files, which seems to be needed on the first run only.
+
+```bash
+cd ~/Fan-Tas-Tic-machine
+sudo /home/sysop/.pyenv/shims/mpf -at
+```
+
+As mpf-mc is not running, it should power up the 24 V relay and stop at:
+
+```
+INFO : BCPClientSocket : Connecting BCP to 'local_display' at localhost:5050...
+```
+
+Pushing the flipper buttons should show events in the console:
+
+```
+INFO : SwitchController : <<<<<<< 's_flipper_right' active >>>>>>>
+```
+
 # Start on boot, Shutdown on switch toggle
-add the following to `/etc/rc.local`
+add the following lines to `/etc/rc.local` before `exit 0`
+
 ```bash
 /home/sysop/Fan-Tas-Tic-machine/shutdown/shutdown_handler &
 /home/sysop/Fan-Tas-Tic-machine/start.sh &
 ```
-Will start mpf in a screen session. To see it running use `sudo screen -r`
 
-### File access from remote PC
-
-```bash
-sshfs ~/sshfs sysop@fantastic:/home/sysop/mpfdev
-```
-... gotta love sshfs!!!
+This will start mpf in a screen session on boot. To see it running use `sudo screen -r`
 
 ### SD card images
+How to take and restore a backup image of the SD card. Done from a host PC.
 
 __Backup__
 
 ```bash
-sudo dd bs=4M if=/dev/mmcblk0 | gzip > fantastic_17_11_26.gz
+sudo dd bs=1M status=progress if=/dev/mmcblk0 | gzip --best > fantastic_2020_11_15.gz
 ```
 
 __Restore__
 
 ```bash
-sudo gzip -dc fantastic_17_11_26.gz | dd bs=4M of=/dev/mmcblk0
+sudo gzip -dc fantastic_2020_11_15.gz | dd bs=1M status=progress of=/dev/mmcblk0
 ```
-
-# Get kivy running
-With miniconda I had to do this to force the system libstdc++
-
-```bash
-mv /home/michael/miniconda3/lib/libstdc++.so.6 /home/michael/miniconda3/lib/libstdc++.so.6.bak
-```
-
-# Test Kivy
-```python
->>> import os
->>> os.environ['LIBGL_DEBUG'] = 'verbose'
->>> import kivy
->>> from kivy.core.window import Window
-```
-
