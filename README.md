@@ -159,17 +159,28 @@ add the following lines to `/etc/rc.local` before `exit 0`
 
 This will start mpf in a screen session on boot. To see it running use `sudo screen -r`
 
-### SD card images
-How to take and restore a backup image of the SD card. Done from a host PC.
+# SD card images
+How to take and restore a backup image of the SD card. Done from a debian / Ubuntu host PC.
 
-__Backup__
+Make sure to replace `/dev/mmcblk0` with the right device name of the SD card.
+
+## Verify backup
 
 ```bash
-sudo dd bs=1M status=progress if=/dev/mmcblk0 | gzip --best > fantastic_2020_11_15.gz
+$ echo "edb61e63e22c11887f58ae24c08769faf378f264b4e64562865c9c46fa145b87  fantastic_2021_02_12.img.gz" | sha256sum -c
+fantastic_2021_02_12.img.gz: OK
 ```
 
-__Restore__
+## Create Backup
 
 ```bash
-sudo gzip -dc fantastic_2020_11_15.gz | dd bs=1M status=progress of=/dev/mmcblk0
+$ sudo dd bs=1M status=progress if=/dev/mmcblk0 | gzip --best > fantastic_2021_02_12.img.gz
+```
+
+## Restore Backup
+
+Warning `/dev/mmcblk0` will be overwritten. Make sure it's the SD card.
+
+```bash
+$ gzip -dc fantastic_2021_02_12.img.gz | sudo dd bs=1M status=progress of=/dev/mmcblk0
 ```
