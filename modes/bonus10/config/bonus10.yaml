@@ -41,7 +41,7 @@ slides:
     - type: image
       image: bg20
       fps: 30
-      loops: 0
+      loops: -1
 
 slide_player:
   superMegaHyperBonus:
@@ -74,3 +74,21 @@ show_player:
       show_tokens:
         lights: l_target_mr
         color: FFFFFF
+  strong_hit:
+    jet_glow:
+      loops: 0
+      show_tokens:
+        lights: l_target_ml, l_target_mm, l_target_mr
+
+# Strong target hits make the middle lights glow
+event_player:
+  s_target_ml_high_active:
+    strong_hit
+  s_target_mm_high_active:
+    strong_hit
+  s_target_mr_high_active:
+    strong_hit
+
+sound_player:
+  strong_hit:
+    perc_snap2

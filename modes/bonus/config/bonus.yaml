@@ -30,5 +30,5 @@ slides:
     - type: image
       image: bg19
       fps: 30
-      loops: 0
+      loops: -1
 

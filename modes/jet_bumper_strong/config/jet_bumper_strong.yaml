@@ -1,4 +1,5 @@
 #config_version=5
+# things which should happen once the jet bumpers lit up
 mode:
   start_events: sg_jetbumptargets_lit_complete
   priority: 150

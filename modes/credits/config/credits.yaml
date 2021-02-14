@@ -29,7 +29,7 @@ slides:
     not_enough_credits_slide:
         - type: text
           z: 4
-          style: dmd_big
+          style: big
           color: red
           text: COIN
     enabling_free_play_slide:
@@ -53,7 +53,7 @@ slides:
     player_added_slide:
         - type: text
           z: 4
-          style: dmd_big
+          style: big
           text: PLAY!
 
 sound_player:

@@ -19,6 +19,7 @@ modes:
   - roulette
   # left and right outlanes and savers
   - outlanes
+  - stars
   - high_score
   - credits
 
@@ -38,7 +39,7 @@ credits:
           type: money
           value: .25
     pricing_tiers:
-        - price: .50
+        - price: .25
           credits: 1
     fractional_credit_expiration_time: 15m
     credit_expiration_time: 2h
@@ -50,6 +51,7 @@ logging:
     console:
          platforms: full
 
+# Comment this block if you're simulating on the host
 fantastic:
   debug: True
   port: /dev/ttyACM0

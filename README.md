@@ -2,6 +2,7 @@
 Game Rules for the Fan-Tas-Tic pinball machine
 
 # Installing everything from scratch
+These are the steps to getting MPF running on the raspberry pi.
 
 Fastest is to start with KivyPie
 
@@ -184,3 +185,58 @@ Warning `/dev/mmcblk0` will be overwritten. Make sure it's the SD card.
 ```bash
 $ gzip -dc fantastic_2021_02_12.img.gz | sudo dd bs=1M status=progress of=/dev/mmcblk0
 ```
+
+# Simulation (`mpf monitor`)
+This allows you to run mpf on a host PC and interact with the virtual playfield with the mpf monitor command. This is ideal for developing and testing new game rules.
+
+I had to build and install python 3.6 manually on my debian-testing machine (this old python version was not included anymore in apt)
+
+```bash
+wget https://www.python.org/ftp/python/3.6.10/Python-3.6.10.tgz
+tar -xvf Python-3.6.10.tgz
+cd Python-3.6.10/
+./configure --prefix=/usr/local --enable-optimizations
+make -j4
+sudo make install
+```
+
+Then create the virtual python environment and install mpf 0.54
+
+```bash
+mkvirtualenv --python python3.6 mpf
+python --version
+# Python 3.6.10
+pip install mpf==0.54 mpf-mc==0.54
+pip install mpf-monitor==0.54
+pip install numpy pyqt5
+```
+
+You can always go back to this environment later with `workon mpf`.
+
+Now let's get the machine directory ready ...
+
+```bash
+# copy music files in the right place (no need to convert to .wav)
+cd Fan-Tas-Tic-machine
+mkdir sounds/music
+cp oggmusic/*.ogg sounds/music
+
+vim config/config.yaml
+# comment out the `fantastic:` block
+# we don't need this hardware configuration for simulation
+```
+
+Start the mpf-monitor and make it display the playing field, then start mpf and everything should come to life.
+
+```bash
+mpf monitor &
+# Enable `Show playfield window` under Monitor tab
+
+mpf mc &
+# the simulated DMD window should pop up labeled `Fan-Tas-Tic Pinball`
+
+mpf -Xt
+# the machine should come to life
+```
+
+In the playfield window, squares represent switches, which you can left-click to activate them. Circles represent LEDs.

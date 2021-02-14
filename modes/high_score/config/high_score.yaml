@@ -9,7 +9,7 @@ mode:
 high_score:
   _overwrite: True
   award_slide_display_time: 4s
-  enter_initials_timeout: 2min
+  enter_initials_timeout: 120s
   categories: !!omap
   - score:
     - HS1
@@ -38,7 +38,7 @@ slides:
       y: 24
     - type: text_input
       key: high_score
-      style: dmd_small
+      style: small
       anchor_x: left
       anchor_y: middle
       max_chars: 5
@@ -50,7 +50,7 @@ slides:
       anchor_x: left
       anchor_y: middle
       x: left+4
-      style: dmd_small
+      style: small
       y: 12
 
   high_score_award_display:
@@ -71,7 +71,7 @@ slides:
   - type: text
     text: (award)
     color: 555555
-    style: dmd_big
+    style: big
     anchor_y: top
     anchor_x: middle
     y: top-6

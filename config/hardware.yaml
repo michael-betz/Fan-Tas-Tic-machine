@@ -28,6 +28,7 @@ switches:
   s_coin:
     number: 0x4A
     type: NC
+
   #-----------------
   # Playfield / misc.
   #-----------------
@@ -59,91 +60,107 @@ switches:
     ignore_window_ms: 1000
     type: NC
     tags: lane
+
   #-----------------
-  # Targets
+  # Yellow plastic targets
   #-----------------
-  # Yellow plastic
+  # the two top ones which make the bumpers light up
   s_target_on_bump_tr:
     number: 0x01
     type: NC
-    tags: playfield_active, target
+    ignore_window_ms: 100
+    tags: target
   s_target_on_bump_tl:
     number: 0x07
     type: NC
-    tags: playfield_active, target
+    ignore_window_ms: 100
+    tags: target
+
+  # the three middle ones. These have 2 switches each:
+  # *_low is active on a weak or strong hit,
+  # *_high is only active on a strong hit.
   s_target_ml_low:
     number: 0x0C
     type: NC
-    tags: playfield_active, target
+    ignore_window_ms: 100
+    tags: target
   s_target_ml_high:
     number: 0x0D
     type: NC
+    ignore_window_ms: 100
   s_target_mm_low:
     number: 0x0E
     type: NC
-    tags: playfield_active, target
+    ignore_window_ms: 100
+    tags: target
   s_target_mm_high:
     number: 0x0F
     type: NC
+    ignore_window_ms: 100
   s_target_mr_low:
     number: 0x10
     type: NC
-    tags: playfield_active, target
+    ignore_window_ms: 100
+    tags: target
   s_target_mr_high:
     number: 0x11
     type: NC
-  # Rubber bands
+    ignore_window_ms: 100
+
+  # Switches hidden behind some rubber bands
   s_rubber_tl:
     number: 0x09
     type: NC
-    tags: playfield_active, rubber
+    tags: rubber
   s_rubber_l:
     number: 0x0A
     type: NC
-    tags: playfield_active, rubber
+    tags: rubber
   s_rubber_targ_r:
     number: 0x12
     type: NC
-    tags: playfield_active, rubber
+    tags: rubber
   s_rubber_targ_l:
     number: 0x1F
     type: NC
-    tags: playfield_active, rubber
+    tags: rubber
   s_rubber_tr:
     number: 0x14
     type: NC
-    tags: playfield_active, rubber
-  # Rollovers
+    tags: rubber
+
+  # Rollover buttons
   s_rollover_tr:
     number: 0x02
     ignore_window_ms: 300
     type: NC
-    tags: playfield_active, rollover, adv_bonus
+    tags: rollover, adv_bonus
   s_rollover_tl:
     number: 0x06
     ignore_window_ms: 300
     type: NC
-    tags: playfield_active, rollover, adv_bonus
+    tags: rollover, adv_bonus
   s_rollover_ml:
     number: 0x0B
     ignore_window_ms: 300
     type: NC
-    tags: playfield_active, rollover
+    tags: rollover
   s_rollover_mr:
     number: 0x13
     ignore_window_ms: 300
     type: NC
-    tags: playfield_active, rollover
+    tags: rollover
   s_rollover_lr:
     number: 0x19
     ignore_window_ms: 300
     type: NC
-    tags: playfield_active, rollover
+    tags: rollover
   s_rollover_ll:
     number: 0x1C
     ignore_window_ms: 300
     type: NC
-    tags: playfield_active, rollover
+    tags: rollover
+
   #-----------------
   # Captive holes
   #-----------------
@@ -159,6 +176,7 @@ switches:
     number: 0x16
     type: NC
     tags: captive
+
   #-----------------
   # Jet bumpers
   #-----------------
@@ -181,6 +199,7 @@ switches:
     number: 0x1A
     type: NC
     debounce: normal
+
   #-----------------
   # Backglass score wheels zero switches
   #-----------------

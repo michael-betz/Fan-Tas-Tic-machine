@@ -1,0 +1,47 @@
+#config_version=5
+#-------------------------------
+# Extraball on 3 stars
+#-------------------------------
+# Get a star with the roulette wheel
+# after 3 stars = 1 extra ball
+
+mode:
+  start_events: ball_starting
+  priority: 100
+
+shots:
+  bonus_stars:
+    hit_events: roulette_star
+    reset_events: extra_ball_eb_stars_awarded
+    profile: stars
+
+extra_balls:
+  eb_stars:
+    award_events: player_shot_bonus_stars{value==3}
+    max_per_game: 10
+
+show_player:
+  extra_ball_eb_stars_awarded:
+    fast_rainbow:
+      loops: 5
+      show_tokens:
+        lights: l_star1, l_star2, l_star3
+        color: FFFFFF
+
+slide_player:
+  extra_ball_eb_stars_awarded:
+    extraBallSlide:
+      expire: 3s
+
+slides:
+  extraBallSlide:
+    widgets:
+    - type: text
+      text: "Extra\nBall"
+      font_name: CG-pixel
+      color: white
+      bitmap_font: True
+    - type: image
+      image: bg1
+      fps: 35
+      loops: -1

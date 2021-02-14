@@ -1,5 +1,5 @@
 #show_version=5
-- time: '+1.25s'
+- time: '+1s'
   events: roulette_choose
-- time: '+2s'
+- time: '+1.5s'
   events: roulette_end

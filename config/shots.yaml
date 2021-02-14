@@ -45,17 +45,17 @@ shows:
         l_star2: off
         l_star3: off
     - lights:
-        l_star1: 888888
+        l_star1: FFFFFF
         l_star2: off
         l_star3: off
     - lights:
-        l_star1: 888888
-        l_star2: 888888
+        l_star1: FFFFFF
+        l_star2: FFFFFF
         l_star3: off
     - lights:
-        l_star1: FFFF88
-        l_star2: FFFF88
-        l_star3: FFFF88
+        l_star1: FFFFFF
+        l_star2: FFFFFF
+        l_star3: FFFFFF
 
   rainbow:
     - lights:

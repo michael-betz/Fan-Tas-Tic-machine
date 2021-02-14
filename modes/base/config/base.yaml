@@ -29,7 +29,7 @@ slides:
 #    - type: image
 #      image: bg1
 #      fps: 30
-#      loops: 0
+#      loops: -1
 #      z: 0
 
   # Move text in a rectangle

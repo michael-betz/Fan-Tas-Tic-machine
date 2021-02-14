@@ -7,7 +7,6 @@
 # this relies on the autofire-coils in config/config.yaml
 # Also takes care of
 #   * AB lanes
-#   * 3 star extraball
 
 mode:
   start_events: ball_starting
@@ -41,11 +40,6 @@ shots:
     show_tokens:
       lights: l_A_lane, l_B_lane
 
-  bonus_stars:
-    hit_events: roulette_star
-    # reset_events: ball_ending
-    profile: stars
-
 show_player:
   s_target_mm_low_active:
     blinkenShow:
@@ -69,6 +63,12 @@ show_player:
         lights: l_outlane_r
         color: FFFFFF
 
+event_player:
+  s_lane_tl_active{current_player.shot_ab_lanes==1}:
+    ab_lane_scored
+  s_lane_tr_active{current_player.shot_ab_lanes==1}:
+    ab_lane_scored
+
 variable_player:
   # Hit center target to light up "Ball returns"
   # in left bottom outlane, to kick ball back onto
@@ -79,11 +79,9 @@ variable_player:
   s_outlane_r_active{current_player.shot_right_gate==1}:
     score: 3000
   # When AB lanes light are ON, they score 3000
-  s_lane_tl_active{current_player.shot_ab_lanes==1}:
-    score: 3000
-  s_lane_tr_active{current_player.shot_ab_lanes==1}:
+  ab_lane_scored:
     score: 3000
 
-extra_balls:
-  eb_stars:
-    award_events: player_shot_bonus_stars{value==3}
+sound_player:
+  ab_lane_scored:
+    bass_drop_c
