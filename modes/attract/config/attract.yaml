@@ -23,45 +23,11 @@ slides:
   attractSlide:
   - type: image
     image: bg25
-    # image: bgAni_pool
     fps: 30
     loops: -1
-  # testSlide:
-  # - type: text
-  #   text: MBETZ
-  #   color: magenta
-  #   font_name: emulogic
-  #   bitmap_font: True
-  #   anchor_y: middle
-  #   anchor_x: left
-  #   x: 34
-  #   y: middle
-  #   animations:
-  #     show_slide:
-  #     - property: x
-  #       value: -40
-  #       duration: 4 s
-  # - type: text
-  #   text: HS6
-  #   color: 555555
-  #   style: big
-  #   anchor_y: top
-  #   anchor_x: middle
-  #   y: top-6
-  #   x: middle
-  # - type: text
-  #   text: 30002
-  #   color: cyan
-  #   font_name: CG-pixel
-  #   bitmap_font: True
-  #   anchor_y: bottom
-  #   anchor_x: middle
-  #   y: bottom+6
-  #   x: middle
 
 slide_player:
   mode_attract_started: attractSlide
-  # mode_attract_started: testSlide
 
 widgets:
   fan_widget:

@@ -37,10 +37,9 @@ slides:
   extraBallSlide:
     widgets:
     - type: text
-      text: "Extra\nBall"
-      font_name: CG-pixel
+      text: "+1\nBall"
       color: white
-      bitmap_font: True
+      style: big
     - type: image
       image: bg1
       fps: 35

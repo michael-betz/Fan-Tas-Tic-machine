@@ -32,13 +32,10 @@ slides:
   high_score_enter_initials:
     - type: text
       text: "(award)"
-      font_name: emulogic
-      bitmap_font: True
       anchor_y: middle
       y: 24
     - type: text_input
       key: high_score
-      style: small
       anchor_x: left
       anchor_y: middle
       max_chars: 5
@@ -50,15 +47,13 @@ slides:
       anchor_x: left
       anchor_y: middle
       x: left+4
-      style: small
       y: 12
 
   high_score_award_display:
   - type: text
     text: (player_name)
     color: magenta
-    font_name: emulogic
-    bitmap_font: True
+    style: big
     anchor_y: middle
     anchor_x: left
     x: 34
@@ -74,13 +69,11 @@ slides:
     style: big
     anchor_y: top
     anchor_x: middle
-    y: top-6
+    y: top-4
     x: middle
   - type: text
     text: (value)
     color: cyan
-    font_name: CG-pixel
-    bitmap_font: True
     number_grouping: True
     anchor_y: bottom
     anchor_x: middle

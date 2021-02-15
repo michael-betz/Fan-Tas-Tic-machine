@@ -23,8 +23,6 @@ slides:
     credit_added_slide:
         - type: text
           z: 4
-          font_name: CG-pixel
-          bitmap_font: True
           text: (machine|credits_string)
     not_enough_credits_slide:
         - type: text
@@ -35,20 +33,14 @@ slides:
     enabling_free_play_slide:
         - type: text
           z: 4
-          font_name: CG-pixel
-          bitmap_font: True
           text: FREE PLAY
     enabling_credit_play_slide:
         - type: text
           z: 4
-          font_name: CG-pixel
-          bitmap_font: True
           text: CREDIT PLAY
     max_credits_reached_slide:
         - type: text
           z: 4
-          font_name: CG-pixel
-          bitmap_font: True
           text: MAX
     player_added_slide:
         - type: text
