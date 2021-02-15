@@ -1,0 +1,16 @@
+[Unit]
+Description=FanTasTic pinball machine
+After=multi-user.target
+Requires=fantastic_mc.service
+
+[Service]
+WorkingDirectory=/home/pi/Fan-Tas-Tic-machine/
+ExecStart=/usr/local/bin/mpf -Pt
+Restart=always
+RestartSec=15
+# KillMode=mixed
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target
+

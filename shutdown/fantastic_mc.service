@@ -1,0 +1,15 @@
+[Unit]
+Description=FanTasTic media controller
+After=multi-user.target
+
+[Service]
+User=pi
+WorkingDirectory=/home/pi/Fan-Tas-Tic-machine/
+ExecStart=/usr/local/bin/mpf mc -Pt
+Restart=always
+RestartSec=15
+# KillMode=mixed
+
+[Install]
+WantedBy=multi-user.target
+

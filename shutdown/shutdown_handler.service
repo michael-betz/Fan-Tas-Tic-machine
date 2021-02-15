@@ -1,0 +1,13 @@
+[Unit]
+Description=FanTasTic shutdown switch
+After=multi-user.target
+
+[Service]
+WorkingDirectory=/home/pi/Fan-Tas-Tic-machine/shutdown
+ExecStart=/home/pi/Fan-Tas-Tic-machine/shutdown/shutdown_handler
+Restart=always
+RestartSec=15
+
+[Install]
+WantedBy=multi-user.target
+
