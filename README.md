@@ -1,79 +1,48 @@
 # Fan-Tas-Tic-machine
 Game Rules for the Fan-Tas-Tic pinball machine
 
-# Installing everything from scratch
-These are the steps to getting MPF running on the raspberry pi.
+# Installing everything on the Raspberry PI from scratch
+Note that the MPF team recommends using an alternative linux distribution called `KivyPie`. However it has not been updated in a while, so we're going to use the lightest version of Raspian in a headless setup (no monitor, only ssh access).
 
-Fastest is to start with KivyPie
+Start by setting up a raspian SD card, according to
+https://www.raspberrypi.org/software/operating-systems/#raspberry-pi-os-32-bit
+
+You can use a newer raspian image, as long as it has python3.7 installed, which is generally the case for debian buster based ones.
+
+We plug this SD card into the raspberry PI 3 and boot it once, such that the filesystem gets expanded. Connect it with an ethernet cable to your home router, such that it gets an IP address over DHCP. Then SSH into it.
 
 ```bash
-wget http://kivypie.mitako.eu/kivy-pie-1.0.zip
-unzip kivy-pie-1.0.zip
-# insert a SD card and make sure it appears as `/dev/mmcblk0`
-sudo dd bs=4M if=kivy-pie-1.0.img of=/dev/mmcblk0 conv=fsync
+# For Direct ethernet connection (no DHCP)
+sudo ip addr add dev enp0s31f6 169.254.173.1/24
+ssh pi@169.254.173.63
 
-# mount SD card (file manager) ...
+# with DHCP... default password: raspberry
+ssh pi@raspberrypi
 
-# enable SSH server
-touch /media/$USER/xsysroot/ssh
+# change default password
+passwd
 
-# Add your wifi credentials in wpa-ssid / wpa-psk
-vim /media/$USER/xsysroot/interfaces
-
-# The above doesn't seem to work anymore ...
-# so mount the system partition and add the wifi credentials to:
-vim /media/$USER/<...>/etc/network/interfaces
-
-# Reserve a CPU core for the LED panel
-vim /media/$USER/xsysroot/cmdline.txt
-    # append this to the list of space-separated commands
-    isolcpus=3
+# expand filesystem, set timezone, add wifi credentials (optional)
+sudo raspi-config
+sudo shutdown now
 ```
 
-Unmount, stick it in the raspberry pi, hope that it boots and connects to wifi. Then ssh into it: `ssh sysop@kivypie`.
-Default password for sysop and sudo: `posys`. Better change that!
+The actual installation steps.
 
 ```bash
-# Expand partition to SD card size
-sudo umount /tmp
-sudo pipaos-config --expand-rootfs
-sudo reboot now
+# login as pi, raspberry
 
-# Update and install stuff
-sudo umount /tmp
+# change password for user pi
+passwd
+
+# Set hostname to fantastic
+sudo raspi-config
+
+# system update
 sudo apt update
 sudo apt upgrade
-sudo apt-get install -y build-essential libbz2-dev libssl-dev libreadline-dev libsqlite3-dev tk-dev libpng-dev libfreetype6-dev libncurses5-dev sox
-
-# Install python 3.6.6 ... like this because there is no package in raspian :(
-curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
-
-# add the following to ~/.bashrc:
-vim ~/.bashrc
-    export PATH="/home/sysop/.pyenv/bin:$PATH"
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-
-source ~/.bashrc
-sudo umount /tmp
-pyenv install 3.6.6
-pyenv global 3.6.6
-
-pip3 install cython
-pip3 install numpy
-
-# Delete all the KivyPie demo crap
-cd ~
-rm -rf *
-
-# Clone game rules and helper scripts
-git clone https://github.com/yetifrisstlama/Fan-Tas-Tic-machine.git
-
-# Convert music to .wav files
-cd Fan-Tas-Tic-machine
-mkdir sounds/music
-cd oggmusic
-./convert.sh
+sudo apt install build-essential git sox screen python3-pip python3-numpy libopenjp2-7
+libtiff5 libgstreamer1.0-0 libsdl2-2.0-0 libsdl2-image-2.0-0 libsdl2-mixer-2.0-0 libsdl2-ttf-2.0-0 libgl1
 
 # Follow instruction to install bcm2835 library
 # https://www.airspayce.com/mikem/bcm2835/
@@ -86,56 +55,63 @@ cd bcm2835-1.68/
 ./configure
 make
 sudo make install
-cd ~/Fan-Tas-Tic-machine/shutdown
-make
 
-# Install Mission Pinball Framework
-cd ~/mpfdev
-git clone https://github.com/missionpinball/mpf.git
-cd mpf
-git checkout 295c411cebe7e0eab25542cf54414edf799c6327
-pip3 install -e .
-
-# Install Mission Pinball Media Controller
-cd ~/mpfdev
-git clone https://github.com/missionpinball/mpf-mc.git
-cd mpf-mc
-git checkout 10249a4b494d6c0e62f6e52ff91f1b982e8ce15a
-vim setup.py
-    # comment-out line 612:
-    #'ffpyplayer==4.2.0;platform_system!="Windows"'
-pip3 install -e .
-
-# Install Mission Pinball Fan-Tas-Tic platform driver
-cd ~/mpfdev
-git clone https://github.com/yetifrisstlama/Fan-Tas-Tic-platform.git
-cd Fan-Tas-Tic-platform
-git checkout 53ce0c4dd1288a8593bb532f194353135734a09e
-pip3 install -e .
-
+#-------------------------
 # Install LED panel driver
-cd ~/mpfdev
+#-------------------------
+cd ~
 git clone https://github.com/hzeller/rpi-rgb-led-matrix.git
 cd rpi-rgb-led-matrix
-git checkout d18ba4a4654480572f7c43fb37e1aa9c9b6ab627
+git checkout 6801ede6b1de6902e0d0d99bc92676b98a73639e
 make
 sudo make install-python PYTHON=$(which python3)
 
+# Reserve a CPU core for the LED panel
+sudo touch /boot/ssh
+sudo nano /boot/cmdline.txt
+    # append this to the list of space-separated commands
+    isolcpus=3
+
 # need to disable rpi internal sound
-sudo vim /etc/modprobe.d/blacklist-rgb-matrix.conf
+sudo nano /etc/modprobe.d/blacklist-rgb-matrix.conf
     blacklist snd_bcm2835
 
 # Make C-media USB the default sound-card
-sudo vim /etc/modprobe.d/alsa-base.conf
+sudo nano /etc/modprobe.d/alsa-base.conf
     options snd-usb-audio index=0
     options snd_bcm2835 index=1
+
+#-------------------------
+# Install Mission Pinball
+#-------------------------
+sudo pip3 install mpf==0.54 mpf-mc==0.54
+
+# Install MPF Fan-Tas-Tic platform driver
+sudo pip3 install git+https://github.com/yetifrisstlama/Fan-Tas-Tic-platform.git
+
+#-------------------------
+# Install machine files
+#-------------------------
+git clone https://github.com/yetifrisstlama/Fan-Tas-Tic-machine.git
+
+# Optional: convert music to .wav files
+# mkdir sounds/music
+# cd oggmusic
+# ./convert.sh
+# or just link the .ogg files ...
+cd Fan-Tas-Tic-machine
+ln -s $HOME/Fan-Tas-Tic-machine/oggmusic/ sounds/music
+
+# Make the shutdown switch handler
+cd ~/Fan-Tas-Tic-machine/shutdown
+make
 ```
 
 Do a manual test-run if mpf starts. The -a option makes it re-generate all cache files, which seems to be needed on the first run only.
 
 ```bash
 cd ~/Fan-Tas-Tic-machine
-sudo /home/sysop/.pyenv/shims/mpf -at
+sudo mpf -at
 ```
 
 As mpf-mc is not running, it should power up the 24 V relay and stop at:
@@ -150,12 +126,42 @@ Pushing the flipper buttons should show events in the console:
 INFO : SwitchController : <<<<<<< 's_flipper_right' active >>>>>>>
 ```
 
+If everything works, generate the production files
+
+```bash
+mpf build production_bundle
+```
+
 # Start on boot, Shutdown on switch toggle
+Copy and enable the 2 systemd service files:
+
+```bash
+sudo cp shutdown/shutdown_handler.service /etc/systemd/system/
+sudo cp shutdown/fantastic.service /etc/systemd/system/
+
+sudo systemctl daemon-reload
+
+sudo systemctl enable shutdown_handler
+sudo systemctl start shutdown_handler
+systemctl status shutdown_handler
+    ● shutdown_handler.service - FanTasTic shutdown switch
+
+sudo systemctl enable fantastic
+sudo systemctl start fantastic
+systemctl status fantastic
+    ● fantastic.service - FanTasTic pinball machine
+
+# See log file:
+journalctl -u fantastic -ef
+```
+
+
 add the following lines to `/etc/rc.local` before `exit 0`
 
 ```bash
-/home/sysop/Fan-Tas-Tic-machine/shutdown/shutdown_handler &
-/home/sysop/Fan-Tas-Tic-machine/start.sh &
+sudo nano /etc/rc.local
+    /home/pi/Fan-Tas-Tic-machine/shutdown/shutdown_handler &
+    /home/pi/Fan-Tas-Tic-machine/start.sh &
 ```
 
 This will start mpf in a screen session on boot. To see it running use `sudo screen -r`
@@ -186,7 +192,7 @@ Warning `/dev/mmcblk0` will be overwritten. Make sure it's the SD card.
 $ gzip -dc fantastic_2021_02_12.img.gz | sudo dd bs=1M status=progress of=/dev/mmcblk0
 ```
 
-# Simulation (`mpf monitor`)
+# Playfield simulation (`mpf monitor`)
 This allows you to run mpf on a host PC and interact with the virtual playfield with the mpf monitor command. This is ideal for developing and testing new game rules.
 
 I had to build and install python 3.6 manually on my debian-testing machine (this old python version was not included anymore in apt)
@@ -206,8 +212,7 @@ Then create the virtual python environment and install mpf 0.54
 mkvirtualenv --python python3.6 mpf
 python --version
 # Python 3.6.10
-pip install mpf==0.54 mpf-mc==0.54
-pip install mpf-monitor==0.54
+pip install mpf==0.54 mpf-mc==0.54 mpf-monitor==0.54
 pip install numpy pyqt5
 ```
 
@@ -240,3 +245,42 @@ mpf -Xt
 ```
 
 In the playfield window, squares represent switches, which you can left-click to activate them. Circles represent LEDs.
+
+
+# Installing directly into the .img file
+We can do the installation either on the raspi itself (easier) or in a virtual machine on a host PC (faster). For the latter, follow these steps to run and modify the .img file locally.
+
+```bash
+# Download and unzip raspian image.
+wget https://downloads.raspberrypi.org/raspios_lite_armhf/images/raspios_lite_armhf-2021-01-12/2021-01-11-raspios-buster-armhf-lite.zip
+unzip 2021-01-11-raspios-buster-armhf-lite.zip
+
+# Make the image file bigger to gain some free space
+dd if=/dev/zero bs=1M count=2048 >> 2021-01-11-raspios-buster-armhf-lite.img
+
+# mount image as loopfs
+sudo losetup -P /dev/loop0 2021-01-11-raspios-buster-armhf-lite.img
+
+# use gparted to resize the /dev/loop0p2 partition to its full size
+sudo gparted /dev/loop0
+
+# Mount the partition
+mkdir mnt
+mkdir mnt/boot
+sudo mount -o rw /dev/loop0p2 mnt
+sudo mount -o rw /dev/loop0p1 mnt/boot
+
+# Enter it as a virtual machine
+sudo apt install systemd-container
+sudo systemd-nspawn -b -D mnt/
+
+# ... carry out the install steps above ...
+
+sudo halt
+sudo umount mnt/boot
+sudo umount mnt
+sudo losetup -D
+
+# Now we have a modified raspian image with MPF pre-installed
+# copy it to SD and boot
+```
