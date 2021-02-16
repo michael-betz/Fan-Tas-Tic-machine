@@ -66,6 +66,7 @@ slides:
             repeat: True
     - type: text
       text: "3k"
+      style: big
       color: BBBBBB
 
 slide_player:
