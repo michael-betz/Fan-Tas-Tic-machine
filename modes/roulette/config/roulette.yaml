@@ -24,14 +24,20 @@ slides:
 widgets:
   rouletteTextWidget:
   - type: text
-    font_name: CG-pixel
-    bitmap_font: True
     text: "<placeholder>"
     color: white
-    z: 11
-    opacity: 0
+    z: 12
     animations:
       add_to_slide: fade_in
+  # doesn't work :(
+  # - type: rectangle
+  #   width: 32
+  #   height: 10
+  #   color: black
+  #   opacity: 0.8
+  #   z: 11
+  #   animations:
+  #     add_to_slide: fade_in
   rouletteImageWidget:
   - type: image
     image: 1f3b0

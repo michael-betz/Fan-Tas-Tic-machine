@@ -19,17 +19,18 @@ shots:
 slides:
   ultra_bonus10_slide:
     - type: text
-      text: "\n(player1|bonus10HitCount)\nx(player1|bonus10Worth)"
-      font_name: CG-pixel
+      text: "(player1|bonus10HitCount)x"
+      style: big
+      color: yellow
+    - type: text
+      text: "(player1|bonus10Worth)"
       color: white
-      bitmap_font: True
+      y: 7
     - type: text
       text: "ULTRA bonus"
-      font_name: CG-pixel
       color: white
-      y: 23
+      y: 25
       x: 35
-      bitmap_font: True
       animations:
         add_to_slide:
           - property: x

@@ -20,23 +20,29 @@ slides:
   scoreSlide:
     - type: text
       text: "(score)"
-      font_name: visitor
-      color: purple
-      bitmap_font: True
-      y: 15.0
+      font_name: visitor1
+      font_size: 10
+      color: white
+      y: 16
       number_grouping: False
+      z: 2
+    - type: rectangle
+      width: 32
+      height: 10
+      color: black
+      opacity: 0.8
       z: 1
-#    - type: image
-#      image: bg1
-#      fps: 30
-#      loops: -1
-#      z: 0
+    - type: image
+      image: bgAni_pool
+      fps: 30
+      loops: -1
+      z: 0
 
   # Move text in a rectangle
   slide_rollOverComplete:
     - type: text
-      font_name: visitor
-      bitmap_font: True
+      font_name: visitor1
+      font_size: 10
       text: "Wal\ntz"
       color: Red
       anchor_x: center
@@ -59,8 +65,6 @@ slides:
             duration: 0.3s
             repeat: True
     - type: text
-      font_name: emulogic
-      bitmap_font: True
       text: "3k"
       color: BBBBBB
 

@@ -58,9 +58,8 @@ slides:
   slide_jetBumpMultiplier:
     - type: text
       text: "BUMP\n(player1|jetBumperWorth)"
-      font_name: visitor
       color: 88FF88
-      bitmap_font: True
+      style: visitor
 
 slide_player:
   sg_jetbumptargets_lit_complete:

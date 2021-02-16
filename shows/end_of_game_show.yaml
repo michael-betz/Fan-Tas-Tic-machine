@@ -9,8 +9,7 @@
       widgets:
       - type: text
         text: "Game\nOver"
-        font_name: CG-pixel
-        bitmap_font: True
+        style: medium
         color: white
 
 - time: '+2'
@@ -23,6 +22,4 @@
       widgets:
       - type: text
         text: "(player1|score)"
-        font_name: CG-pixel
-        bitmap_font: True
         color: white

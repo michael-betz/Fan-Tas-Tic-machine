@@ -201,7 +201,7 @@ image_pools:
   bgAni_pool:
     images:
       - bg0
-      - bg1
+      - bg25
       - bg2
       - bg3
       - bg4
@@ -218,5 +218,6 @@ widget_styles:
     font_size: 9
     adjust_bottom: 3
     adjust_top: 2
-    # bitmap_font: True
-    # font_name: CG-pixel
+  visitor:
+    font_name: visitor1
+    font_size: 10
