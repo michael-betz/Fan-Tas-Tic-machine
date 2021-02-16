@@ -52,12 +52,12 @@ logging:
          platforms: full
 
 # Comment this block if you're simulating on the host
-# fantastic:
-#   debug: True
-#   port: /dev/ttyACM0
-#   led_clock_0: 3200000  #WS2812 High speed mode
-#   led_clock_1: 2400000  #WS2811 Low speed mode
-#   led_clock_2: 3200000  #WS2812 High speed mode
+fantastic:
+  debug: True
+  port: /dev/ttyACM0
+  led_clock_0: 3200000  #WS2812 High speed mode
+  led_clock_1: 2400000  #WS2811 Low speed mode
+  led_clock_2: 3200000  #WS2812 High speed mode
 
 rpi_dmd:
   cols: 32
@@ -76,6 +76,10 @@ player_vars:
   # Will change to 2000 when ultraBonus is achieved
   bonus10Worth:
     initial_value: 1000
+  # Label on roulette slide
+  roulette_text:
+    initial_value: ''
+    value_type: str
 
 #-------------------
 # ** Only 1 (so far) **

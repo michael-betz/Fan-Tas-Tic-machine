@@ -9,6 +9,16 @@ mode:
 
 show_player:
   mode_roulette_started: roulette_show
+  roulette_ab_lanes:
+    blinkenShowWhite:
+      loops: -1
+      show_tokens:
+        lights: l_A_lane, l_B_lane
+  roulette_open_gate:
+    blinkenShowWhite:
+      loops: -1
+      show_tokens:
+        lights: l_outlane_r
 
 slide_player:
   mode_roulette_started: rouletteSlide
@@ -19,35 +29,36 @@ slides:
     - type: image
       image: roulette
       fps: 35
-      loops: 1
+      loops: 0
 
 widgets:
-  rouletteTextWidget:
-  - type: text
-    text: "<placeholder>"
-    color: white
-    z: 12
-    animations:
-      add_to_slide: fade_in
-  # doesn't work :(
-  # - type: rectangle
-  #   width: 32
-  #   height: 10
-  #   color: black
-  #   opacity: 0.8
-  #   z: 11
-  #   animations:
-  #     add_to_slide: fade_in
   rouletteImageWidget:
   - type: image
     image: 1f3b0
     z: 10
+  rouletteTextWidget:
+  - type: rectangle
+    width: 32
+    height: 12
+    color: black
+    z: 11
+    opacity: 0
+    animations:
+      add_to_slide: fade_in
+  - type: text
+    text: "(roulette_text)"
+    color: yellow
+    style: big
+    z: 12
+    opacity: 0
+    animations:
+      add_to_slide: fade_in
 
 animations:
   fade_in:
     property: opacity
     value: 1
-    duration: 1.0s
+    duration: 0.75s
     easing: in_quint
 
 random_event_player:
@@ -58,10 +69,10 @@ random_event_player:
     events:
       # 500 + 1 star, 3 stars to shoot again
       roulette_star: 250
-      # scores 3 x the lit bonus value
-      roulette_triple_bonus: 83
       # scores 3000
       roulette_3000: 166
+      # scores 3 x the lit bonus value
+      roulette_triple_bonus: 83
       # scores 2 x the lit bonus value
       roulette_double_bonus: 83
       # scores the lit (highest) bonus value
@@ -73,86 +84,96 @@ random_event_player:
       # 500 + open the gate
       roulette_open_gate: 86
 
+# the text in the player variable `roulette_text` is displayed on the slide
 variable_player:
   roulette_star:
     score: 500
-  roulette_triple_bonus:
-    score: 3 * current_player.bonus10Worth * current_player.bonus10HitCount
+    roulette_text:
+      action: set
+      string: "star"
   roulette_3000:
     score: 3000
+    roulette_text:
+      action: set
+      string: "3000"
+  roulette_triple_bonus:
+    score: 3 * current_player.bonus10Worth * current_player.bonus10HitCount
+    roulette_text:
+      action: set
+      string: "3x"
   roulette_double_bonus:
     score: 2 * current_player.bonus10Worth * current_player.bonus10HitCount
+    roulette_text:
+      action: set
+      string: "2x"
   roulette_bonus:
     score: 1 * current_player.bonus10Worth * current_player.bonus10HitCount
+    roulette_text:
+      action: set
+      string: "1x"
+  roulette_adv_bonus_max:
+    roulette_text:
+      action: set
+      string: "MAX"
   roulette_ab_lanes:
     score: 500
+    roulette_text:
+      action: set
+      string: "A-B"
+  roulette_open_gate:
+    roulette_text:
+      action: set
+      string: "gate"
 
 widget_player:
   roulette_star:
-    rouletteTextWidget:
-      widget_settings:
-        text: STAR
-        color: black
     rouletteImageWidget:
       widget_settings:
         image: 2b50
 
   roulette_3000:
-    rouletteTextWidget:
-      widget_settings:
-        text: "3000\npts."
     rouletteImageWidget:
       widget_settings:
         image: 1f939-2640
+    rouletteTextWidget:
+      action: add
 
   roulette_triple_bonus:
-    rouletteTextWidget:
-      widget_settings:
-        text: "3 x\nBonus"
-        color: black
     rouletteImageWidget:
       widget_settings:
         image: 1f911
+    rouletteTextWidget:
+      action: add
 
   roulette_double_bonus:
-    rouletteTextWidget:
-      widget_settings:
-        text: "2 x\nBonus"
-        color: black
     rouletteImageWidget:
       widget_settings:
         image: 1f4b0
+    rouletteTextWidget:
+      action: add
 
   roulette_bonus:
-    rouletteTextWidget:
-      widget_settings:
-        text: "Bonus"
-        color: black
     rouletteImageWidget:
       widget_settings:
         image: 1f4b5
+    rouletteTextWidget:
+      action: add
 
   roulette_ab_lanes:
-    rouletteTextWidget:
-      widget_settings:
-        text: "AB\nLanes"
-        color: black
     rouletteImageWidget:
       widget_settings:
         image: 1f6e3
 
   roulette_adv_bonus_max:
-    rouletteTextWidget:
-      widget_settings:
-        text: "MAX\nBONUS"
     rouletteImageWidget:
       widget_settings:
         image: 1f973
+    rouletteTextWidget:
+      action: add
 
   roulette_open_gate:
-    rouletteTextWidget:
-      widget_settings:
-        text: "Open\nGate"
     rouletteImageWidget:
       widget_settings:
         image: 1f6aa
+    rouletteTextWidget:
+      action: add

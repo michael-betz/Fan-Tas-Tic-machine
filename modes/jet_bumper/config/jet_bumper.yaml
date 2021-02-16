@@ -125,3 +125,13 @@ show_player:
       loops: 0
       show_tokens:
         lights: l_target_mr, l_target_mm
+
+shows:
+  jet_glow:
+    - time: 0
+      lights:
+        (lights): FFFFFF
+    - time: +0.1s
+      lights:
+        (lights): 000000-f1s
+    - time: +1s

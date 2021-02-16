@@ -114,19 +114,19 @@ show_player:
   # Make captive LEDs blink
   ball_hold_bh_captive_l_full:
     fast_rainbow:
-      speed: 8
+      speed: 10
       loops: 1
       show_tokens:
         lights: l_captive_l
   ball_hold_bh_captive_t_full:
     fast_rainbow:
-      speed: 8
+      speed: 10
       loops: 1
       show_tokens:
         lights: l_captive_t
   ball_hold_bh_captive_r_full:
     fast_rainbow:
-      speed: 8
+      speed: 10
       loops: 1
       show_tokens:
         lights: l_captive_r
