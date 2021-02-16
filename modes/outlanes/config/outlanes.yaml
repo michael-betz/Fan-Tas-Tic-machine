@@ -24,7 +24,6 @@ shots:
     # Use default (off/on) shot profile to light `Ball returns` LED
     show_tokens:
       lights: l_outlane_l
-
   right_gate:
     hit_events: roulette_open_gate
     reset_events:
@@ -33,7 +32,6 @@ shots:
     # Use default (off/on) shot profile to light `Ball returns` LED
     show_tokens:
       lights: l_outlane_r
-
   ab_lanes:
     hit_events: roulette_ab_lanes
     reset_events: ball_ending
@@ -47,7 +45,6 @@ show_player:
       show_tokens:
         lights: l_target_mm
         color: FFFFFF
-
   # Blink outlane light before switching it off, when a ball was saved
   s_outlane_l_active{current_player.shot_left_kickback==1}:
     blinkenShow:
@@ -55,19 +52,28 @@ show_player:
       show_tokens:
         lights: l_outlane_l
         color: FFFFFF
-
   s_outlane_r_active{current_player.shot_right_gate==1}:
     blinkenShow:
       loops: 15
       show_tokens:
         lights: l_outlane_r
         color: FFFFFF
+  a_lane_scored:
+    blinkenShowWhite:
+      loops: 3
+      show_tokens:
+        lights: l_A_lane
+  b_lane_scored:
+    blinkenShowWhite:
+      loops: 3
+      show_tokens:
+        lights: l_B_lane
 
 event_player:
   s_lane_tl_active{current_player.shot_ab_lanes==1}:
-    ab_lane_scored
+    a_lane_scored
   s_lane_tr_active{current_player.shot_ab_lanes==1}:
-    ab_lane_scored
+    b_lane_scored
 
 variable_player:
   # Hit center target to light up "Ball returns"
@@ -79,9 +85,13 @@ variable_player:
   s_outlane_r_active{current_player.shot_right_gate==1}:
     score: 3000
   # When AB lanes light are ON, they score 3000
-  ab_lane_scored:
+  a_lane_scored:
+    score: 3000
+  b_lane_scored:
     score: 3000
 
 sound_player:
-  ab_lane_scored:
+  a_lane_scored:
+    bass_drop_c
+  b_lane_scored:
     bass_drop_c

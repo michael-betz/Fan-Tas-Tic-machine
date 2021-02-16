@@ -68,12 +68,12 @@ switches:
   s_target_on_bump_tr:
     number: 0x01
     type: NC
-    ignore_window_ms: 100
+    ignore_window_ms: 300
     tags: target
   s_target_on_bump_tl:
     number: 0x07
     type: NC
-    ignore_window_ms: 100
+    ignore_window_ms: 300
     tags: target
 
   # the three middle ones. These have 2 switches each:
@@ -82,30 +82,30 @@ switches:
   s_target_ml_low:
     number: 0x0C
     type: NC
-    ignore_window_ms: 100
+    ignore_window_ms: 300
     tags: target
   s_target_ml_high:
     number: 0x0D
     type: NC
-    ignore_window_ms: 100
+    ignore_window_ms: 300
   s_target_mm_low:
     number: 0x0E
     type: NC
-    ignore_window_ms: 100
+    ignore_window_ms: 300
     tags: target
   s_target_mm_high:
     number: 0x0F
     type: NC
-    ignore_window_ms: 100
+    ignore_window_ms: 300
   s_target_mr_low:
     number: 0x10
     type: NC
-    ignore_window_ms: 100
+    ignore_window_ms: 300
     tags: target
   s_target_mr_high:
     number: 0x11
     type: NC
-    ignore_window_ms: 100
+    ignore_window_ms: 300
 
   # Switches hidden behind some rubber bands
   s_rubber_tl:
