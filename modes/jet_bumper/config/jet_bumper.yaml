@@ -98,8 +98,10 @@ show_player:
       show_tokens:
         lights: l_jet_bump_tl
   s_jet_bump_low_active:
-    lower_jet_glow:
+    jet_glow:
       loops: 0
+      show_tokens:
+        lights: l_jet_bump_low, l_side_ll1, l_side_lr1, l_side_ll2, l_side_lr2
 
   # Make other stuff glow on hit
   s_rubber_tl_active:
@@ -132,28 +134,3 @@ shows:
       lights:
         (lights): 000000-f1s
     - time: +1s
-
-  lower_jet_glow:
-    - time: 0
-      lights:
-        l_jet_bump_low: FFFFFF
-    - time: +0.1s
-      lights:
-        l_jet_bump_low: 000000-f1s
-        l_side_ll2: FFFFFF
-        l_side_lr2: FFFFFF
-    - time: +0.1s
-      lights:
-        l_side_ll2: 000000-f1s
-        l_side_lr2: 000000-f1s
-        l_side_ll1: FFFFFF
-        l_side_lr1: FFFFFF
-    - time: +0.1s
-      lights:
-        l_side_ll1: 000000-f1s
-        l_side_lr1: 000000-f1s
-    - time: +1s
-
-
-
-
