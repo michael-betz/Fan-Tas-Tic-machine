@@ -197,14 +197,14 @@ Make sure to replace `/dev/mmcblk0` with the right device name of the SD card.
 ## Verify backup
 
 ```bash
-$ echo "edb61e63e22c11887f58ae24c08769faf378f264b4e64562865c9c46fa145b87  fantastic_2021_02_12.img.gz" | sha256sum -c
-fantastic_2021_02_12.img.gz: OK
+echo "118c98b50cb85ea80b86e64bf514cb31d35d781c62c47d2e0ccaad224fed4372  fantastic_2021_02_17.img.gz" | sha256sum -c
+fantastic_2021_02_17.img.gz: OK
 ```
 
 ## Create Backup
 
 ```bash
-$ sudo dd bs=1M status=progress if=/dev/mmcblk0 | gzip --best > fantastic_2021_02_12.img.gz
+$ sudo dd bs=1M status=progress if=/dev/mmcblk0 | gzip --best > sd_backup.img.gz
 ```
 
 ## Restore Backup
@@ -212,5 +212,5 @@ $ sudo dd bs=1M status=progress if=/dev/mmcblk0 | gzip --best > fantastic_2021_0
 Warning `/dev/mmcblk0` will be overwritten. Make sure it's the SD card.
 
 ```bash
-$ gzip -dc fantastic_2021_02_12.img.gz | sudo dd bs=1M status=progress of=/dev/mmcblk0
+$ gzip -dc fantastic_2021_02_17.img.gz | sudo dd bs=1M status=progress of=/dev/mmcblk0
 ```
