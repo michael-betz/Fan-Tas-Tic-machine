@@ -1,24 +1,29 @@
 # Fan-Tas-Tic-machine
 Game Rules for the Fan-Tas-Tic pinball machine
 
-# Installing everything from scratch
-Objective is to setup a Raspberry Pi 3+ to run MPF version 0.54 with audio and LED panel support. Sounds easy, should be easy, is easy ;). Just stick to the recipe.
+# Installing everything on the Raspberry PI from scratch
+Objective is to setup a Raspberry Pi 3+ to run MPF version 0.54 with audio and LED panel support.
 
-You'll need a Debian or Ubuntu host PC to setup the SD card image.
+The MPF team recommends the `KivyPie` distribution, which is based on debian jessie and __hopelessly outdated__.
+So I will use an up-to-date raspian image instead (based on debian buster).
 
-# Installing directly into the .img file
-For the installation, mount the .img file on the host PC and run it in a chroot environment.
+Follow these steps to mount and run the .img file locally in a virtual machine on a debian or ubuntu host PC.
 
 ```bash
-# Download and unzip kivypie image
-wget http://kivypie.mitako.eu/kivy-pie-1.0.zip
-unzip kivy-pie-1.0.zip
+# Download, verify and unzip a raspios_lite image.
+# You can use a newer one as long as it is based on debian buster
+wget https://downloads.raspberrypi.org/raspios_lite_armhf/images/raspios_lite_armhf-2021-01-12/2021-01-11-raspios-buster-armhf-lite.zip
+
+echo "d49d6fab1b8e533f7efc40416e98ec16019b9c034bc89c59b83d0921c2aefeef  2021-01-11-raspios-buster-armhf-lite.zip" | sha256sum -c
+# 2021-01-11-raspios-buster-armhf-lite.zip: OK
+
+unzip 2021-01-11-raspios-buster-armhf-lite.zip
 
 # Make the image file bigger to gain some free space
-dd if=/dev/zero bs=1M count=4096 >> kivy-pie-1.0.img
+dd if=/dev/zero bs=1M count=2048 >> 2021-01-11-raspios-buster-armhf-lite.img
 
-# mount image as loopfs
-sudo losetup -P /dev/loop0 kivy-pie-1.0.img
+# mount image as loopfs, so the virtual machine can see it
+sudo losetup -P /dev/loop0 2021-01-11-raspios-buster-armhf-lite.img
 
 # use gparted to resize the /dev/loop0p2 partition to its full size
 sudo gparted /dev/loop0
@@ -33,85 +38,81 @@ sudo mount -o rw /dev/loop0p1 mnt/boot
 sudo apt install systemd-container
 sudo systemd-nspawn -b -D mnt/
 
-# ... carry out the install steps in the next section  ...
-# then
+# raspian should boot ... now carry out the installation steps below.
+```
 
-sudo halt
-sudo umount mnt/boot
-sudo umount mnt
-sudo losetup -D
+# Actual installation steps in raspian
 
-# Now we have a modified kivypie image with MPF pre-installed
-# insert a SD card and make sure it appears as `/dev/mmcblk0`
-sudo dd bs=1M if=kivy-pie-1.0.img of=/dev/mmcblk0 conv=fsync
+```bash
+# login as pi, raspberry
 
-# enable SSH server
-touch /boot/ssh
+# change password for user pi
+passwd
 
-# mount the system partition and add the wifi credentials to:
-nano /etc/network/interfaces
+# Set hostname to fantastic, add wifi credentials
+sudo raspi-config
 
-# Reserve a CPU core for the LED panel
-nano /boot/cmdline.txt
+# Enable ssh access, reserve a CPU core for the LED panel
+sudo touch /boot/ssh
+sudo nano /boot/cmdline.txt
     # append this to the list of space-separated commands
     isolcpus=3
 
-```
+sudo nano /boot/config.txt
+    # Can't use on-board audio as hardware timer is needed for LED panel
+    # Make sure `dtparam=audio=on` is commented out
 
-
-
-# Install steps
-In virtual machine or on Raspberry Pi over ssh.
-
-Unmount, stick it in the raspberry pi, hope that it boots and connects to wifi. Then ssh into it: `ssh sysop@kivypie`.
-Default password for sysop and sudo: `posys`. Better change that!
-
-```bash
-# Expand partition to SD card size
-sudo mount -o remount,size=256M /tmp  # make tmp bigger temporarily
-sudo pipaos-config --expand-rootfs
-sudo reboot now
-
-# Update and install stuff
-sudo mount -o remount,size=256M /tmp
+#-------------------------
+# Libraries
+#-------------------------
+# Need pulseaudio for mpf mc
+# See: https://groups.google.com/g/mpf-users/c/KFKunVnfJE8
 sudo apt update
 sudo apt upgrade
-sudo apt-get install -y build-essential libbz2-dev libssl-dev libreadline-dev libsqlite3-dev tk-dev libpng-dev libfreetype6-dev libncurses5-dev sox
+sudo apt install build-essential git sox python3-pip \
+    python3-numpy cython3 libopenjp2-7 libtiff5 \
+    libgstreamer1.0-dev gstreamer1.0-plugins-base \
+    libgl1-mesa-dev libgles2-mesa-dev libsdl2-ttf-dev \
+    libsdl2-dev libsdl2-mixer-dev libsdl2-image-dev \
+    libmtdev-dev pulseaudio
 
-# Install python 3.6.13 ... like this because there is no package in raspian :(
-curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+#-------------------------
+# Mission Pinball
+#-------------------------
+sudo pip3 install mpf==0.54 mpf-mc==0.54
 
-# add the following to ~/.bashrc:
-vim ~/.bashrc
-    export PATH="/home/sysop/.pyenv/bin:$PATH"
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
+# Install MPF Fan-Tas-Tic platform driver
+sudo pip3 install git+https://github.com/yetifrisstlama/Fan-Tas-Tic-platform.git
 
-source ~/.bashrc
-pyenv install 3.6.13
-pyenv global 3.6.13
-
-pip3 install cython
-pip3 install numpy
-
-# Delete all the KivyPie demo crap
-cd ~
-rm -rf *
-
-# Clone game rules and helper scripts
+#-------------------------
+# Machine files
+#-------------------------
 git clone https://github.com/yetifrisstlama/Fan-Tas-Tic-machine.git
 
-# Convert music to .wav files
-cd Fan-Tas-Tic-machine
-mkdir sounds/music
-cd oggmusic
-./convert.sh
+# Set some permissions, stupid but needed
+cd ~/Fan-Tas-Tic-machine/
+chmod g+s .
 
-# Follow instruction to install bcm2835 library
-# https://www.airspayce.com/mikem/bcm2835/
-# then compile auto-shutdown handler
-mkdir mpfdev
-cd mpfdev/
+# bundle up all machine files.
+# This needs to be re-done whenever the machine config was modified
+mpf build production_bundle
+
+#-------------------------
+# LED panel driver
+#-------------------------
+cd ~
+git clone https://github.com/hzeller/rpi-rgb-led-matrix.git
+cd rpi-rgb-led-matrix
+git checkout ede58e8d0dfdb9cfff7c3cf6c32733a644b2efd5
+make
+sudo make install-python PYTHON=$(which python3)
+
+#-------------------------
+# Shutdown switch handler
+#-------------------------
+# bcm2835 library is required
+# see also: https://www.airspayce.com/mikem/bcm2835/
+cd ~
 wget http://www.airspayce.com/mikem/bcm2835/bcm2835-1.68.tar.gz
 tar -xvf bcm2835-1.68.tar.gz
 cd bcm2835-1.68/
@@ -121,76 +122,72 @@ sudo make install
 cd ~/Fan-Tas-Tic-machine/shutdown
 make
 
-# Install Mission Pinball Framework
-cd ~/mpfdev
-git clone https://github.com/missionpinball/mpf.git
-cd mpf
-git checkout 0.54
-pip3 install -e .
+#-------------------------
+# systemd units
+#-------------------------
+cd ~/Fan-Tas-Tic-machine/shutdown
+sudo cp *.service /etc/systemd/system
+sudo systemctl daemon-reload
+sudo systemctl enable shutdown_handler
+sudo systemctl enable fantastic
+sudo systemctl enable fantastic_mc
 
-# Install Mission Pinball Media Controller
-cd ~/mpfdev
-git clone https://github.com/missionpinball/mpf-mc.git
-cd mpf-mc
-git checkout 0.54
-# couldn't get ffpyplayer to compile on jessie, too bad
-vim setup.py
-    # comment-out line 640
-    #'ffpyplayer==4.3.1'
-pip3 install -e .
+#-------------------------
+# done
+#-------------------------
+# To exit the virtual machine and clean up:
+sudo halt
+# or alternatively, 3 times CTRL+]
 
-# Install Mission Pinball Fan-Tas-Tic platform driver
-cd ~/mpfdev
-git clone https://github.com/yetifrisstlama/Fan-Tas-Tic-platform.git
-cd Fan-Tas-Tic-platform
-pip3 install -e .
+# on host: unmount image file
+sudo umount -R mnt/
+sudo losetup -D
 
-# Install LED panel driver
-cd ~/mpfdev
-git clone https://github.com/hzeller/rpi-rgb-led-matrix.git
-cd rpi-rgb-led-matrix
-git checkout d18ba4a4654480572f7c43fb37e1aa9c9b6ab627
-make
-sudo make install-python PYTHON=$(which python3)
+# copy the image to a SD card (make sure /dev/mmcblk0 is correct)
+sudo dd bs=1M status=progress if=2021-01-11-raspios-buster-armhf-lite.img of=/dev/mmcblk0
+sync
 
-# need to disable rpi internal sound
-sudo vim /etc/modprobe.d/blacklist-rgb-matrix.conf
-    blacklist snd_bcm2835
-
-# Make C-media USB the default sound-card
-sudo vim /etc/modprobe.d/alsa-base.conf
-    options snd-usb-audio index=0
-    options snd_bcm2835 index=1
+# See here on how to configure to wifi credentials before boot:
+# https://raspberrytips.com/raspberry-pi-wifi-setup/
 ```
 
-Do a manual test-run if mpf starts. The -a option makes it re-generate all cache files, which seems to be needed on the first run only.
+We plug the SD card into the raspberry PI 3 and boot it.
+Then SSH into it.
+
+The pinball machine should initialize on boot. If not, check the systemd logs (see below).
 
 ```bash
-cd ~/Fan-Tas-Tic-machine
-sudo /home/sysop/.pyenv/shims/mpf -at
+# remote login over ssh
+ssh pi@fantastic
+
+# expand filesystem, set timezone, add wifi credentials (optional)
+sudo raspi-config
+sudo shutdown now
 ```
 
-As mpf-mc is not running, it should power up the 24 V relay and stop at:
+# Managing the pinball services
+there's 3 services running:
+  * `shutdown_handler`: checks if the power switch was toggled and shuts down the raspberry pi
+  * `fantastic`: Mission Pinball. Handles game rules, coils, switches, lights
+  * `fantastic_mc`: Mission Pinball Media Controller. Handles sounds and the graphics on the LED panel.
 
-```
-INFO : BCPClientSocket : Connecting BCP to 'local_display' at localhost:5050...
-```
-
-Pushing the flipper buttons should show events in the console:
-
-```
-INFO : SwitchController : <<<<<<< 's_flipper_right' active >>>>>>>
-```
-
-# Start on boot, Shutdown on switch toggle
-add the following lines to `/etc/rc.local` before `exit 0`
+use these commands to interact with the services
 
 ```bash
-/home/sysop/Fan-Tas-Tic-machine/shutdown/shutdown_handler &
-/home/sysop/Fan-Tas-Tic-machine/start.sh &
-```
+# see log output in real-time
+journalctl -u <service_name> -ef
 
-This will start mpf in a screen session on boot. To see it running use `sudo screen -r`
+# see service status
+systemctl status <service_name>
+
+# start / stop a service
+sudo systemctl start <service_name>
+sudo systemctl stop <service_name>
+
+# register / de-register start on boot
+sudo systemctl enable <service_name>
+sudo systemctl disable <service_name>
+```
 
 # SD card images
 How to take and restore a backup image of the SD card. Done from a debian / Ubuntu host PC.
