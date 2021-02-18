@@ -2,15 +2,12 @@
 Game Rules for the Fan-Tas-Tic pinball machine
 
 # Installing everything from scratch
-Objective is to setup a Raspberry Pi 3+ to run MPF version 0.54 with audio and LED panel support. Sounds easy, should be easy but turns out to be a nightmare.
+Objective is to setup a Raspberry Pi 3+ to run MPF version 0.54 with audio and LED panel support. Sounds easy, should be easy, is easy ;). Just stick to the recipe.
 
-It almost works with an up to date (debian buster) raspian image. Except that audio of mpf-mc doesn't work and I couldn't find a way to fix it.
-
-The fallback was `KivyPie` which is based on debian jessie and a __hopelessly outdated__ distribution. However audio works, so that's what we'll use.
-
+You'll need a Debian or Ubuntu host PC to setup the SD card image.
 
 # Installing directly into the .img file
-We can do the installation on the raspi itself. However we'll have to compile python, which will take forever. Instead we will mount the .img file on a host PC and run it in a chroot environment.
+For the installation, mount the .img file on the host PC and run it in a chroot environment.
 
 ```bash
 # Download and unzip kivypie image
