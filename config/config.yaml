@@ -10,7 +10,6 @@ modes:
   - base
   # Increase jet-bumper value with top 2 targets
   - jet_bumper
-  - jet_bumper_strong
   # Track bonus points with LED row
   - bonus10
   # End of ball bonus, automatically configured to start when the ball ends
@@ -52,12 +51,12 @@ logging:
          platforms: full
 
 # Comment this block if you're simulating on the host
-fantastic:
-  debug: True
-  port: /dev/ttyACM0
-  led_clock_0: 3200000  #WS2812 High speed mode
-  led_clock_1: 2400000  #WS2811 Low speed mode
-  led_clock_2: 3200000  #WS2812 High speed mode
+# fantastic:
+#   debug: True
+#   port: /dev/ttyACM0
+#   led_clock_0: 3200000  #WS2812 High speed mode
+#   led_clock_1: 2400000  #WS2811 Low speed mode
+#   led_clock_2: 3200000  #WS2812 High speed mode
 
 rpi_dmd:
   cols: 32
@@ -201,14 +200,26 @@ rgb_dmds:
      fps: 30
      only_send_changes: True
 
+# play a random background animation
+# big thanks to the pixelmatrix community !!
+# https://community.pixelmatix.com/c/animated-gifs/9
 image_pools:
   bgAni_pool:
     images:
-      - bg0
-      - bg25
+      - 5OejiSj
+      - bg11
+      - bg22
       - bg2
       - bg3
+      - bg5
+      - bg8
+      - bg0
+      - bg18
+      - bg21
+      - bg25
+      - bg33
       - bg4
+      - bg7
     type: random
     load: preload
 

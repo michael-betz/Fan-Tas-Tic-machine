@@ -14,9 +14,3 @@ Follow instruction to install the
 make  # compile
 sudo ./shutdown_handler &  # run in background
 ```
-
-## Run on boot
-add the following to `/etc/rc.local`
-```bash
-<absolute path to file>/shutdown_handler &
-```

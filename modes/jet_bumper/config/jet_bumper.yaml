@@ -67,7 +67,6 @@ slide_player:
       expire: 1.0s
 
 sound_player:
-  s_jet_bump_low_active: snPool
   sw_rubber: bdPool
   # yellow targets on top
   sg_jetbumptargets_hit: bass_hit_c
@@ -99,10 +98,8 @@ show_player:
       show_tokens:
         lights: l_jet_bump_tl
   s_jet_bump_low_active:
-    jet_glow:
+    lower_jet_glow:
       loops: 0
-      show_tokens:
-        lights: l_jet_bump_low
 
   # Make other stuff glow on hit
   s_rubber_tl_active:
@@ -135,3 +132,28 @@ shows:
       lights:
         (lights): 000000-f1s
     - time: +1s
+
+  lower_jet_glow:
+    - time: 0
+      lights:
+        l_jet_bump_low: FFFFFF
+    - time: +0.1s
+      lights:
+        l_jet_bump_low: 000000-f1s
+        l_side_ll2: FFFFFF
+        l_side_lr2: FFFFFF
+    - time: +0.1s
+      lights:
+        l_side_ll2: 000000-f1s
+        l_side_lr2: 000000-f1s
+        l_side_ll1: FFFFFF
+        l_side_lr1: FFFFFF
+    - time: +0.1s
+      lights:
+        l_side_ll1: 000000-f1s
+        l_side_lr1: 000000-f1s
+    - time: +1s
+
+
+
+

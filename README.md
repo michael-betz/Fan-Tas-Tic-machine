@@ -214,3 +214,53 @@ Warning `/dev/mmcblk0` will be overwritten. Make sure it's the SD card.
 ```bash
 $ gzip -dc fantastic_2021_02_17.img.gz | sudo dd bs=1M status=progress of=/dev/mmcblk0
 ```
+
+# Playfield simulation (`mpf monitor`)
+This allows you to run mpf on a host PC and interact with the virtual playfield with the mpf monitor command. This is ideal for developing and testing new game rules.
+
+I had to build and install python 3.7 manually on my debian-testing machine. You can also use [`pyenv`](https://github.com/pyenv/pyenv).
+
+```bash
+wget https://www.python.org/ftp/python/3.7.9/Python-3.7.9.tgz
+tar -xvf Python-3.7.9.tgz
+cd Python-3.7.9/
+./configure --prefix=/usr/local
+make -j4
+sudo make install
+```
+
+Then create the virtual python environment and install mpf 0.54
+
+```bash
+mkvirtualenv --python python3.7 mpf
+python --version
+# Python 3.7.9
+pip install mpf==0.54 mpf-mc==0.54 mpf-monitor==0.54
+pip install numpy pyqt5
+```
+
+You can always go back to this environment later with `workon mpf`.
+
+Now let's get the machine directory ready ...
+
+```bash
+cd Fan-Tas-Tic-machine
+nano config/config.yaml
+# comment out the `fantastic:` block
+# we don't need this hardware configuration for simulation
+```
+
+Start the mpf-monitor and make it display the playing field, then start mpf and everything should come to life.
+
+```bash
+mpf monitor &
+# Enable `Show playfield window` under Monitor tab
+
+mpf mc &
+# the simulated DMD window should pop up labeled `Fan-Tas-Tic Pinball`
+
+mpf -Xt
+# the machine should come to life
+```
+
+In the playfield window, squares represent switches, which you can left-click to activate them and right-click to latch them. Circles represent LEDs.
