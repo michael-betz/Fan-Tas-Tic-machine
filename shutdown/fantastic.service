@@ -7,8 +7,7 @@ Requires=fantastic_mc.service
 WorkingDirectory=/home/pi/Fan-Tas-Tic-machine/
 ExecStart=/usr/local/bin/mpf -Pt
 Restart=always
-RestartSec=15
-# KillMode=mixed
+RestartSec=30
 KillSignal=SIGINT
 
 [Install]
