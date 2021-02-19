@@ -50,7 +50,7 @@ slides:
 
 sound_player:
     credits_added:
-        tabla_ghe1:
+        perc_till:
             action: play
             loops: 0
     not_enough_credits:

@@ -5,8 +5,8 @@
 # bonus is advanced by top 2 rollovers or middle 2 targets
 mode:
   start_events: ball_starting
-  priority: 100
   code: bonus10.Bonus10
+  priority: 200
 
 variable_player:
   shot_adv_bonus_hit:

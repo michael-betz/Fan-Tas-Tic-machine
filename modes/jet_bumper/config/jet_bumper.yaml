@@ -8,7 +8,7 @@
 
 mode:
   start_events: ball_starting
-  priority: 100
+  priority: 200
 
 variable_player:
   # The 3 top jet-bumpers have a multiplier
@@ -83,23 +83,27 @@ show_player:
 
   # Make jet-bumpers glow on hit
   s_jet_bump_tr_active:
-    jet_glow:
+    jet_glow1:
       loops: 0
+      priority: 10
       show_tokens:
         lights: l_jet_bump_tr
   s_jet_bump_t_active:
-    jet_glow:
+    jet_glow2:
       loops: 0
+      priority: 10
       show_tokens:
         lights: l_jet_bump_t
   s_jet_bump_tl_active:
-    jet_glow:
+    jet_glow3:
       loops: 0
+      priority: 10
       show_tokens:
         lights: l_jet_bump_tl
   s_jet_bump_low_active:
-    jet_glow:
+    jet_glow4:
       loops: 0
+      priority: 10
       show_tokens:
         lights: l_jet_bump_low, l_side_ll1, l_side_lr1, l_side_ll2, l_side_lr2
 
@@ -126,11 +130,46 @@ show_player:
         lights: l_target_mr, l_target_mm
 
 shows:
+  # defined multiple times to workaround sticky lights bug in MPF:
+  # If the same show is triggered multiple times, (i.e., on 2 bumpers)
+  # the LEDs don't reset correctly at the end of the show
   jet_glow:
     - time: 0
       lights:
         (lights): FFFFFF
-    - time: +0.1s
+    - time: 0.1s
       lights:
-        (lights): 000000-f1s
-    - time: +1s
+        (lights): 000000-f0.85s
+    - time: 1s
+  jet_glow1:
+    - time: 0
+      lights:
+        (lights): FFFFFF
+    - time: 0.1s
+      lights:
+        (lights): 000000-f0.85s
+    - time: 1s
+  jet_glow2:
+    - time: 0
+      lights:
+        (lights): FFFFFF
+    - time: 0.1s
+      lights:
+        (lights): 000000-f0.85s
+    - time: 1s
+  jet_glow3:
+    - time: 0
+      lights:
+        (lights): FFFFFF
+    - time: 0.1s
+      lights:
+        (lights): 000000-f0.85s
+    - time: 1s
+  jet_glow4:
+    - time: 0
+      lights:
+        (lights): FFFFFF
+    - time: 0.1s
+      lights:
+        (lights): 000000-f0.85s
+    - time: 1s

@@ -5,7 +5,7 @@
 mode:
   start_events: ball_hold_bh_captive_l_full, ball_hold_bh_captive_t_full, ball_hold_bh_captive_r_full
   stop_events: roulette_end
-  priority: 100
+  priority: 200
 
 show_player:
   mode_roulette_started: roulette_show

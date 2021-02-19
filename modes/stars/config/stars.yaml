@@ -7,7 +7,7 @@
 
 mode:
   start_events: ball_starting
-  priority: 100
+  priority: 200
 
 shots:
   bonus_stars:

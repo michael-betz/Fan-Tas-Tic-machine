@@ -2,7 +2,6 @@
 
 mode:
   start_events: ball_starting
-  priority: 50
 
 #-----------------------------------------------------
 # Basic variable_player (no special stuff, just simple hits)
