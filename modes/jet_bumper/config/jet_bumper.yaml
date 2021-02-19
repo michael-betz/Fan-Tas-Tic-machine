@@ -129,18 +129,11 @@ show_player:
       show_tokens:
         lights: l_target_mr, l_target_mm
 
-  # Sticky lights workaround
-  mode_jet_bumper_started:
-    jet_glow:
-      loops: 0
-      priority: 10
-      show_tokens:
-        lights: l_jet_bump_tr, l_jet_bump_t, l_jet_bump_tl
-
 shows:
   # defined multiple times to workaround sticky lights bug in MPF:
   # If the same show is triggered multiple times, (i.e., on 2 bumpers)
-  # the LEDs don't reset correctly at the end of the show
+  # and the show contains fading, the LEDs don't reset correctly back to their
+  # lower priority value at the end of the show.
   jet_glow:
     - time: 0
       lights:
@@ -177,14 +170,6 @@ shows:
     - time: 0
       lights:
         (lights): FFFFFF
-    - time: 0.1s
-      lights:
-        (lights): 000000-f0.8s
-    - time: 1s
-  jet_black:
-    - time: 0
-      lights:
-        (lights): 000000
     - time: 0.1s
       lights:
         (lights): 000000-f0.8s

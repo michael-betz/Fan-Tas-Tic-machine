@@ -6,7 +6,7 @@
 shot_profiles:
     # Off + 9 different colors
     rainbow:
-      show: rainbow
+      show: fast_rainbow
       states:
         - name: 0
           start_step: 0
