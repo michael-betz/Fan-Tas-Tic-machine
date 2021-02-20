@@ -143,26 +143,44 @@ sudo halt
 sudo umount -R mnt/
 sudo losetup -D
 
-# copy the image to a SD card (make sure /dev/mmcblk0 is correct)
-sudo dd bs=1M status=progress if=2021-01-11-raspios-buster-armhf-lite.img of=/dev/mmcblk0
-sync
-
-# See here on how to configure to wifi credentials before boot:
-# https://raspberrytips.com/raspberry-pi-wifi-setup/
+# compress the image
+gzip -k 2021-01-11-raspios-buster-armhf-lite.img
 ```
 
-We plug the SD card into the raspberry PI 3 and boot it.
+Now copy the image to a SD card. See instructions for [Restore Backup](#restore-backup) below.
+
+To configure wifi before boot, mount the `boot` partition on the SD card and create the file `wpa_supplicant.conf` with this content:
+
+```bash
+nano /media/$USER/boot/wpa_supplicant.conf
+
+    country=US
+    ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+    update_config=1
+    network={
+        ssid="YOURSSID"
+      scan_ssid=1
+      psk="YOURPASSWORD"
+      key_mgmt=WPA-PSK
+    }
+```
+
+More info about [wifi config](https://raspberrytips.com/raspberry-pi-wifi-setup/).
+
+Plug the SD card into the raspberry PI 3 and boot it.
+It will automatically reboot once because on first boot the filesystem is expanded to use all of the SD cards free space.
+
+The pinball machine should initialize after a minute or two.
+
 Then SSH into it.
 
-The pinball machine should initialize on boot. If not, check the systemd logs (see below).
+Once logged in, check the systemd logs (see below).
 
 ```bash
 # remote login over ssh
 ssh pi@fantastic
 
-# expand filesystem, set timezone, add wifi credentials (optional)
-sudo raspi-config
-sudo shutdown now
+journalctl -u fantastic -ef
 ```
 
 # Managing the pinball services
@@ -188,6 +206,9 @@ sudo systemctl stop <service_name>
 sudo systemctl enable <service_name>
 sudo systemctl disable <service_name>
 ```
+
+# Audio volume control
+Use `alsamixer`. You may have to switch to a different soundcard using the F6 key to see the actual volume control.
 
 # SD card images
 How to take and restore a backup image of the SD card. Done from a debian / Ubuntu host PC.
