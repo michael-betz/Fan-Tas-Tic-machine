@@ -218,8 +218,8 @@ Make sure to replace `/dev/mmcblk0` with the right device name of the SD card.
 ## Verify backup
 
 ```bash
-echo "118c98b50cb85ea80b86e64bf514cb31d35d781c62c47d2e0ccaad224fed4372  fantastic_2021_02_17.img.gz" | sha256sum -c
-fantastic_2021_02_17.img.gz: OK
+echo "fe523f75610b8c08db7fa6b0023d14f9c36f37f8c2e35964bdf6e188644a0ac4  fantastic_2021_02_20.img.gz" | sha256sum -c
+fantastic_2021_02_20.img.gz: OK
 ```
 
 ## Create Backup
