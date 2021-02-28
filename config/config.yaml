@@ -21,6 +21,7 @@ modes:
   - stars
   - high_score
   - credits
+  - tilt
 
 hardware:
   platform: fantastic_platform
@@ -32,7 +33,7 @@ game:
 
 credits:
     max_credits: 12
-    free_play: False
+    free_play: True
     switches:
         - switch: s_coin
           type: money
